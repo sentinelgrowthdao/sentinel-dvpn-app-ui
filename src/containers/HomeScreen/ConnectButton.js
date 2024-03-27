@@ -19,6 +19,7 @@ import {
   dispatchGetAvailableNodes,
 } from "../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
+
 const ConnectButton = () => {
   const dispatch = useDispatch();
   const node = useSelector((state) => state.device.selectedNode);
@@ -27,6 +28,7 @@ const ConnectButton = () => {
   const countries = useSelector((state) => state.nodes.countries);
   const cities = useSelector((state) => state.nodes.cities.all);
   const nodes = useSelector((state) => state.nodes.servers.all);
+
   const getServers = async () => {
     try {
       if (countries && countries.length > 0) {
@@ -128,14 +130,12 @@ const ConnectButton = () => {
 
   if (isVPNConnected) {
     return (
-      <section className={styles.connected}>
-        <Button
-          variant={variants.SECONDARY}
-          title={"Disconnect"}
-          className={styles.btn}
-          onClick={handleDisconnect}
-        />
-      </section>
+      <Button
+        variant={variants.SECONDARY}
+        title={"Disconnect"}
+        className={styles.btn}
+        onClick={handleDisconnect}
+      />
     );
   }
 
@@ -146,6 +146,7 @@ const ConnectButton = () => {
       icon={QuickConnectIcon}
       variant={variants.PRIMARY}
       title={"Quick Connect"}
+      className={styles.btn}
     />
   );
 };

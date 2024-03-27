@@ -6,6 +6,9 @@ import styles from "./qr-code.module.scss";
 import Button from "../../components/Button";
 import copy from "copy-to-clipboard";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
+const parseWalletAddress = (str) => {
+  return str.slice(0, 10) + "..." + str.slice(-6, str.length);
+};
 
 const QRCodeCard = () => {
   const dispatch = useDispatch();
@@ -13,8 +16,10 @@ const QRCodeCard = () => {
   return (
     <Card className={styles.root} variant={variants.PRIMARY}>
       <section className={styles["wallet-address"]}>
-        <span className={styles.title}>Wallet Address</span>
-        <span className={styles.address}>{walletAddress}</span>
+        <span className={styles.title}>Account Address</span>
+        <span className={styles.address}>
+          {parseWalletAddress(walletAddress)}
+        </span>
       </section>
       <QRCode value={walletAddress} />
       <Button
