@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ReactCountryFlag from "react-country-flag";
 import styles from "./country-card.module.scss";
 import Card, { variants } from "../../../components/Card";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_SELECTED } from "../../../redux/reducers/nodes.reducer";
 
@@ -26,6 +26,7 @@ import { MODAL_VARIANTS } from "../../Modal/modal-types";
 
 const CityQuickConnect = ({ country }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const nodes = useSelector((state) => state.nodes.servers.all);
   const { balance, subscription, plan } = useSelector((state) => state.home);
@@ -46,6 +47,13 @@ const CityQuickConnect = ({ country }) => {
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "no-balance",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
 
@@ -57,6 +65,13 @@ const CityQuickConnect = ({ country }) => {
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "renew-subscription",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
 

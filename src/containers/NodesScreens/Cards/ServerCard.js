@@ -3,24 +3,32 @@ import styles from "./server-card.module.scss";
 import Card, { variants } from "../../../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { connectAction } from "../../../actions/vpn.actions";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { CHANGE_MODAL_STATE } from "../../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
 
 const ServerCard = ({ server }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
   const { balance, subscription, plan } = useSelector((state) => state.home);
 
   const connect = async (node) => {
     if (balance <= plan.amount || balance <= 150000) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "no-balance",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
 
@@ -32,6 +40,13 @@ const ServerCard = ({ server }) => {
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "renew-subscription",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
     const dispatched = dispatch(connectAction(node));

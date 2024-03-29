@@ -1,7 +1,7 @@
 import React from "react";
 import Card, { variants } from "../../../components/Card";
 import styles from "./city-card.module.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { SET_SELECTED } from "../../../redux/reducers/nodes.reducer";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,6 +21,7 @@ import { MODAL_VARIANTS } from "../../Modal/modal-types";
 
 const CityQuickConnect = ({ city }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const nodes = useSelector((state) => state.nodes.servers.all);
   const { balance, subscription, plan } = useSelector((state) => state.home);
@@ -38,24 +39,38 @@ const CityQuickConnect = ({ city }) => {
 
   const connect = async () => {
     if (balance <= plan.amount || balance <= 150000) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "no-balance",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
 
     if (!subscription || Object.values(subscription).length === 0) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "renew-subscription",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "renew-subscription",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
     let list = servers;

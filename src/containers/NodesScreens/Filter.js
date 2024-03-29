@@ -6,8 +6,11 @@ import styles from "./filter.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Filter = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const protocols = useSelector((state) => state.device.protocols);
 
@@ -26,6 +29,13 @@ const Filter = () => {
             variant: MODAL_VARIANTS.PRIMARY,
           })
         );
+        navigate(location.pathname, {
+          state: {
+            show: true,
+            type: "filters",
+            variant: MODAL_VARIANTS.PRIMARY,
+          },
+        });
       }}
     />
   );

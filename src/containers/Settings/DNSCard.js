@@ -6,10 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DNSCard = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
-
   const current = useSelector((state) => state.dns.current);
 
   return (
@@ -27,6 +29,13 @@ const DNSCard = () => {
                 variant: MODAL_VARIANTS.SECONDARY,
               })
             );
+            navigate(location.pathname, {
+              state: {
+                show: true,
+                type: "dns",
+                variant: MODAL_VARIANTS.SECONDARY,
+              },
+            });
           }}
         >
           <section>

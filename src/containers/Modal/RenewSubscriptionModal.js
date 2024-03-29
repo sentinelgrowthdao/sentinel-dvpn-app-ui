@@ -18,9 +18,12 @@ import {
   dispatchSubscribeToPlan,
 } from "../../actions/home.actions";
 import { MODAL_VARIANTS } from "./modal-types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RenewSubscriptionModal = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { balance, subscription, plan } = useSelector((state) => state.home);
 
   const [price, setPrice] = React.useState(0.0);
@@ -55,13 +58,20 @@ const RenewSubscriptionModal = () => {
 
   const handleRenewSubcription = async () => {
     if (balance < plan.amount) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "no-balance",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
     try {

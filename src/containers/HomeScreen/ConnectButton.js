@@ -19,9 +19,12 @@ import {
   dispatchGetAvailableNodes,
 } from "../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ConnectButton = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
   const node = useSelector((state) => state.device.selectedNode);
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
   const { balance, subscription, plan } = useSelector((state) => state.home);
@@ -85,24 +88,38 @@ const ConnectButton = () => {
 
   const handleConnect = async () => {
     if (balance <= plan.amount || balance <= 150000) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "no-balance",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
 
     if (!subscription || Object.values(subscription).length === 0) {
-      dispatch(
+      await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
           type: "renew-subscription",
           variant: MODAL_VARIANTS.PRIMARY,
         })
       );
+      navigate(location.pathname, {
+        state: {
+          show: true,
+          type: "renew-subscription",
+          variant: MODAL_VARIANTS.PRIMARY,
+        },
+      });
       return;
     }
     if (node && node.address) {
