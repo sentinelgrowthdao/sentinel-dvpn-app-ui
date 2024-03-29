@@ -11,7 +11,11 @@ const Modal = ({ show, type, variant = MODAL_VARIANTS.PRIMARY, ...rest }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  console.log(location);
+  React.useEffect(() => {
+    if (!show && location.state?.show && location.state?.type) {
+      navigate(-1);
+    }
+  }, [show, navigate, location]);
 
   if (show && location.state?.show && location.state?.type) {
     return (
@@ -20,7 +24,6 @@ const Modal = ({ show, type, variant = MODAL_VARIANTS.PRIMARY, ...rest }) => {
           className={styles[`${variant}-modal-backdrop`]}
           onClick={() => {
             dispatch(CHANGE_MODAL_STATE({ show: false, type: null }));
-            navigate(-1);
           }}
         />
 
