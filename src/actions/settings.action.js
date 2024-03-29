@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import dnsServices from "../services/dns.services";
 import { CHANGE_ERROR_ALERT } from "../redux/reducers/alerts.reducer";
 import registryServices from "../services/registry.services";
+import proxyServices from "../services/proxy.services";
 
 export const dispatchGetAvailableDNS = createAsyncThunk(
   "GET_AVAILABLE_DNS",
@@ -48,6 +49,24 @@ export const dispatchGetLogs = createAsyncThunk(
   async (_, { fulfillWithValue, rejectWithValue, dispatch }) => {
     try {
       await registryServices.getLogs();
+      return fulfillWithValue();
+    } catch (e) {
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "Failed to Open Share",
+        })
+      );
+      return rejectWithValue();
+    }
+  }
+);
+
+export const dispatchWindowOpen = createAsyncThunk(
+  "WINDOW_OPEN",
+  async (link, { fulfillWithValue, rejectWithValue, dispatch }) => {
+    try {
+      await proxyServices.postWindowOpen({ url: link });
       return fulfillWithValue();
     } catch (e) {
       dispatch(

@@ -101,6 +101,12 @@ const proxyServices = {
     }
     return { error: "unauthorizedDevice" };
   },
+  postWindowOpen: (data) =>
+    Axios.post("/proxy/browser", data)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      }),
 };
 
 export default proxyServices;
