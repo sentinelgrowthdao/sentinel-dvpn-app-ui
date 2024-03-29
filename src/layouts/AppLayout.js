@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import BottomTabs from "../components/BottomTabs";
 import Modal from "../containers/Modal";
 import styles from "./app-layout.module.scss";
@@ -20,10 +20,10 @@ import { dispatchGetAvailableCountries } from "../actions/nodes.action";
 
 const AppLayout = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
   const { isWalletCreated, isRegistered } = useSelector(
     (state) => state.device
   );
-
   const { modal } = useSelector((state) => state.alerts);
   const { isHomeLoaded } = useSelector((state) => state.home);
 
@@ -46,6 +46,13 @@ const AppLayout = () => {
     }
   }, [dispatch, isHomeLoaded]);
 
+  const showBottomNavbar = [
+    "/",
+    "/countries",
+    "/account",
+    "/settings",
+  ].includes(location.pathname);
+
   if (!(isRegistered && isWalletCreated)) {
     return <Navigate to="/" replace={true} />;
   }
@@ -53,12 +60,18 @@ const AppLayout = () => {
   return (
     <>
       <div className={styles.root}>
-        <section className={styles.outlet}>
+        <section
+          className={`${styles.outlet} ${
+            showBottomNavbar ? styles.with : styles.without
+          }`}
+        >
           <Outlet />
         </section>
-        <section className={styles.nav}>
-          <BottomTabs />
-        </section>
+        {showBottomNavbar && (
+          <section className={styles.nav}>
+            <BottomTabs />
+          </section>
+        )}
       </div>
       <Modal type={modal.type} show={modal.show} variant={modal.variant} />
     </>

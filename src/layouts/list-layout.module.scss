@@ -21,7 +21,13 @@
   }
   .lists {
     flex: 1;
-    height: calc(100% - 60px);
     overflow: auto;
   }
+  .with {
+    height: calc(100% - 60px);
+  }
+  .without {
+    height: calc(100% - 140px);
+  }
+
 }

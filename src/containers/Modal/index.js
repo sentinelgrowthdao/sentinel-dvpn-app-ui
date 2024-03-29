@@ -28,9 +28,9 @@ const Modal = ({ show, type, variant = MODAL_VARIANTS.PRIMARY, ...rest }) => {
       <div className={styles[variant]}>
         <div
           className={styles[`${variant}-modal-backdrop`]}
-          onClick={() =>
-            dispatch(CHANGE_MODAL_STATE({ show: false, type: null }))
-          }
+          onClick={() => {
+            dispatch(CHANGE_MODAL_STATE({ show: false, type: null }));
+          }}
         />
 
         <div className={styles[`${variant}-container`]}>

@@ -1,16 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./bottom-tabs.module.scss";
 
 const Tab = ({ icon, href, className, title, isActive }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
   return (
     <button
       className={`${styles.tab} ${isActive ? styles.active : ""} ${className}`}
       onClick={(event) => {
         event.preventDefault();
-        navigate(href);
+        if (location.pathname === "/") {
+          navigate(href);
+          return;
+        }
+        navigate(href, { replace: true });
       }}
       disabled={isActive}
     >

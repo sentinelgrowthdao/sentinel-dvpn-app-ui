@@ -37,7 +37,6 @@ const CountriesList = () => {
     dispatch(SET_PAGE_TITLE("Select a Country"));
     dispatch(SET_CAN_GO_BACK(false));
   }, [dispatch]);
-
   return (
     <>
       {Array.isArray(filtered) &&

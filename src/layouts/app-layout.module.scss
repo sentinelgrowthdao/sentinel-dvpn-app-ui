@@ -3,11 +3,18 @@
   height: 100%;
   .outlet {
     width: inherit;
-    height: calc(100% - 80px);
     min-height: 200px;
     overflow-y: hidden;
     overflow-x: hidden;
   }
+  .with {
+    height: calc(100% - 80px);
+    transition: height 0.2s ease-in;
+  }
+  .without {
+    height: 100%;
+  }
+
   .nav {
     width: inherit;
     height: 80px;

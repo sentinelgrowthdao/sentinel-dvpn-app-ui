@@ -6,7 +6,6 @@ import { useLocation } from "react-router-dom";
 
 const BottomTabs = () => {
   const location = useLocation();
-
   return (
     <div className={styles.root}>
       {tabs.map((tab) => (
@@ -15,7 +14,7 @@ const BottomTabs = () => {
           icon={tab.icon}
           title={tab.title}
           href={tab.href}
-          isActive={location.pathname === tab.href}
+          isActive={!['/', '/countries', '/account', '/settings'].includes(location.pathname) || location.pathname === tab.href}
         />
       ))}
     </div>
