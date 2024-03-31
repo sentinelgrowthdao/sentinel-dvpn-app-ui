@@ -58,7 +58,7 @@ const Import = () => {
           <button
             className={styles["signup-btn"]}
             onClick={() => {
-              navigate("/create");
+              navigate("/create", { replace: true });
             }}
           >
             Sign up

@@ -42,12 +42,19 @@ const ExternalSupport = () => {
           );
         })}
       </section>
-      {/* <section className={styles["report-issue"]}>
+      <section className={styles["report-issue"]}>
         <span>Any problems?</span>
-        <button className={styles["report-issue-link"]} onClick={() => {}}>
+        <button
+          className={styles["report-issue-link"]}
+          onClick={(event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            dispatch(dispatchWindowOpen("mailto:Support@snt.foundation"));
+          }}
+        >
           Report an issue
         </button>
-      </section> */}
+      </section>
     </div>
   );
 };

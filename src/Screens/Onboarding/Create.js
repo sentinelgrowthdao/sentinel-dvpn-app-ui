@@ -124,7 +124,7 @@ const Create = () => {
           <button
             className={styles["login-btn"]}
             onClick={() => {
-              navigate("/import");
+              navigate("/import", { replace: true });
             }}
           >
             Login
