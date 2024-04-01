@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./legal-cards.module.scss";
 import LegalDocIcon from "../../assets/icons/legal-doc-icon.svg";
 import VersionIcon from "../../assets/icons/version-icon.svg";
 
 import Card, { variants } from "../../components/Card";
-import { useSelector } from "react-redux";
-import ExternalLinksModal from "./ExternalLinksModal";
+import { useDispatch, useSelector } from "react-redux";
+import { dispatchWindowOpen } from "../../actions/settings.action";
 
 const legalDocs = [
   {
@@ -21,31 +21,9 @@ const legalDocs = [
 ];
 
 const LegalCards = () => {
+  const dispatch = useDispatch();
+
   const version = useSelector((state) => state.home.version);
-
-  const [state, setState] = useState({
-    isExternalLinkOpen: false,
-    title: null,
-    link: null,
-  });
-
-  const handleExternalLinkModal = ({ link = null, title = null }) => {
-    if (link && title) {
-      setState((prevState) => ({
-        ...prevState,
-        isExternalLinkOpen: true,
-        title,
-        link,
-      }));
-    } else {
-      setState((prevState) => ({
-        ...prevState,
-        isExternalLinkOpen: false,
-        title: "",
-        link: "",
-      }));
-    }
-  };
 
   return (
     <>
@@ -61,9 +39,11 @@ const LegalCards = () => {
             >
               <button
                 className={styles["doc-card"]}
-                onClick={() =>
-                  handleExternalLinkModal({ link: doc.href, title: doc.title })
-                }
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  dispatch(dispatchWindowOpen(doc.href));
+                }}
               >
                 <section>
                   <img src={doc.icon} alt="" />
@@ -84,13 +64,6 @@ const LegalCards = () => {
           </button>
         </Card>
       </div>
-      {state.isExternalLinkOpen && (
-        <ExternalLinksModal
-          link={state.link}
-          onClose={() => handleExternalLinkModal({ link: null, title: null })}
-          title={state.title}
-        />
-      )}
     </>
   );
 };

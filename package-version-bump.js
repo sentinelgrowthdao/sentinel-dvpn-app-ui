@@ -4,6 +4,7 @@ function bumpVersion(type) {
     if (type && ["patch", "minor", "major"].includes(type)) {
       try {
         await exec(`yarn version --${type}`);
+        await exec(`yarn version`);
         await exec(`git add .`);
         await exec(`git commit -m "chore: Updated the package version"`);
         resolve();
