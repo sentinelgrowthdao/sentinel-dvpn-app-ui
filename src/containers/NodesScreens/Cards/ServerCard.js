@@ -12,6 +12,7 @@ const ServerCard = ({ server }) => {
   const location = useLocation();
   const dispatch = useDispatch();
   const { balance, subscription, plan } = useSelector((state) => state.home);
+  const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   const connect = async (node) => {
     if (balance <= plan.amount || balance <= 150000) {
@@ -67,6 +68,7 @@ const ServerCard = ({ server }) => {
           event.preventDefault();
           connect(server);
         }}
+        disabled={isVPNConnected}
       >
         <section className={styles.details}>
           <span className={styles.name}>{server.name}</span>

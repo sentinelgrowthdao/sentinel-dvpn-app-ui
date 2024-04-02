@@ -29,6 +29,7 @@ const QuickConnectButton = () => {
   const countries = useSelector((state) => state.nodes.countries);
   const cities = useSelector((state) => state.nodes.cities.all);
   const nodes = useSelector((state) => state.nodes.servers.all);
+  const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   const getServers = async () => {
     try {
@@ -144,6 +145,7 @@ const QuickConnectButton = () => {
         event.preventDefault();
         connect();
       }}
+      disabled={isVPNConnected}
       variant={variants.PRIMARY}
       className={styles.root}
       icon={QuickConnectIcon}

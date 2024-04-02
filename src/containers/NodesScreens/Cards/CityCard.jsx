@@ -26,6 +26,7 @@ const CityQuickConnect = ({ city }) => {
   const nodes = useSelector((state) => state.nodes.servers.all);
   const { balance, subscription, plan } = useSelector((state) => state.home);
   const [servers, setServers] = React.useState([]);
+  const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   React.useEffect(() => {
     const servers = getServersByCityAndCountryId(
@@ -103,6 +104,7 @@ const CityQuickConnect = ({ city }) => {
       variant={variants.PRIMARY}
       icon={QuickConnectIcon}
       onClick={connect}
+      disabled={isVPNConnected}
     />
   );
 };
