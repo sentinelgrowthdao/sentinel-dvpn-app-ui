@@ -4,7 +4,10 @@ import Card, { variants } from "../../../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { connectAction } from "../../../actions/vpn.actions";
 import { useLocation, useNavigate } from "react-router-dom";
-import { CHANGE_MODAL_STATE } from "../../../redux/reducers/alerts.reducer";
+import {
+  CHANGE_ERROR_ALERT,
+  CHANGE_MODAL_STATE,
+} from "../../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
 
 const ServerCard = ({ server }) => {
@@ -66,9 +69,17 @@ const ServerCard = ({ server }) => {
         className={styles.root}
         onClick={(event) => {
           event.preventDefault();
+          if (isVPNConnected) {
+            dispatch(
+              CHANGE_ERROR_ALERT({
+                show: true,
+                message: `Please dis-connect from VPN before switching`,
+              })
+            );
+            return;
+          }
           connect(server);
         }}
-        disabled={isVPNConnected}
       >
         <section className={styles.details}>
           <span className={styles.name}>{server.name}</span>

@@ -40,6 +40,16 @@ const CityQuickConnect = ({ country }) => {
   }, [country, nodes]);
 
   const connect = async () => {
+    if (isVPNConnected) {
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: `Please dis-connect from VPN before switching`,
+        })
+      );
+      return;
+    }
+
     if (balance <= plan.amount || balance <= 150000) {
       dispatch(
         CHANGE_MODAL_STATE({
@@ -109,10 +119,9 @@ const CityQuickConnect = ({ country }) => {
   return (
     <Button
       className={styles["quick-connect-btn"]}
-      variant={variants.PRIMARY}
+      variant={isVPNConnected ? variants.SECONDARY : variants.PRIMARY}
       icon={QuickConnectIcon}
       onClick={connect}
-      disabled={isVPNConnected}
     />
   );
 };

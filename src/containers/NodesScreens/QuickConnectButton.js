@@ -143,10 +143,18 @@ const QuickConnectButton = () => {
     <Button
       onClick={(event) => {
         event.preventDefault();
+        if (isVPNConnected) {
+          dispatch(
+            CHANGE_ERROR_ALERT({
+              show: true,
+              message: `Please dis-connect from VPN before switching`,
+            })
+          );
+          return;
+        }
         connect();
       }}
-      disabled={isVPNConnected}
-      variant={variants.PRIMARY}
+      variant={isVPNConnected ? variants.SECONDARY : variants.PRIMARY}
       className={styles.root}
       icon={QuickConnectIcon}
     />
