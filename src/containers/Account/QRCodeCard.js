@@ -7,7 +7,9 @@ import Button from "../../components/Button";
 import copy from "copy-to-clipboard";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
 const parseWalletAddress = (str) => {
-  return str.slice(0, 10) + "..." + str.slice(-6, str.length);
+  if (str && str.length > 0)
+    return str.slice(0, 10) + "..." + str.slice(-6, str.length);
+  return "";
 };
 
 const QRCodeCard = () => {
@@ -21,7 +23,7 @@ const QRCodeCard = () => {
           {parseWalletAddress(walletAddress)}
         </span>
       </section>
-      <QRCode value={walletAddress} />
+      <QRCode value={walletAddress || ""} />
       <Button
         onClick={() => {
           copy(walletAddress);

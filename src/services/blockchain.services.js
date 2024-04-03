@@ -57,6 +57,11 @@ const blockchainServices = {
           throw new Error({ msg: "Failed to Create Session" });
         }
       }),
+  getTXDetails: (txHash) =>
+    Axios.get(`blockchain/transactions/${txHash}`)
+      .then((response) => response)
+      .catch((error) => error),
+
   postWalletAddress: (data) =>
     Axios.post("/blockchain/wallet", data)
       .then((response) => {

@@ -12,6 +12,7 @@ import {
 } from "../redux/reducers/alerts.reducer";
 import otherServices from "../services/other.services";
 import registryServices from "../services/registry.services";
+import { getTxDetails } from "./common.support";
 
 export const dispatchGetIPAddress = createAsyncThunk(
   "GET_IP_ADDRESS",
@@ -137,8 +138,10 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
         })
       );
       const response = await blockchainServices.postSubscription(6, payload);
-      if (response.code) {
-        if (response.code === 5) {
+      const details = await getTxDetails(response.txhash);
+
+      if (details.code) {
+        if (details.code === 5) {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
@@ -147,7 +150,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           );
           return;
         }
-        if (response.code !== 0) {
+        if (details.code !== 0) {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,

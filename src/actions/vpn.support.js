@@ -1,5 +1,6 @@
 import blockchainServices from "../services/blockchain.services";
 import vpnServices from "../services/vpn.services";
+import { getTxDetails } from "./common.support";
 
 export const getSession = async (walletAddress) => {
   try {
@@ -35,20 +36,24 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       walletAddress,
       payload
     );
-    if (response.code) {
-      if (response.code === 5) {
+    const details = await getTxDetails(response.txhash);
+    console.log("details", details);
+
+    if (details.code) {
+      if (details.code === 5) {
         return {
           success: false,
           message: "Failed to Create a Session since insufficient balance",
         };
       }
-      if (response.code !== 0) {
+      if (details.code !== 0) {
         return {
           success: false,
           message: `Failed to create a Session [CODE: ${response.code}]`,
         };
       }
     }
+
     return { success: true };
   } catch (e) {
     return { success: false, message: "Failed to create a Session" };
