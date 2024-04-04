@@ -35,6 +35,15 @@ const ServersCard = ({ server }) => {
         onClick={(event) => {
           event.preventDefault();
           event.stopPropagation();
+          if (!server.is_available) {
+            dispatch(
+              CHANGE_ERROR_ALERT({
+                show: true,
+                message: `Server is offline, please try again later`,
+              })
+            );
+            return;
+          }
           if (isVPNConnected) {
             dispatch(
               CHANGE_ERROR_ALERT({
