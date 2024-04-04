@@ -175,8 +175,14 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
 
 export const dispatchGetAppVersion = createAsyncThunk(
   "GET_APP_VERSION",
-  async (_, { fulfillWithValue, rejectWithValue }) => {
+  async (_, { fulfillWithValue, rejectWithValue, dispatch }) => {
     try {
+      dispatch(
+        CHANGE_LOADER_STATE({
+          show: true,
+          message: "Fetching App Version",
+        })
+      );
       const response = await registryServices.getVersion();
       return fulfillWithValue(response);
     } catch (e) {

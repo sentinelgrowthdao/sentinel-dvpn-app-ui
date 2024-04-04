@@ -8,6 +8,8 @@ import {
   disconnectAction,
   dispatchGetVPNStatus,
 } from "../../actions/vpn.actions";
+import { createRecentServerToStore } from "../../helpers/parseRecentServes";
+import { dispatchGetRecentServersList } from "../../actions/recents.actions";
 
 const initialState = {
   isWalletCreated: false,
@@ -31,6 +33,26 @@ const deviceSlice = createSlice({
       ...state,
       protocols: payload,
     }),
+    CHANGE_RECENT_SERVERS: (state, { payload }) => {
+      const otherServers = state.recentServers.filter(
+        (e) => e.address !== payload.node.address
+      );
+      const server = createRecentServerToStore(payload.node);
+      const recentServers = [server].concat(otherServers);
+      return {
+        ...state,
+        recentServers,
+      };
+    },
+    REMOVE_RECENT_SERVER: (state, { payload }) => {
+      const recentServers = state.recentServers.filter(
+        (e) => e.address !== payload.address
+      );
+      return {
+        ...state,
+        recentServers,
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -64,9 +86,21 @@ const deviceSlice = createSlice({
       ...state,
       isVPNConnected: payload,
     }));
+    builder.addCase(
+      dispatchGetRecentServersList.fulfilled,
+      (state, { payload }) => ({
+        ...state,
+        recentServers: payload,
+      })
+    );
   },
 });
 
-export const { CHANGE_IS_REGISTERED, SET_PROTOCOL } = deviceSlice.actions;
+export const {
+  CHANGE_IS_REGISTERED,
+  SET_PROTOCOL,
+  CHANGE_RECENT_SERVERS,
+  REMOVE_RECENT_SERVER,
+} = deviceSlice.actions;
 
 export default deviceSlice.reducer;

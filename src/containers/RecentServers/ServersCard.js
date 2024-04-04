@@ -7,7 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { connectAction } from "../../actions/vpn.actions";
 import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
-
+import OnlineIcon from "../../assets/icons/online-icon.svg";
+import OfflineIcon from "../../assets/icons/offline-icon.svg";
+import TrashIcon from "../../assets/icons/trash-icon.svg";
+import Button from "../../components/Button";
+import { REMOVE_RECENT_SERVER } from "../../redux/reducers/device.reducer";
 const ServersCard = ({ server }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,6 +27,7 @@ const ServersCard = ({ server }) => {
       console.log("CONSOLE FAILED TO CONNECT", JSON.stringify(e));
     }
   };
+
   return (
     <Card variant={variants.SECONDARY} className={styles.root}>
       <button
@@ -54,6 +59,17 @@ const ServersCard = ({ server }) => {
           <span
             className={styles.location}
           >{`${server.city}, ${server.code}`}</span>
+          {server.is_available ? (
+            <section className={`${styles.health} ${styles.active}`}>
+              <img src={OnlineIcon} alt="" />
+              <span>Online</span>
+            </section>
+          ) : (
+            <section className={`${styles.health} ${styles.inactive}`}>
+              <img src={OfflineIcon} alt="" />
+              <span>Offline</span>
+            </section>
+          )}
         </section>
         <section className={styles.bottom}>
           <span className={styles.name}>{server.name}</span>
@@ -62,7 +78,15 @@ const ServersCard = ({ server }) => {
           </span>
         </section>
       </button>
-      <section className={styles.right}></section>
+      <section className={styles.right}>
+        <Button
+          icon={TrashIcon}
+          variant={variants.TRANSPARENT}
+          onClick={() => {
+            dispatch(REMOVE_RECENT_SERVER(server));
+          }}
+        />
+      </section>
     </Card>
   );
 };

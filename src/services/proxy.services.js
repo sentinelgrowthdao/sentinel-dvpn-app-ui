@@ -107,6 +107,12 @@ const proxyServices = {
       .catch((error) => {
         throw new Error(error);
       }),
+  postRecentServersList: (data) =>
+    Axios.post(`/proxy/servers`, data)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      }),
 };
 
 export default proxyServices;

@@ -11,6 +11,8 @@ import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
 import { getRandomNode } from "../../helpers/filterServers";
 import { connectAction } from "../../actions/vpn.actions";
 import { useNavigate } from "react-router-dom";
+import { dispatchGetRecentServersList } from "../../actions/recents.actions";
+import { withSingleDispatcherLoader } from "../../actions/loader.action";
 
 const RecentServers = () => {
   const dispatch = useDispatch();
@@ -55,6 +57,11 @@ const RecentServers = () => {
     });
     setFiltered(result);
   }, [servers, searchText, protocols]);
+  console.log("servers", servers);
+
+  React.useEffect(() => {
+    dispatch(withSingleDispatcherLoader(dispatchGetRecentServersList()));
+  }, [dispatch]);
 
   const ConnectButton = React.useMemo(() => {
     const connect = async () => {
