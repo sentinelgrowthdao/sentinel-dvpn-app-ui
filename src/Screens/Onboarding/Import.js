@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { createWalletWithMnemonic } from "../../actions/onboarding.action";
+
 const Import = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const Import = () => {
   return (
     <div className={styles.root}>
       <section className={styles.top}>
-        <span className={styles.title}>Log in with the key</span>
+        <span className={styles.title}>Log in with your key</span>
         <span className={styles.description}>
           Provide your unique 12 / 24 word key
         </span>
