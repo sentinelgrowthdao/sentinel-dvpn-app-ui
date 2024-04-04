@@ -16,6 +16,7 @@ const initialState = {
   selectedNode: {},
   isVPNConnected: false,
   protocols: "V2RAY,WIREGUARD",
+  recentServers: [],
 };
 
 const deviceSlice = createSlice({
@@ -48,10 +49,17 @@ const deviceSlice = createSlice({
       ...state,
       walletAddress: payload,
     }));
-    builder.addCase(connectAction.fulfilled, (state, { payload }) => ({
-      ...state,
-      selectedNode: payload.node,
-    }));
+    builder.addCase(connectAction.fulfilled, (state, { payload }) => {
+      const otherServers = state.recentServers.filter(
+        (e) => e.address !== payload.node.address
+      );
+      const recentServers = [payload.node].concat(otherServers);
+      return {
+        ...state,
+        selectedNode: payload.node,
+        recentServers,
+      };
+    });
     builder.addCase(disconnectAction.fulfilled, (state, { payload }) => ({
       ...state,
       isVPNConnected: payload,

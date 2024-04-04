@@ -13,6 +13,7 @@ const ListLayout = () => {
     "/countries",
     "/account",
     "/settings",
+    "/recent-servers",
   ].includes(location.pathname);
 
   return (

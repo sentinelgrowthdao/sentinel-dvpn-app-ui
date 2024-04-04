@@ -9,6 +9,7 @@ import {
   CHANGE_MODAL_STATE,
 } from "../../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
+import { parseWalletAddress } from "../../../helpers/common.helpers";
 
 const ServerCard = ({ server }) => {
   const navigate = useNavigate();
@@ -83,7 +84,9 @@ const ServerCard = ({ server }) => {
       >
         <section className={styles.details}>
           <span className={styles.name}>{server.name}</span>
-          <span className={styles.value}>{server.address}</span>
+          <span className={styles.value}>
+            {parseWalletAddress(server.address)}
+          </span>
         </section>
       </button>
     </Card>

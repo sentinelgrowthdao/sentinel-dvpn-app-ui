@@ -51,6 +51,7 @@ const AppLayout = () => {
     "/countries",
     "/account",
     "/settings",
+    "/recent-servers",
   ].includes(location.pathname);
 
   if (!(isRegistered && isWalletCreated)) {

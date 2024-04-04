@@ -1,9 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  withSingleDispatcherLoader,
-} from "../../actions/loader.action";
+import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import {
   SET_CAN_GO_BACK,
   SET_PAGE_TITLE,

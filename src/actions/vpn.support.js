@@ -37,7 +37,6 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       payload
     );
     const details = await getTxDetails(response.txhash);
-    console.log("details", details);
 
     if (details.code) {
       if (details.code === 5) {

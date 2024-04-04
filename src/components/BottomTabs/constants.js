@@ -2,6 +2,8 @@ import HomeIcon from "../../assets/icons/bottom-tab/tab-home-icon.svg";
 import NodesIcon from "../../assets/icons/bottom-tab/tab-nodes-icon.svg";
 import AccountIcon from "../../assets/icons/bottom-tab/tab-account-icon.svg";
 import SettingsIcon from "../../assets/icons/bottom-tab/tab-settings-icon.svg";
+import RecentsIcon from "../../assets/icons/bottom-tab/tab-recents-icon.svg";
+
 
 export const tabs = [
   {
@@ -13,6 +15,11 @@ export const tabs = [
     icon: NodesIcon,
     title: "Nodes",
     href: "/countries",
+  },
+  {
+    icon: RecentsIcon,
+    title: "Recent",
+    href: "/recent-servers",
   },
   {
     icon: AccountIcon,

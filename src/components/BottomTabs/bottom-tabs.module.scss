@@ -7,7 +7,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0 8px;
+  padding: 0 12px;
   background-color: #191f31;
 }
 
@@ -19,13 +19,21 @@
   background: transparent;
   outline: none;
   border: none;
-  margin: 0 4px;
   & img {
-    height: 24px;
-    width: 24px;
+    height: 22px;
+    width: 22px;
+    margin-bottom: 2px;
+    @media only screen and (max-width: 300px) {
+      height: 16px;
+      width: 16px;
+    }
   }
   span {
     color: $textSecondaryColor;
+    font-size: 12px;
+    @media only screen and (max-width: 300px) {
+      font-size: 8px;
+    }
   }
   &:active {
     opacity: 0.8;

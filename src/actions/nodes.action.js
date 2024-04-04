@@ -99,7 +99,6 @@ export const dispatchGetAvailableNodes = createAsyncThunk(
       const nodes = parseServersList(response, city, protocols);
       return fulfillWithValue({ all: [...list, ...nodes], current: nodes });
     } catch (e) {
-      console.log("e", e);
       dispatch(
         CHANGE_ERROR_ALERT({ show: true, message: "Failed fetch Servers" })
       );

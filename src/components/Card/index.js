@@ -5,6 +5,7 @@ import styles from "./card.module.scss";
 export const variants = {
   PRIMARY: "primary",
   SECONDARY: "secondary",
+  TRANSPARENT: "transparent",
 };
 
 const Card = ({ children, variant, className }) => {

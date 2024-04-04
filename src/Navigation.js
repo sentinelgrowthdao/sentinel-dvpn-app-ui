@@ -13,6 +13,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { AppLayout, ListLayout, OnboardingLayout } from "./layouts";
 import { useSelector } from "react-redux";
+import RecentServers from "./Screens/App/RecentServers";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -34,6 +35,7 @@ const Navigation = () => {
           <Route path="account" element={<Account />} />
           <Route path="settings" element={<Settings />} />
           <Route path="private-key" element={<PrivateKey />} />
+          <Route path="recent-servers" element={<RecentServers />} />
         </Route>
       </Routes>
     );

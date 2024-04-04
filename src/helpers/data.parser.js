@@ -105,7 +105,7 @@ export const parseServersList = (list = [], city = {}, protocols = []) => {
         result.push({
           ...item,
           city: city.name,
-          country: city.name,
+          country: city.country,
           code: city.code,
           country_id: city.country_id,
         });

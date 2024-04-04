@@ -1,0 +1,63 @@
+.root {
+  padding: 8px;
+  overflow-y: auto;
+  height: 84px;
+  width: inherit;
+  margin: 12px 0;
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: none;
+    outline: none;
+    border: none;
+
+    .top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      margin-bottom: 4px;
+      color: #ffffff;
+
+      .location {
+        margin-left: 4px;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 24px;
+        color: #ffffff;
+      }
+    }
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 86%;
+      .name {
+        text-align: left;
+        font-size: 14px;
+        line-height: 150%;
+        font-weight: 400;
+        color: #e0e4ea;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .address {
+        text-align: left;
+        font-size: 12px;
+        line-height: 150%;
+        font-weight: 400;
+        color: #9cabc9;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+      }
+    }
+  }
+}

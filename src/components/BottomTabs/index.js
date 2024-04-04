@@ -14,7 +14,15 @@ const BottomTabs = () => {
           icon={tab.icon}
           title={tab.title}
           href={tab.href}
-          isActive={!['/', '/countries', '/account', '/settings'].includes(location.pathname) || location.pathname === tab.href}
+          isActive={
+            ![
+              "/",
+              "/countries",
+              "/account",
+              "/settings",
+              "/recent-servers",
+            ].includes(location.pathname) || location.pathname === tab.href
+          }
         />
       ))}
     </div>
