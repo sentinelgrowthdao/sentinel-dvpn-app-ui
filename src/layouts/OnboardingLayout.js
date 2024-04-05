@@ -23,8 +23,7 @@ const OnboardingLayout = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location && location.pathname]);
+  }, [location.pathname]);
 
   if (isRegistered && isWalletCreated) {
     return <Navigate to="/" replace={true} />;

@@ -8,7 +8,7 @@ export const getTxDetails = async (txhash) => {
   while (attempt < maxAttempts) {
     try {
       const response = await blockchainServices.getTXDetails(txhash);
-      console.log("response", response);
+
       if (response.status === 200) {
         return response.data;
       }

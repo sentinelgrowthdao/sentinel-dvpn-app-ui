@@ -57,7 +57,6 @@ const RecentServers = () => {
     });
     setFiltered(result);
   }, [servers, searchText, protocols]);
-  console.log("servers", servers);
 
   React.useEffect(() => {
     dispatch(withSingleDispatcherLoader(dispatchGetRecentServersList()));
