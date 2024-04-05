@@ -138,6 +138,22 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
         })
       );
       const response = await blockchainServices.postSubscription(6, payload);
+
+      if (response.code) {
+        if (response.code === 5) {
+          return {
+            success: false,
+            message: "Failed to subscribe due to insufficient balance",
+          };
+        }
+        if (response.code !== 0) {
+          return {
+            success: false,
+            message: `Failed to subscribe [CODE: ${response.code}]`,
+          };
+        }
+      }
+
       const details = await getTxDetails(response.txhash);
 
       if (details.code) {
