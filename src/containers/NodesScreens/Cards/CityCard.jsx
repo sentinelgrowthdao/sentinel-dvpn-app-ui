@@ -85,18 +85,18 @@ const CityQuickConnect = ({ city }) => {
       return;
     }
     let list = servers;
+    const nodes = await dispatch(dispatchGetAvailableNodes(city));
+    list = nodes.payload.current;
 
-    if (!(servers && servers.length > 0)) {
-      const nodes = await dispatch(dispatchGetAvailableNodes(city));
-      list = nodes.payload.current;
-    } else {
+    if (!(list && list.length > 0)) {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: `Failed fetch Cities of ${city.name}`,
+          message: `Failed fetch Servers of ${city.name}`,
         })
       );
     }
+
     const node = getRandomNode(list);
     const dispatched = dispatch(connectAction(node));
 
