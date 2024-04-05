@@ -22,7 +22,7 @@ const ServersCard = ({ server }) => {
 
     try {
       const { payload } = await dispatched;
-      if (payload) navigate("/");
+      if (payload) navigate("/", {replace: true});
     } catch (e) {
       console.log("CONSOLE FAILED TO CONNECT", JSON.stringify(e));
     }

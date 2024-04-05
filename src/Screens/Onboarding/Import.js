@@ -52,19 +52,16 @@ const Import = () => {
             navigate("/", { replace: true });
           }}
         />
-        <section className={styles.signup}>
-          <span className={styles["signup-text"]}>
-            Don&#39;t have an account?
-          </span>
-          <button
-            className={styles["signup-btn"]}
-            onClick={() => {
-              navigate("/create", { replace: true });
-            }}
-          >
-            Sign up
-          </button>
-        </section>
+        <Button
+          variant={variants.SECONDARY}
+          title={"Signup"}
+          className={styles["primary-btn"]}
+          onClick={async (event) => {
+            event.preventDefault();
+            navigate("/create", { replace: true });
+          }}
+        />
+        
       </section>
     </div>
   );

@@ -110,7 +110,7 @@ const CityQuickConnect = ({ country }) => {
 
     try {
       const { payload } = await dispatched;
-      if (payload) navigate("/");
+      if (payload) navigate("/", { replace: true });
     } catch (e) {
       console.length("CONSOLE FAILED TO CONNECT");
     }
