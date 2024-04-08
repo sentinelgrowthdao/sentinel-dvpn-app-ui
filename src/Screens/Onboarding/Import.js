@@ -97,32 +97,58 @@ const Import = () => {
     });
   };
 
-  const handlePasteFromClipboard = async (event) => {
+  // const handlePasteFromClipboard = async (event) => {
+  //   try {
+  //     event.preventDefault();
+  //     window.navigator.clipboard
+  //       .readText()
+  //       .then((text) => {
+  //         console.log("CONSOLE CLIPBOARD", JSON.stringify(text));
+  //         const values = String(text).split(" ");
+  //         let inputs = Array(noOfWords).fill("");
+  //         for (let i = 0; i < values.length; i++) {
+  //           if (i < noOfWords) {
+  //             inputs[i] = values[i];
+  //           } else {
+  //             break;
+  //           }
+  //         }
+  //         setInputValues(inputs);
+  //       })
+  //       .catch((e) => {
+  //         dispatch(
+  //           CHANGE_ERROR_ALERT({
+  //             show: true,
+  //             message: "Failed to paste from Clipboard" + JSON.stringify(e),
+  //           })
+  //         );
+  //       });
+  //   } catch (e) {
+  //     dispatch(
+  //       CHANGE_ERROR_ALERT({
+  //         show: true,
+  //         message: "Failed to paste from Clipboard" + JSON.stringify(e),
+  //       })
+  //     );
+  //   }
+  // };
+
+  const handlePaste = (event) => {
     try {
-      event.preventDefault();
-      window.navigator.clipboard
-        .readText()
-        .then((text) => {
-          console.log("CONSOLE CLIPBOARD", JSON.stringify(text));
-          const values = String(text).split(" ");
-          let inputs = Array(noOfWords).fill("");
-          for (let i = 0; i < values.length; i++) {
-            if (i < noOfWords) {
-              inputs[i] = values[i];
-            } else {
-              break;
-            }
-          }
-          setInputValues(inputs);
-        })
-        .catch((e) => {
-          dispatch(
-            CHANGE_ERROR_ALERT({
-              show: true,
-              message: "Failed to paste from Clipboard" + JSON.stringify(e),
-            })
-          );
-        });
+      let paste = event.clipboardData?.getData("text/plain");
+      console.log("CONSOLE PASTED", paste);
+      const values = String(paste).split(" ");
+      let inputs = Array(noOfWords).fill("");
+
+      for (let i = 0; i < values.length; i++) {
+        if (i < noOfWords) {
+          inputs[i] = values[i];
+        } else {
+          break;
+        }
+      }
+      setInputValues(inputs);
+      return;
     } catch (e) {
       dispatch(
         CHANGE_ERROR_ALERT({
@@ -157,7 +183,7 @@ const Import = () => {
                     handleChange(event, index);
                   }}
                   placeholder={`${index + 1}`}
-                  onPaste={handlePasteFromClipboard}
+                  onPaste={handlePaste}
                 />
               </section>
             ))}
@@ -166,12 +192,12 @@ const Import = () => {
       </section>
 
       <section className={styles.bottom}>
-        <Button
+        {/* <Button
           variant={variants.TRANSPARENT}
           title={"Paste from Clipboard"}
           className={styles["primary-btn"]}
           onClick={handlePasteFromClipboard}
-        />
+        /> */}
         <Button
           variant={variants.PRIMARY}
           title={"Import Account"}
