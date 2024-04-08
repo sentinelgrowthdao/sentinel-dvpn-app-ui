@@ -97,30 +97,39 @@ const Import = () => {
     });
   };
   const handlePasteFromClipboard = async (event) => {
-    event.preventDefault();
-    window.navigator.clipboard
-      .readText()
-      .then((text) => {
-        console.log("CONSOLE CLIPBOARD", JSON.stringify(text));
-        const values = String(text).split(" ");
-        let inputs = Array(noOfWords).fill("");
-        for (let i = 0; i < values.length; i++) {
-          if (i < noOfWords) {
-            inputs[i] = values[i];
-          } else {
-            break;
+    try {
+      event.preventDefault();
+      window.navigator.clipboard
+        .readText()
+        .then((text) => {
+          console.log("CONSOLE CLIPBOARD", JSON.stringify(text));
+          const values = String(text).split(" ");
+          let inputs = Array(noOfWords).fill("");
+          for (let i = 0; i < values.length; i++) {
+            if (i < noOfWords) {
+              inputs[i] = values[i];
+            } else {
+              break;
+            }
           }
-        }
-        setInputValues(inputs);
-      })
-      .catch((e) => {
-        dispatch(
-          CHANGE_ERROR_ALERT({
-            show: true,
-            message: "Failed to paste from Clipboard" + JSON.stringify(e),
-          })
-        );
-      });
+          setInputValues(inputs);
+        })
+        .catch((e) => {
+          dispatch(
+            CHANGE_ERROR_ALERT({
+              show: true,
+              message: "Failed to paste from Clipboard" + JSON.stringify(e),
+            })
+          );
+        });
+    } catch (e) {
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "Failed to paste from Clipboard" + JSON.stringify(e),
+        })
+      );
+    }
   };
 
   return (

@@ -1,11 +1,11 @@
 .root {
   height: 120px;
   width: 100%;
-  margin: 16px 0;
+  margin: 12px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 12px 12px;
+  padding: 12px 8px;
   overflow: hidden;
 
   .left {
@@ -28,8 +28,11 @@
       justify-content: flex-start;
       margin-top: 8px;
       & img {
-        height: 36px;
-        width: 36px;
+        height: 42px;
+        width: 42px;
+        margin: 0;
+        padding: 0;
+        transform: translateX(-4px);
         margin-right: 4px;
       }
       & .description {

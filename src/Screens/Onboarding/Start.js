@@ -3,25 +3,34 @@ import { useNavigate } from "react-router-dom";
 import styles from "./start.module.scss";
 import KeyIcon from "../../assets/icons/key-icon.svg";
 import Button, { variants } from "../../components/Button";
-
+import SentinelIcon from "../../assets/images/sentinel-logo.png";
 const Start = () => {
   const navigate = useNavigate();
 
   return (
     <div className={styles.root}>
       <section className={styles.top}>
+        <img className={styles["sentinel-logo"]} src={SentinelIcon} alt="" />
         <span className={styles.title}>Welcome to Sentinel</span>
         <span className={styles.description}>
-          Join anonymously or sign up with your email address.
+          Create a new on-chain account anonymously today or import an existing
+          account from Sentinel's Layer-1 Networking DePin focused chain.
         </span>
       </section>
       <section className={styles.middle}>
-        <img src={KeyIcon} alt="" />
-        <span className={styles.title}>How it works?</span>
+        <section className={styles.title}>
+          <img src={KeyIcon} alt="" />
+          <span className={styles.text}>How it works?</span>
+        </section>
         <span className={styles.description}>
-          Anonymous sign-up will allow you to create a Sentinel DVPN wallet
-          without providing any information. This wallet can be loaded and used
-          by you to purchase VPN services in the application.
+          A Sentinel dVPN account that you can generate has a public key and a
+          private key. The public key is like your phone number and is shared
+          with others in order to receive an incoming transaction. The private
+          key is the password and must be stored safely as there is no back-up
+          being stored anywhere on any server. You are the only one who has your
+          password and if you lose it your account is lost.This is real
+          security, real trust, and real decentralization. Don't trust
+          centralized VPN applications which offer 0 transparency.
         </span>
       </section>
       <section className={styles.bottom}>
