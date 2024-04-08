@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.418b65e6.css",
-    "main.js": "/static/js/main.93244967.js",
+    "main.css": "/static/css/main.9b29267d.css",
+    "main.js": "/static/js/main.00680bf3.js",
     "static/js/879.f87bcbae.chunk.js": "/static/js/879.f87bcbae.chunk.js",
     "static/media/onboarding-screen-bg.png": "/static/media/onboarding-screen-bg.6113a53309e8c6ea3d2d.png",
     "static/media/onboarding-bg.png": "/static/media/onboarding-bg.78acb9a95e326e84b407.png",
@@ -19,6 +19,7 @@
     "static/media/telegram-icon.svg": "/static/media/telegram-icon.006da0f22bdf6f03b82b15956a55804a.svg",
     "static/media/info-icon.svg": "/static/media/info-icon.2a311dc893f12ed79fffce8007c96f56.svg",
     "static/media/back-icon.svg": "/static/media/back-icon.0ef99bced2a8dae7e7f084c920db587e.svg",
+    "static/media/back-arrow-icon.svg": "/static/media/back-arrow-icon.08d25e1034b08cc7e0fe83098f87a3cb.svg",
     "static/media/magnifier-icon.svg": "/static/media/magnifier-icon.439a9a7f91a43736055642c17402e267.svg",
     "static/media/tab-home-icon.svg": "/static/media/tab-home-icon.25a77b3947b69c11eec2cac9cd3ba6e2.svg",
     "static/media/wallet-icon.svg": "/static/media/wallet-icon.eec24bed24a540bedec3b43a725dc336.svg",
@@ -38,12 +39,12 @@
     "static/media/share-icon.svg": "/static/media/share-icon.f40e0daf3ece60e073f4e96cdadb3ae9.svg",
     "static/media/offline-icon.svg": "/static/media/offline-icon.72df1a1a4f32d694fea5ada0ed042cae.svg",
     "static/media/online-icon.svg": "/static/media/online-icon.9458fc7c44a64b2a80cb6043ef29ea0e.svg",
-    "main.418b65e6.css.map": "/static/css/main.418b65e6.css.map",
-    "main.93244967.js.map": "/static/js/main.93244967.js.map",
+    "main.9b29267d.css.map": "/static/css/main.9b29267d.css.map",
+    "main.00680bf3.js.map": "/static/js/main.00680bf3.js.map",
     "879.f87bcbae.chunk.js.map": "/static/js/879.f87bcbae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.418b65e6.css",
-    "static/js/main.93244967.js"
+    "static/css/main.9b29267d.css",
+    "static/js/main.00680bf3.js"
   ]
 }

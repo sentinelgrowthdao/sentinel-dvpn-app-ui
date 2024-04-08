@@ -11,7 +11,7 @@ const Import = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [noOfWords, setNoOfWords] = React.useState(12);
+  const [noOfWords, setNoOfWords] = React.useState(24);
   const [inputValues, setInputValues] = React.useState(
     Array(noOfWords).fill("")
   );
@@ -27,17 +27,6 @@ const Import = () => {
       <div className={styles["no-of-words-selector"]}>
         <button
           className={`${styles.btn} ${
-            noOfWords === 12 ? styles.active : styles.inactive
-          }`}
-          onClick={() => {
-            setNoOfWords(12);
-            setInputValues(Array(12).fill(""));
-          }}
-        >
-          12 Words
-        </button>
-        <button
-          className={`${styles.btn} ${
             noOfWords === 24 ? styles.active : styles.inactive
           }`}
           onClick={() => {
@@ -46,6 +35,17 @@ const Import = () => {
           }}
         >
           24 Words
+        </button>
+        <button
+          className={`${styles.btn} ${
+            noOfWords === 12 ? styles.active : styles.inactive
+          }`}
+          onClick={() => {
+            setNoOfWords(12);
+            setInputValues(Array(12).fill(""));
+          }}
+        >
+          12 Words
         </button>
       </div>
     ),
@@ -96,6 +96,7 @@ const Import = () => {
       return newValues;
     });
   };
+
   const handlePasteFromClipboard = async (event) => {
     try {
       event.preventDefault();

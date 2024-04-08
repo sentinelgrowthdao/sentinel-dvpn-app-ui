@@ -4,6 +4,7 @@ import styles from "./private-key.module.scss";
 import Button, { variants } from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
+import BackButton from "../../components/BackButton";
 
 const PrivateKey = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const PrivateKey = () => {
 
   return (
     <div className={styles.root}>
+      <BackButton to="Wallet Details" />
       <section className={styles.top}>
         <span className={styles.title}>Your unique private key</span>
         <span className={styles.description}>

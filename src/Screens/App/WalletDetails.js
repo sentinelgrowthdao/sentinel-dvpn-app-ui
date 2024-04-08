@@ -4,6 +4,7 @@ import Button, { variants } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
 import styles from "./wallet-details.module.scss";
 import BalanceCard from "../../containers/Account/BalanceCard";
+import BackButton from "../../components/BackButton";
 const HowToDeposit = () => {
   return (
     <>
@@ -24,6 +25,7 @@ const WalletDetails = () => {
 
   return (
     <div className={styles.root}>
+      <BackButton to="Home" />
       <span className={styles.header}>Your Wallet Details</span>
       <BalanceCard />
       <QRCodeCard />
