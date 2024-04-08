@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { createWalletWithMnemonic } from "../../actions/onboarding.action";
-import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
 
 const Import = () => {
   const navigate = useNavigate();
@@ -75,8 +74,8 @@ const Import = () => {
       }
       return;
     }
-
     const values = String(value).split(" ");
+
     if (values && values.length > 1) {
       let inputs = Array(noOfWords).fill("");
       for (let i = 0; i < values.length; i++) {
@@ -133,32 +132,6 @@ const Import = () => {
   //   }
   // };
 
-  const handlePaste = (event) => {
-    try {
-      let paste = event.clipboardData?.getData("text/plain");
-      console.log("CONSOLE PASTED", paste);
-      const values = String(paste).split(" ");
-      let inputs = Array(noOfWords).fill("");
-
-      for (let i = 0; i < values.length; i++) {
-        if (i < noOfWords) {
-          inputs[i] = values[i];
-        } else {
-          break;
-        }
-      }
-      setInputValues(inputs);
-      return;
-    } catch (e) {
-      dispatch(
-        CHANGE_ERROR_ALERT({
-          show: true,
-          message: "Failed to paste from Clipboard" + JSON.stringify(e),
-        })
-      );
-    }
-  };
-
   return (
     <div className={styles.root}>
       <section className={styles.top}>
@@ -183,7 +156,7 @@ const Import = () => {
                     handleChange(event, index);
                   }}
                   placeholder={`${index + 1}`}
-                  onPaste={handlePaste}
+                  // onPaste={handlePaste}
                 />
               </section>
             ))}
