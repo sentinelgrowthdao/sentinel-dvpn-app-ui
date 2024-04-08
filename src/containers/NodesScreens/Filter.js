@@ -31,7 +31,7 @@ const Filter = () => {
         );
         navigate(location.pathname, {
           state: {
-            show: true,
+            showModal: true,
             type: "filters",
             variant: MODAL_VARIANTS.PRIMARY,
           },

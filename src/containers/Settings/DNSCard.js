@@ -31,7 +31,7 @@ const DNSCard = () => {
             );
             navigate(location.pathname, {
               state: {
-                show: true,
+                showModal: true,
                 type: "dns",
                 variant: MODAL_VARIANTS.SECONDARY,
               },

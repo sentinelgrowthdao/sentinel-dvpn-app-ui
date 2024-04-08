@@ -67,7 +67,7 @@ const RenewSubscriptionModal = () => {
       );
       navigate(location.pathname, {
         state: {
-          show: true,
+          showModal: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         },

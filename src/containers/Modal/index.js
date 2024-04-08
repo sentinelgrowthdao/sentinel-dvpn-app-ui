@@ -12,12 +12,12 @@ const Modal = ({ show, type, variant = MODAL_VARIANTS.PRIMARY, ...rest }) => {
   const navigate = useNavigate();
 
   React.useEffect(() => {
-    if (!show && location.state?.show && location.state?.type) {
+    if (!show && location.state?.showModal && location.state?.type) {
       navigate(-1);
     }
   }, [show, navigate, location]);
 
-  if (show && location.state?.show && location.state?.type) {
+  if (show && location.state?.showModal && location.state?.type) {
     return (
       <div className={styles[variant]}>
         <div

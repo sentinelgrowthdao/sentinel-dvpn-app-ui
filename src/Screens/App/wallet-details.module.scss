@@ -1,0 +1,33 @@
+.root {
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+  width: inherit;
+  .header {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 16px 0;
+  }
+  .copy-mnemonic {
+    height: 48px;
+    margin: 16px 0;
+  }
+  .how-to-deposit {
+    margin-block: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 16px 0;
+    .title {
+      font-size: 24px;
+      font-weight: 500;
+      margin: 4px 0;
+    }
+    .description {
+      color: #9cabc9;
+      font-size: 14px;
+      margin: 4px 0;
+    }
+  }
+}

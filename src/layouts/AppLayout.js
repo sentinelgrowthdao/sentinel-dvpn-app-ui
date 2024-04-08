@@ -52,6 +52,9 @@ const AppLayout = () => {
     "/account",
     "/settings",
     "/recent-servers",
+    "/private-key",
+    "/account/subscriptions",
+    "/account/wallet-details",
   ].includes(location.pathname);
 
   if (!(isRegistered && isWalletCreated)) {

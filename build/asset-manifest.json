@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.82979887.css",
-    "main.js": "/static/js/main.62fe5eb2.js",
+    "main.css": "/static/css/main.c591082f.css",
+    "main.js": "/static/js/main.bb47a6fc.js",
     "static/js/879.f87bcbae.chunk.js": "/static/js/879.f87bcbae.chunk.js",
     "static/media/onboarding-screen-bg.png": "/static/media/onboarding-screen-bg.6113a53309e8c6ea3d2d.png",
     "static/media/balance-icon.svg": "/static/media/balance-icon.57feba6f26c1ecc53e6d859778792d2c.svg",
@@ -19,24 +19,29 @@
     "static/media/back-icon.svg": "/static/media/back-icon.0ef99bced2a8dae7e7f084c920db587e.svg",
     "static/media/magnifier-icon.svg": "/static/media/magnifier-icon.439a9a7f91a43736055642c17402e267.svg",
     "static/media/tab-home-icon.svg": "/static/media/tab-home-icon.25a77b3947b69c11eec2cac9cd3ba6e2.svg",
+    "static/media/wallet-icon.svg": "/static/media/wallet-icon.eec24bed24a540bedec3b43a725dc336.svg",
     "static/media/dns-icon.svg": "/static/media/dns-icon.b717861b639757f85ce429df2e7cd81a.svg",
+    "static/media/subcriptions-icon.svg": "/static/media/subcriptions-icon.0250cb40263634d581e298ce10c99ee6.svg",
     "static/media/tab-account-icon.svg": "/static/media/tab-account-icon.aeb452870d769bbb58056ce73389e837.svg",
     "static/media/version-icon.svg": "/static/media/version-icon.9bf9612ecfa3d049cab3184546e227ea.svg",
     "static/media/filter-icon.svg": "/static/media/filter-icon.c384eef073c9241ef829b273dcfaf5fe.svg",
     "static/media/legal-doc-icon.svg": "/static/media/legal-doc-icon.accfc7a33b963faf912f39f9d6b9fac5.svg",
     "static/media/reload-icon.svg": "/static/media/reload-icon.8a77630c41a1283ac22d9443c8a3026a.svg",
     "static/media/twitter-icon.svg": "/static/media/twitter-icon.5197ed1fcd91e517262d47a97c2360f7.svg",
+    "static/media/logout-icin.svg": "/static/media/logout-icin.4118673d367e7c792e5c3f639712de25.svg",
+    "static/media/right-arrow-icon.svg": "/static/media/right-arrow-icon.0042ca494329bec43d3af32e649b88f0.svg",
     "static/media/check-icon.svg": "/static/media/check-icon.aef27a3185aba436a611b6ec33a2fcc4.svg",
+    "static/media/checkbox-icon.svg": "/static/media/checkbox-icon.61e0de085f5a6e250e5b0e6ab345f464.svg",
     "static/media/quick-connect-icon.svg": "/static/media/quick-connect-icon.6a60e55c975a3151dd366ba5b2a7b729.svg",
     "static/media/share-icon.svg": "/static/media/share-icon.f40e0daf3ece60e073f4e96cdadb3ae9.svg",
     "static/media/offline-icon.svg": "/static/media/offline-icon.72df1a1a4f32d694fea5ada0ed042cae.svg",
     "static/media/online-icon.svg": "/static/media/online-icon.9458fc7c44a64b2a80cb6043ef29ea0e.svg",
-    "main.82979887.css.map": "/static/css/main.82979887.css.map",
-    "main.62fe5eb2.js.map": "/static/js/main.62fe5eb2.js.map",
+    "main.c591082f.css.map": "/static/css/main.c591082f.css.map",
+    "main.bb47a6fc.js.map": "/static/js/main.bb47a6fc.js.map",
     "879.f87bcbae.chunk.js.map": "/static/js/879.f87bcbae.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.82979887.css",
-    "static/js/main.62fe5eb2.js"
+    "static/css/main.c591082f.css",
+    "static/js/main.bb47a6fc.js"
   ]
 }

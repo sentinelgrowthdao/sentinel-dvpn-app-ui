@@ -105,6 +105,12 @@ const blockchainServices = {
       .catch((e) => {
         throw new Error(e);
       }),
+  deleteWallet: () =>
+    Axios.delete("blockchain/wallet")
+      .then((response) => response.data)
+      .catch((e) => {
+        throw new Error(e);
+      }),
 };
 
 export default blockchainServices;

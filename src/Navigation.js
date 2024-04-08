@@ -14,6 +14,9 @@ import { Route, Routes } from "react-router-dom";
 import { AppLayout, ListLayout, OnboardingLayout } from "./layouts";
 import { useSelector } from "react-redux";
 import RecentServers from "./Screens/App/RecentServers";
+import AccountLayout from "./layouts/AccountLayout";
+import WalletDetails from "./Screens/App/WalletDetails";
+import SubscriptionsDetails from "./Screens/App/SubscriptionsDetails";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -32,7 +35,11 @@ const Navigation = () => {
               element={<ServersList />}
             />
           </Route>
-          <Route path="account" element={<Account />} />
+          <Route path="account" element={<AccountLayout />}>
+            <Route index element={<Account />} />
+            <Route path="wallet-details" element={<WalletDetails />} />
+            <Route path="subscriptions" element={<SubscriptionsDetails />} />
+          </Route>
           <Route path="settings" element={<Settings />} />
           <Route path="private-key" element={<PrivateKey />} />
           <Route path="recent-servers" element={<RecentServers />} />

@@ -14,6 +14,9 @@ const ListLayout = () => {
     "/account",
     "/settings",
     "/recent-servers",
+    "/private-key",
+    "/account/subscriptions",
+    "/account/wallet-details",
   ].includes(location.pathname);
 
   return (

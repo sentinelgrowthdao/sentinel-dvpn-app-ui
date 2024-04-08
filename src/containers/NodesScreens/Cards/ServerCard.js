@@ -29,7 +29,7 @@ const ServerCard = ({ server }) => {
       );
       navigate(location.pathname, {
         state: {
-          show: true,
+          showModal: true,
           type: "no-balance",
           variant: MODAL_VARIANTS.PRIMARY,
         },
@@ -47,7 +47,7 @@ const ServerCard = ({ server }) => {
       );
       navigate(location.pathname, {
         state: {
-          show: true,
+          showModal: true,
           type: "renew-subscription",
           variant: MODAL_VARIANTS.PRIMARY,
         },
