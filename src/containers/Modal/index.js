@@ -13,7 +13,7 @@ const Modal = ({ show, type, variant = MODAL_VARIANTS.PRIMARY, ...rest }) => {
 
   React.useEffect(() => {
     if (!show && location.state?.showModal && location.state?.type) {
-      navigate(-1);
+      navigate(-1, { replace: true });
     }
   }, [show, navigate, location]);
 

@@ -43,7 +43,11 @@ const Account = () => {
       <span className={styles.header}>Account</span>
       {cards.map((c) => {
         return (
-          <Card variant={variants.PRIMARY} key={c.href} className={styles.card}>
+          <Card
+            variant={variants.PRIMARY}
+            key={c.title}
+            className={styles.card}
+          >
             <button
               className={styles.btn}
               onClick={async (event) => {

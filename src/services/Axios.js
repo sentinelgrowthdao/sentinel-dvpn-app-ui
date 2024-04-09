@@ -13,23 +13,28 @@ Axios.interceptors.response.use(
   (response) => {
     if (process.env.NODE_ENV === "development") {
       console.log(
-        "CONSOLE RESPONSE",
-        JSON.stringify(
-          {
-            URL: response.request.responseURL,
-            METHOD: String(response.config.method).toUpperCase(),
-            STATUS: response.status,
-            DATA: response.data,
-          },
-          null,
-          2
-        )
+        `${new Date().toISOString()}: `,
+        `[${String(response.config.method).toUpperCase()}] ${
+          response.request.responseURL
+        }`,
+        {
+          STATUS: response.status,
+          DATA: response.data,
+        }
       );
     }
     return response;
   },
   (error) => {
-    console.log("CONSOLE ERROR", JSON.stringify(error, null, 1));
+    const name = error.code || "Error";
+    const message = error.message || "";
+    const resp = error?.response || {};
+    const req = error?.request || {};
+    const url = error.request.responseURL || "";
+    console.error(`${new Date().toISOString()}: ${url}: ${name}: ${message}`, {
+      REQ: req,
+      RESP: resp,
+    });
     return error;
   }
 );

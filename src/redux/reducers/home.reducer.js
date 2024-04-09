@@ -68,7 +68,7 @@ const homeSlice = createSlice({
     }));
     builder.addCase(dispatchGetAppVersion.fulfilled, (state, { payload }) => ({
       ...state,
-      version: payload.version,
+      version: payload?.version || "0.0.0",
     }));
   },
 });

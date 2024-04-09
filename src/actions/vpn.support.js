@@ -38,13 +38,13 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
     );
 
     if (response.code) {
-      if (response.code === 5) {
+      if (response.code === 5 || response.code === "5") {
         return {
           success: false,
           message: "Failed to Create a Session since insufficient balance",
         };
       }
-      if (response.code !== 0) {
+      if (response.code !== 0 || response.code !== "0") {
         return {
           success: false,
           message: `Failed to create a Session [CODE: ${response.code}]`,
@@ -55,13 +55,13 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
     const details = await getTxDetails(response.txhash);
 
     if (details.code) {
-      if (details.code === 5) {
+      if (details.code === 5 || details.code === "5") {
         return {
           success: false,
           message: "Failed to Create a Session since insufficient balance",
         };
       }
-      if (details.code !== 0) {
+      if (details.code !== 0 || details.code !== "0") {
         return {
           success: false,
           message: `Failed to create a Session [CODE: ${response.code}]`,

@@ -140,13 +140,13 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       const response = await blockchainServices.postSubscription(6, payload);
 
       if (response.code) {
-        if (response.code === 5) {
+        if (response.code === 5 || response.code === "5") {
           return {
             success: false,
             message: "Failed to subscribe due to insufficient balance",
           };
         }
-        if (response.code !== 0) {
+        if (response.code !== 0 || response.code !== "0") {
           return {
             success: false,
             message: `Failed to subscribe [CODE: ${response.code}]`,
@@ -157,7 +157,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       const details = await getTxDetails(response.txhash);
 
       if (details.code) {
-        if (details.code === 5) {
+        if (details.code === 5 || details.code === "5") {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
@@ -166,7 +166,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           );
           return;
         }
-        if (details.code !== 0) {
+        if (details.code !== 0 || details.code === "0") {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,

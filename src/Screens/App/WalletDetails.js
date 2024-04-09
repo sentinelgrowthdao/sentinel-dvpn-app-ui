@@ -26,7 +26,7 @@ const WalletDetails = () => {
   return (
     <div className={styles.root}>
       <BackButton to="Home" />
-      <span className={styles.header}>Your Wallet Details</span>
+      <span className={styles.header}>Wallet Details</span>
       <BalanceCard />
       <QRCodeCard />
       <Button
