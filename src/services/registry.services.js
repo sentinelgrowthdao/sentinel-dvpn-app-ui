@@ -17,7 +17,7 @@ const registryServices = {
       .catch((error) => {
         throw new Error(error);
       }),
-  getVersion: () =>
+  getUserVersion: () =>
     Axios.get("/registry/version")
       .then((response) => {
         return response.data;

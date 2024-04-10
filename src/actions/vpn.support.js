@@ -47,7 +47,7 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       if (response.code !== 0 || response.code !== "0") {
         return {
           success: false,
-          message: `Failed to create a Session [CODE: ${response.code}]`,
+          message: `Failed to create a Session. [CODE: ${response.code}]`,
         };
       }
     }

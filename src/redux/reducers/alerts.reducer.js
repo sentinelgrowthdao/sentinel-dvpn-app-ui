@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  dispatchCheckLatestVersion,
   withLoader,
   withSingleDispatcherLoader,
 } from "../../actions/loader.action";
@@ -23,6 +24,10 @@ const initialState = {
     show: false,
     type: null,
     variant: MODAL_VARIANTS.PRIMARY,
+  },
+  latest: {
+    show: false,
+    version: "0.0.0",
   },
 };
 
@@ -100,6 +105,22 @@ const alertsSlice = createSlice({
       .addCase(connectAction.fulfilled, (state) => ({
         ...state,
         loader: { ...state.loader, show: false, message: null },
+      }));
+
+    builder
+      .addCase(dispatchCheckLatestVersion.pending, (state) => ({
+        ...state,
+      }))
+      .addCase(dispatchCheckLatestVersion.rejected, (state) => ({
+        ...state,
+      }))
+      .addCase(dispatchCheckLatestVersion.fulfilled, (state, { payload }) => ({
+        ...state,
+        latest: {
+          ...state.latest,
+          show: payload.show,
+          version: payload.version,
+        },
       }));
   },
 });

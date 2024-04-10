@@ -9,6 +9,14 @@ const proxyServices = {
       .catch((error) => {
         throw new Error(error);
       }),
+  getOnlineVersion: () =>
+    Axios.get("/proxy/version")
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }),
   getCountriesList: async (protocols = []) => {
     const promises = [];
     protocols.forEach((protocol) => {

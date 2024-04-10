@@ -2,14 +2,23 @@ import React from "react";
 import styles from "./external-support.module.scss";
 import TwitterIcon from "../../assets/icons/twitter-icon.svg";
 import TelegramIcon from "../../assets/icons/telegram-icon.svg";
+import GithubIcon from "../../assets/icons/github-icon.svg";
 import GlobeIcon from "../../assets/icons/globe-icon.svg";
 import { useDispatch } from "react-redux";
 import { dispatchWindowOpen } from "../../actions/settings.action";
+import { getMobileOS } from "../../helpers/common.helpers";
 
 const constants = [
   {
     icon: TwitterIcon,
     link: "https://twitter.com/SentinelVPN",
+  },
+  {
+    icon: GithubIcon,
+    link:
+      getMobileOS() === "ios"
+        ? "https://github.com/sentinel-official/sentinel-dvpn-app-ios"
+        : "https://github.com/sentinel-official/sentinel-dvpn-app-android",
   },
   {
     icon: TelegramIcon,

@@ -20,6 +20,7 @@ import {
 } from "../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
+import proxyServices from "../../services/proxy.services";
 
 const ConnectButton = () => {
   const dispatch = useDispatch();
@@ -123,8 +124,32 @@ const ConnectButton = () => {
       return;
     }
     if (node && node.address) {
-      dispatch(withLoader([connectAction(node)]));
-      return;
+      try {
+        const resp = await proxyServices.postRecentServersList({
+          addresses: [node.address],
+        });
+        const nodeStatus = resp?.data[0]?.is_available;
+        if (nodeStatus) {
+          dispatch(withLoader([connectAction(node)]));
+          return;
+        } else {
+          dispatch(
+            CHANGE_ERROR_ALERT({
+              show: true,
+              message: `Selected Node is offline or not available`,
+            })
+          );
+        }
+      } catch (e) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: `Unable to fetch node details`,
+          })
+        );
+      } finally {
+        return;
+      }
     }
     let list = await getServers();
 
@@ -136,7 +161,7 @@ const ConnectButton = () => {
       try {
         await dispatched;
       } catch (e) {
-        console.length("CONSOLE FAILED TO CONNECT");
+        console.log("CONSOLE FAILED TO CONNECT");
       }
     }
   };

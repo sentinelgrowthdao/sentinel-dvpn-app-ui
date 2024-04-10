@@ -65,6 +65,7 @@ const Create = () => {
     }
     setRevealed(true);
   };
+
   return (
     <div className={styles.root}>
       <section className={styles.top}>

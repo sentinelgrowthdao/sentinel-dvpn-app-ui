@@ -4,7 +4,10 @@ import BottomTabs from "../components/BottomTabs";
 import Modal from "../containers/Modal";
 import styles from "./app-layout.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { withLoader } from "../actions/loader.action";
+import {
+  dispatchCheckLatestVersion,
+  withLoader,
+} from "../actions/loader.action";
 import {
   dispatchCurrentPrice,
   dispatchGetAccountBalance,
@@ -33,6 +36,7 @@ const AppLayout = () => {
         withLoader([
           dispatchGetVPNStatus(),
           dispatchGetAppVersion(),
+          dispatchCheckLatestVersion(),
           dispatchCurrentPrice(),
           dispatchGetAccountBalance(),
           dispatchGetAvailablePlans(),

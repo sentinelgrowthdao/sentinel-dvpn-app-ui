@@ -11,10 +11,16 @@
     justify-content: center;
     &-button {
       margin: 0 12px;
-      height: 36px;
+      padding: 0;
+      height: 22px;
+      width: 22px;
       background: none;
       outline: none;
       border: none;
+      img {
+        height: 100%;
+        width: 100%;
+      }
     }
   }
   .report-issue {

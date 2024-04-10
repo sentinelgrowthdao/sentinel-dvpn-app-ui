@@ -149,7 +149,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
         if (response.code !== 0 || response.code !== "0") {
           return {
             success: false,
-            message: `Failed to subscribe [CODE: ${response.code}]`,
+            message: `Failed to subscribe. [CODE: ${response.code}]`,
           };
         }
       }
@@ -199,7 +199,7 @@ export const dispatchGetAppVersion = createAsyncThunk(
           message: "Fetching App Version",
         })
       );
-      const response = await registryServices.getVersion();
+      const response = await registryServices.getUserVersion();
       return fulfillWithValue(response);
     } catch (e) {
       console.error(e);
