@@ -19,7 +19,7 @@ const ServerCard = ({ server }) => {
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   const connect = async (node) => {
-    if (balance <= plan.amount || balance <= 150000) {
+    if (balance <= 150000) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
