@@ -20,11 +20,12 @@ import {
   dispatchGetAvailableNodes,
 } from "../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
+import { GAS_PRICE_NUMBER } from "../../constants";
 const QuickConnectButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { balance, subscription, plan } = useSelector((state) => state.home);
+  const { balance, subscription } = useSelector((state) => state.home);
   const { country, city } = useSelector((state) => state.nodes.selected);
   const countries = useSelector((state) => state.nodes.countries);
   const cities = useSelector((state) => state.nodes.cities.all);
@@ -89,7 +90,7 @@ const QuickConnectButton = () => {
   };
 
   const connect = async () => {
-    if (balance <= 150000) {
+    if (balance <= GAS_PRICE_NUMBER) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,

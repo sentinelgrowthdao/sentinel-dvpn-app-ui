@@ -21,6 +21,7 @@ import {
 import { MODAL_VARIANTS } from "../Modal/modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
 import proxyServices from "../../services/proxy.services";
+import { GAS_PRICE_NUMBER } from "../../constants";
 
 const ConnectButton = () => {
   const dispatch = useDispatch();
@@ -88,7 +89,7 @@ const ConnectButton = () => {
   };
 
   const handleConnect = async () => {
-    if (balance <= 150000) {
+    if (balance <= GAS_PRICE_NUMBER) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,

@@ -10,16 +10,17 @@ import {
 } from "../../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
 import { parseWalletAddress } from "../../../helpers/common.helpers";
+import { GAS_PRICE_NUMBER } from "../../../constants";
 
 const ServerCard = ({ server }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { balance, subscription, plan } = useSelector((state) => state.home);
+  const { balance, subscription } = useSelector((state) => state.home);
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   const connect = async (node) => {
-    if (balance <= 150000) {
+    if (balance <= GAS_PRICE_NUMBER) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,

@@ -23,13 +23,14 @@ import {
   dispatchGetAvailableNodes,
 } from "../../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
+import { GAS_PRICE_NUMBER } from "../../../constants";
 
 const CityQuickConnect = ({ country }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
   const nodes = useSelector((state) => state.nodes.servers.all);
-  const { balance, subscription, plan } = useSelector((state) => state.home);
+  const { balance, subscription } = useSelector((state) => state.home);
   const [servers, setServers] = React.useState([]);
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
@@ -50,7 +51,7 @@ const CityQuickConnect = ({ country }) => {
       return;
     }
 
-    if (balance <= 150000) {
+    if (balance <= GAS_PRICE_NUMBER) {
       dispatch(
         CHANGE_MODAL_STATE({
           show: true,

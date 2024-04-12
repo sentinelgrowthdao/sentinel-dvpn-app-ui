@@ -1,3 +1,4 @@
+import { GAS_PRICE_NUMBER } from "../constants";
 import Axios from "./Axios";
 
 const blockchainServices = {
@@ -74,7 +75,7 @@ const blockchainServices = {
     Axios.post(`/blockchain/plans/${planId}/subscription`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": 150000,
+        "x-gas-prices": GAS_PRICE_NUMBER,
       },
     })
       .then((response) => {
@@ -87,7 +88,7 @@ const blockchainServices = {
     Axios.post(`/blockchain/wallet/${walletAddress}/session`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": 150000,
+        "x-gas-prices": GAS_PRICE_NUMBER,
       },
     })
       .then((response) => response.data)
@@ -98,7 +99,7 @@ const blockchainServices = {
     Axios.post("/blockchain/wallet/connect", data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": 150000,
+        "x-gas-prices": GAS_PRICE_NUMBER,
       },
     })
       .then((response) => response.data)
