@@ -15,7 +15,7 @@ export const parsePlans = (plans = []) => {
   let providerAddress = "";
 
   plans.forEach((p) => {
-    if (p.id === "6") {
+    if (p.id === "32" || p.id === 32) {
       providerAddress = p.providerAddress;
       amount = parseAccountBalance(p.prices);
     }
@@ -27,7 +27,10 @@ export const parsePlans = (plans = []) => {
 export const parseSubscriptions = (subscriptionsGot = []) => {
   let subscriptions = [];
   subscriptionsGot.forEach((s) => {
-    if (s.base.status === "STATUS_ACTIVE") {
+    if (
+      s.base.status === "STATUS_ACTIVE" &&
+      (s.planId === "32" || s.planId === 32)
+    ) {
       subscriptions.push({ planId: s.planId, denom: s.denom, ...s.base });
     }
   });
