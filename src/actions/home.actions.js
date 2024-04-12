@@ -13,6 +13,8 @@ import {
 import otherServices from "../services/other.services";
 import registryServices from "../services/registry.services";
 import { getTxDetails } from "./common.support";
+import { withLoader } from "./loader.action";
+import { dispatchGetVPNStatus } from "./vpn.actions";
 
 export const dispatchGetIPAddress = createAsyncThunk(
   "GET_IP_ADDRESS",
@@ -185,6 +187,8 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
         })
       );
       return rejectWithValue();
+    } finally {
+      dispatch(withLoader([dispatchGetAccountBalance()]));
     }
   }
 );
