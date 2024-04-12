@@ -137,7 +137,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           message: "Renewing your Subscription",
         })
       );
-      const response = await blockchainServices.postSubscription(6, payload);
+      const response = await blockchainServices.postSubscription(32, payload);
 
       if (response.code) {
         if (response.code === 5 || response.code === "5") {
