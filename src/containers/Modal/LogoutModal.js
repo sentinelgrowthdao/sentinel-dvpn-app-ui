@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import styles from "./logout.module.scss";
 import CheckIcon from "../../assets/icons/checkbox-icon.svg";
 import { useNavigate } from "react-router-dom";
-import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { dispatchDeleteWallet } from "../../actions/account.actions";
-import { disconnectAction } from "../../actions/vpn.actions";
+import vpnServices from "../../services/vpn.services";
+
 const LogoutModal = () => {
   const dispatch = useDispatch();
   const [isUserSavedKey, setIsUserSavedKey] = React.useState(false);
@@ -46,8 +46,8 @@ const LogoutModal = () => {
         className={`${styles.btn} ${styles["logout-btn"]}`}
         onClick={async () => {
           await window.localStorage.clear();
-          await dispatch(disconnectAction());
-          await dispatch(withSingleDispatcherLoader(dispatchDeleteWallet()));
+          await vpnServices.postDisconnect();
+          await dispatch(dispatchDeleteWallet());
           navigate("/", { replace: true });
           navigate(0, { replace: true });
           navigate(0, { replace: true });
