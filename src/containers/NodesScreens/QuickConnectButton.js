@@ -20,7 +20,7 @@ import {
   dispatchGetAvailableNodes,
 } from "../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
-import { GAS_PRICE_NUMBER } from "../../constants";
+import { GAS_PRICE_AMOUNT } from "../../constants";
 const QuickConnectButton = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -90,7 +90,7 @@ const QuickConnectButton = () => {
   };
 
   const connect = async () => {
-    if (balance <= GAS_PRICE_NUMBER) {
+    if (balance <= GAS_PRICE_AMOUNT) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,

@@ -15,6 +15,7 @@ import {
   dispatchGetAvailablePlans,
   dispatchGetIPAddress,
   dispatchGetUserSubscriptions,
+  dispatchPostFeeGrant,
 } from "../actions/home.actions";
 import { dispatchGetVPNStatus } from "../actions/vpn.actions";
 import { dispatchGetAvailableDNS } from "../actions/settings.action";
@@ -27,28 +28,44 @@ const AppLayout = () => {
   const { isWalletCreated, isRegistered } = useSelector(
     (state) => state.device
   );
-  const { modal } = useSelector((state) => state.alerts);
+  const { modal, initiated } = useSelector((state) => state.alerts);
   const { isHomeLoaded } = useSelector((state) => state.home);
 
   React.useEffect(() => {
+    const initateApp = async () => {
+      if (initiated.loading && !initiated.success) {
+        dispatch(withLoader([dispatchPostFeeGrant()]));
+        return;
+      }
+      if (!initiated.loading && initiated.success) {
+        dispatch(
+          withLoader([
+            dispatchGetVPNStatus(),
+            dispatchGetAppVersion(),
+            dispatchCheckLatestVersion(),
+            dispatchCurrentPrice(),
+            dispatchGetAccountBalance(),
+            dispatchGetAvailablePlans(),
+            dispatchGetUserSubscriptions(),
+            dispatchGetAvailableDNS(),
+            dispatchGetIPAddress(),
+            dispatchGetAvailableCountries(),
+            CHANGE_IS_HOME_LOADED(),
+          ])
+        );
+        return;
+      }
+    };
     if (!isHomeLoaded) {
-      dispatch(
-        withLoader([
-          dispatchGetVPNStatus(),
-          dispatchGetAppVersion(),
-          dispatchCheckLatestVersion(),
-          dispatchCurrentPrice(),
-          dispatchGetAccountBalance(),
-          dispatchGetAvailablePlans(),
-          dispatchGetUserSubscriptions(),
-          dispatchGetAvailableDNS(),
-          dispatchGetIPAddress(),
-          dispatchGetAvailableCountries(),
-          CHANGE_IS_HOME_LOADED(),
-        ])
-      );
+      initateApp();
     }
-  }, [dispatch, isHomeLoaded]);
+  }, [
+    dispatch,
+    initiated.loading,
+    initiated.show,
+    initiated.success,
+    isHomeLoaded,
+  ]);
 
   const showBottomNavbar = [
     "/",

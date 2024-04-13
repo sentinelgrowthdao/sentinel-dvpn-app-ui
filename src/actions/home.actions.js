@@ -14,6 +14,7 @@ import otherServices from "../services/other.services";
 import registryServices from "../services/registry.services";
 import { getTxDetails } from "./common.support";
 import { withLoader } from "./loader.action";
+import { SUBSCRIPTION_PLAN_ID_NUMBER } from "../constants";
 
 export const dispatchGetIPAddress = createAsyncThunk(
   "GET_IP_ADDRESS",
@@ -138,7 +139,10 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           message: "Renewing your Subscription",
         })
       );
-      const response = await blockchainServices.postSubscription(32, payload);
+      const response = await blockchainServices.postSubscription(
+        SUBSCRIPTION_PLAN_ID_NUMBER,
+        payload
+      );
 
       if (response.code) {
         if (response.code === 5 || response.code === "5") {
@@ -207,6 +211,31 @@ export const dispatchGetAppVersion = createAsyncThunk(
     } catch (e) {
       console.error(e);
       return rejectWithValue();
+    }
+  }
+);
+
+export const dispatchPostFeeGrant = createAsyncThunk(
+  "POST_FEE_GRANT",
+  async (_, { dispatch, fulfillWithValue, rejectWithValue, getState }) => {
+    try {
+      const address = getState().device.walletAddress;
+      dispatch(
+        CHANGE_LOADER_STATE({
+          show: true,
+          message: "Initiating the application",
+        })
+      );
+      const response = await proxyServices.postFeeGrantWallet(address);
+      if (response && response.status === 200) {
+        return fulfillWithValue();
+      }
+      console.log(response);
+      return rejectWithValue({
+        message: `${response?.response?.data?.error}: ${response?.response?.data?.reason}`,
+      });
+    } catch (e) {
+      return rejectWithValue({ message: e.message });
     }
   }
 );

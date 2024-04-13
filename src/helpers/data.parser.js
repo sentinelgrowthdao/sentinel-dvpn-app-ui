@@ -1,3 +1,7 @@
+import {
+  SUBSCRIPTION_PLAN_ID_NUMBER,
+  SUBSCRIPTION_PLAN_ID_STRING,
+} from "../constants";
 import { arrayOfObjectsSort } from "./arrayOfObjects.sort";
 
 export const parseAccountBalance = (balances = []) => {
@@ -15,7 +19,10 @@ export const parsePlans = (plans = []) => {
   let providerAddress = "";
 
   plans.forEach((p) => {
-    if (p.id === "32" || p.id === 32) {
+    if (
+      p.id === SUBSCRIPTION_PLAN_ID_STRING ||
+      p.id === SUBSCRIPTION_PLAN_ID_NUMBER
+    ) {
       providerAddress = p.providerAddress;
       amount = parseAccountBalance(p.prices);
     }
@@ -29,7 +36,8 @@ export const parseSubscriptions = (subscriptionsGot = []) => {
   subscriptionsGot.forEach((s) => {
     if (
       s.base.status === "STATUS_ACTIVE" &&
-      (s.planId === "32" || s.planId === 32)
+      (s.planId === SUBSCRIPTION_PLAN_ID_STRING ||
+        s.planId === SUBSCRIPTION_PLAN_ID_NUMBER)
     ) {
       subscriptions.push({ planId: s.planId, denom: s.denom, ...s.base });
     }

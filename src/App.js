@@ -4,9 +4,10 @@ import { ErrorAlert, SuccessAlert } from "./components/Alerts";
 import Loader from "./components/Loader";
 import Navigation from "./Navigation";
 import AppUpdateModal from "./containers/Modal/AppUpdateModal";
+import InitAlertModal from "./containers/Modal/InitAlertModal";
 
 const App = () => {
-  const { error, success, loader, latest } = useSelector(
+  const { error, success, loader, latest, initiated } = useSelector(
     (state) => state.alerts
   );
 
@@ -29,6 +30,7 @@ const App = () => {
       {success.show && <SuccessAlert />}
       {loader.show && <Loader />}
       {latest.show && <AppUpdateModal />}
+      {initiated.show && <InitAlertModal />}
     </>
   );
 };

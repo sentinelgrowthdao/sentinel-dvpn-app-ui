@@ -1,4 +1,4 @@
-import { GAS_PRICE_NUMBER } from "../constants";
+import { FEE_GRANT_WALLET_ADDERSS, GAS_PRICE_AMOUNT } from "../constants";
 import Axios from "./Axios";
 
 const blockchainServices = {
@@ -75,7 +75,8 @@ const blockchainServices = {
     Axios.post(`/blockchain/plans/${planId}/subscription`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": GAS_PRICE_NUMBER,
+        "x-gas-prices": GAS_PRICE_AMOUNT,
+        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => {
@@ -88,7 +89,8 @@ const blockchainServices = {
     Axios.post(`/blockchain/wallet/${walletAddress}/session`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": GAS_PRICE_NUMBER,
+        "x-gas-prices": GAS_PRICE_AMOUNT,
+        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => response.data)
@@ -99,7 +101,8 @@ const blockchainServices = {
     Axios.post("/blockchain/wallet/connect", data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
-        "x-gas-prices": GAS_PRICE_NUMBER,
+        "x-gas-prices": GAS_PRICE_AMOUNT,
+        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => response.data)

@@ -23,7 +23,7 @@ import {
   dispatchGetAvailableNodes,
 } from "../../../actions/nodes.action";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
-import { GAS_PRICE_NUMBER } from "../../../constants";
+import { GAS_PRICE_AMOUNT } from "../../../constants";
 
 const CityQuickConnect = ({ country }) => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ const CityQuickConnect = ({ country }) => {
       return;
     }
 
-    if (balance <= GAS_PRICE_NUMBER) {
+    if (balance <= GAS_PRICE_AMOUNT) {
       dispatch(
         CHANGE_MODAL_STATE({
           show: true,

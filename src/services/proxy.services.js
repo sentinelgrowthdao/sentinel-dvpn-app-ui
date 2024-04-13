@@ -121,6 +121,11 @@ const proxyServices = {
       .catch((error) => {
         throw new Error(error);
       }),
+  postFeeGrantWallet: (address) =>
+    Axios.post(`/proxy/wallet`, { address })
+      .then((response) => response)
+      .catch((error) => {
+        throw new Error(error);
+      }),
 };
-
 export default proxyServices;

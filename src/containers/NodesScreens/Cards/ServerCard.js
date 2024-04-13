@@ -10,7 +10,7 @@ import {
 } from "../../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../../Modal/modal-types";
 import { parseWalletAddress } from "../../../helpers/common.helpers";
-import { GAS_PRICE_NUMBER } from "../../../constants";
+import { GAS_PRICE_AMOUNT } from "../../../constants";
 
 const ServerCard = ({ server }) => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ServerCard = ({ server }) => {
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
 
   const connect = async (node) => {
-    if (balance <= GAS_PRICE_NUMBER) {
+    if (balance <= GAS_PRICE_AMOUNT) {
       await dispatch(
         CHANGE_MODAL_STATE({
           show: true,
