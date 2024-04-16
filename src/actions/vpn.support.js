@@ -41,13 +41,14 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       if (response.code === 5 || response.code === "5") {
         return {
           success: false,
-          message: "Failed to Create a Session since insufficient balance",
+          message: "error_failed_create_session_no_balance",
         };
       }
       if (response.code !== 0 || response.code !== "0") {
         return {
           success: false,
-          message: `Failed to create a Session. [CODE: ${response.code}]`,
+          message: `error_failed_create_session_of`,
+          value: response.code,
         };
       }
     }
@@ -58,20 +59,21 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       if (details.code === 5 || details.code === "5") {
         return {
           success: false,
-          message: "Failed to Create a Session since insufficient balance",
+          message: "error_failed_create_session_no_balance",
         };
       }
       if (details.code !== 0 || details.code !== "0") {
         return {
           success: false,
-          message: `Failed to create a Session [CODE: ${response.code}]`,
+          message: `error_failed_create_session_of`,
+          value: details.code,
         };
       }
     }
 
     return { success: true };
   } catch (e) {
-    return { success: false, message: "Failed to create a Session" };
+    return { success: false, message: "error_failed_create_session" };
   }
 };
 

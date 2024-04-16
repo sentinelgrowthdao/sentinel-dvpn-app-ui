@@ -120,6 +120,10 @@ const en = {
   error_failed_subscription_no_balance:
     "Failed to subscribe due to insufficient balance",
   error_failed_subscription_of: "Failed to subscribe [CODE: {{value}}]",
+  error_failed_create_session_no_balance:
+    "Failed to Create a Session since insufficient balance",
+  error_failed_create_session_of:
+    "Failed to create a Session. [CODE: {{value}}]",
   error_error_while_subscribe: "Error while Subscribing",
   error_failed_to_fetch_cities: "Failed to fetch Cities",
   error_failed_to_fetch_servers: "Failed to fetch Servers",

@@ -156,13 +156,14 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
         if (response.code === 5 || response.code === "5") {
           return {
             success: false,
-            message: "Failed to subscribe due to insufficient balance",
+            message: "error_failed_subscription_no_balance",
           };
         }
         if (response.code !== 0 || response.code !== "0") {
           return {
             success: false,
-            message: `Failed to subscribe. [CODE: ${response.code}]`,
+            message: `error_failed_subscription_of`,
+            value: response.code,
           };
         }
       }
@@ -184,7 +185,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
             CHANGE_ERROR_ALERT({
               show: true,
               message: `error_failed_subscription_of`,
-              value: response.code,
+              value: details.code,
             })
           );
           return;
@@ -223,4 +224,3 @@ export const dispatchGetAppVersion = createAsyncThunk(
     }
   }
 );
-
