@@ -224,27 +224,3 @@ export const dispatchGetAppVersion = createAsyncThunk(
   }
 );
 
-export const dispatchPostFeeGrant = createAsyncThunk(
-  "POST_FEE_GRANT",
-  async (_, { dispatch, fulfillWithValue, rejectWithValue, getState }) => {
-    try {
-      const address = getState().device.walletAddress;
-      dispatch(
-        CHANGE_LOADER_STATE({
-          show: true,
-          message: "loader_initiating_the_app",
-        })
-      );
-      const response = await proxyServices.postFeeGrantWallet(address);
-      if (response && response.status === 200) {
-        return fulfillWithValue();
-      }
-      console.log(response);
-      return rejectWithValue({
-        message: `${response?.response?.statusText} ${response?.response?.data?.error}: ${response?.response?.data?.reason}`,
-      });
-    } catch (e) {
-      return rejectWithValue({ message: e.message });
-    }
-  }
-);

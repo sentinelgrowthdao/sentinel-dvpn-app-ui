@@ -6,6 +6,8 @@ import { useDispatch } from "react-redux";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { createWalletWithMnemonic } from "../../actions/onboarding.action";
 import { useTranslation } from "react-i18next";
+import registryServices from "../../services/registry.services";
+import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
 
 const Import = () => {
   const { t } = useTranslation();
@@ -98,6 +100,41 @@ const Import = () => {
     });
   };
 
+  const handlePasteFromClipboard = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await registryServices.getClipboard();
+      console.log(response);
+
+      const values = String(response.text)?.split(" ");
+      if (values && values.length > 0) {
+        let inputs = Array(noOfWords).fill("");
+        for (let i = 0; i < values.length; i++) {
+          if (i < noOfWords) {
+            inputs[i] = values[i];
+          } else {
+            break;
+          }
+        }
+        setInputValues(inputs);
+        return;
+      }
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_nothing_to_paste",
+        })
+      );
+    } catch (e) {
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_paste",
+        })
+      );
+    }
+  };
+
   return (
     <div className={styles.root}>
       <section className={styles.top}>
@@ -131,12 +168,12 @@ const Import = () => {
       </section>
 
       <section className={styles.bottom}>
-        {/* <Button
+        <Button
           variant={variants.TRANSPARENT}
           title={"Paste from Clipboard"}
           className={styles["primary-btn"]}
           onClick={handlePasteFromClipboard}
-        /> */}
+        />
         <Button
           variant={variants.PRIMARY}
           title={t("btn_import_account")}

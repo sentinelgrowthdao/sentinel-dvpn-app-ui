@@ -145,6 +145,8 @@ const en = {
   error_failed_to_fetch_cities_of: "Failed fetch Cities of {{value}}",
   error_server_is_offline: "Server is offline, please try again later",
   error_Failed_to_get_private_key: "Failed to get Private Key",
+  error_nothing_to_paste: "Nothing to paste in Clipboard",
+  error_failed_to_paste: "Error while pasting from Clipboard!",
   success_wallet_address_copied: "Wallet Address Copied!",
   success_subscribed: "You have subscribed successfully!",
   success_key_coped: "Key Copied Successfully!",

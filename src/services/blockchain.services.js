@@ -1,4 +1,4 @@
-import { FEE_GRANT_WALLET_ADDERSS, GAS_PRICE_AMOUNT } from "../constants";
+import { GAS_PRICE_AMOUNT } from "../constants";
 import Axios from "./Axios";
 
 const blockchainServices = {
@@ -76,7 +76,6 @@ const blockchainServices = {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
-        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => {
@@ -90,7 +89,6 @@ const blockchainServices = {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
-        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => response.data)
@@ -102,7 +100,6 @@ const blockchainServices = {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
-        "x-fee-granter": FEE_GRANT_WALLET_ADDERSS,
       },
     })
       .then((response) => response.data)

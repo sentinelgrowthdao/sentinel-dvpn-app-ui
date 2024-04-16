@@ -6,7 +6,6 @@ import {
 } from "../../actions/loader.action";
 import { connectAction } from "../../actions/vpn.actions";
 import { MODAL_VARIANTS } from "../../containers/Modal/modal-types";
-import { dispatchPostFeeGrant } from "../../actions/home.actions";
 
 const initialState = {
   success: {
@@ -32,12 +31,6 @@ const initialState = {
   latest: {
     show: false,
     version: "0.0.0",
-  },
-  initiated: {
-    show: false,
-    loading: true,
-    success: false,
-    message: null,
   },
 };
 
@@ -130,38 +123,6 @@ const alertsSlice = createSlice({
           ...state.latest,
           show: payload.show,
           version: payload.version,
-        },
-      }));
-
-    builder
-      .addCase(dispatchPostFeeGrant.pending, (state) => ({
-        ...state,
-        initiated: {
-          ...state.initiated,
-          show: false,
-          loading: true,
-          success: false,
-          message: null,
-        },
-      }))
-      .addCase(dispatchPostFeeGrant.rejected, (state, { payload }) => ({
-        ...state,
-        initiated: {
-          ...state.initiated,
-          show: true,
-          loading: false,
-          success: false,
-          message: payload.message,
-        },
-      }))
-      .addCase(dispatchPostFeeGrant.fulfilled, (state) => ({
-        ...state,
-        initiated: {
-          ...state.initiated,
-          show: false,
-          loading: false,
-          success: true,
-          message: null,
         },
       }));
   },

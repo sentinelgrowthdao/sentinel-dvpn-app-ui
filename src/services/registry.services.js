@@ -33,6 +33,14 @@ const registryServices = {
       .catch((error) => {
         throw new Error(error);
       }),
+  getClipboard: () =>
+    Axios.get("/registry/clipboard")
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error);
+      }),
 };
 
 export default registryServices;
