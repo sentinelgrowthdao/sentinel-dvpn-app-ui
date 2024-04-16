@@ -73,7 +73,7 @@ const QuickConnectButton = () => {
         dispatch(
           CHANGE_ERROR_ALERT({
             show: true,
-            message: `No Countries available`,
+            message: `error_no_countries_available`,
           })
         );
         return [];
@@ -82,7 +82,7 @@ const QuickConnectButton = () => {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: `Failed to fetch a server`,
+          message: `error_failed_to_fetch_a_server`,
         })
       );
       return [];
@@ -148,7 +148,7 @@ const QuickConnectButton = () => {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
-              message: `Please dis-connect from VPN before switching`,
+              message: `error_disconnect_before_switch`,
             })
           );
           return;

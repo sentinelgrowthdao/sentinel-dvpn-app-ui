@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { createWalletWithMnemonic } from "../../actions/onboarding.action";
+import { useTranslation } from "react-i18next";
 
 const Import = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,7 +35,7 @@ const Import = () => {
             setInputValues(Array(24).fill(""));
           }}
         >
-          24 Words
+          {t("no_of_words", { noOfWords: 24 })}
         </button>
         <button
           className={`${styles.btn} ${
@@ -44,11 +46,11 @@ const Import = () => {
             setInputValues(Array(12).fill(""));
           }}
         >
-          12 Words
+          {t("no_of_words", { noOfWords: 12 })}
         </button>
       </div>
     ),
-    [noOfWords]
+    [noOfWords, t]
   );
 
   React.useEffect(() => {
@@ -99,9 +101,9 @@ const Import = () => {
   return (
     <div className={styles.root}>
       <section className={styles.top}>
-        <span className={styles.title}>Log in with your key</span>
+        <span className={styles.title}>{t("log_in_with_your_key_title")}</span>
         <span className={styles.description}>
-          Provide your unique {noOfWords} word key
+          {t("log_in_with_your_key_desc", { noOfWords })}
         </span>
       </section>
       <section className={styles.middle}>
@@ -137,7 +139,7 @@ const Import = () => {
         /> */}
         <Button
           variant={variants.PRIMARY}
-          title={"Import Account"}
+          title={t("btn_import_account")}
           disabled={!isValidMnemonic}
           className={styles["primary-btn"]}
           onClick={async (event) => {
@@ -160,7 +162,7 @@ const Import = () => {
         />
         <Button
           variant={variants.SECONDARY}
-          title={"Create New Account"}
+          title={t("btn_create_new_account")}
           className={styles["primary-btn"]}
           onClick={async (event) => {
             event.preventDefault();

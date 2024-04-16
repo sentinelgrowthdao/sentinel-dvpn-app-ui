@@ -5,28 +5,32 @@ import Button, { variants } from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
 import BackButton from "../../components/BackButton";
+import { useTranslation } from "react-i18next";
 
 const PrivateKey = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const mnemonic = useSelector((state) => state.device.mnemonic);
 
   const handleRevealCopy = () => {
     copyToClipboard(mnemonic);
     dispatch(
-      CHANGE_SUCCESS_ALERT({ show: true, message: "Copied Successfully" })
+      CHANGE_SUCCESS_ALERT({ show: true, message: "success_key_coped" })
     );
     return;
   };
 
   return (
     <div className={styles.root}>
-      <BackButton to="Wallet Details" />
+      <BackButton to={t("wallet_details")} />
       <section className={styles.top}>
-        <span className={styles.title}>Your unique private key</span>
+        <span className={styles.title}>
+          {t("your_unique_private_key_title")}
+        </span>
         <span className={styles.description}>
-          Copy down this unique {mnemonic.split(" ").length} word key somewhere
-          safe. This key will be needed to access your wallet incase you get
-          logged out or need to use your wallet outside this application.
+          {t("your_unique_private_key_desc", {
+            length: mnemonic.split(" ").length,
+          })}
         </span>
       </section>
       <section className={styles.middle}>
@@ -40,7 +44,7 @@ const PrivateKey = () => {
       <section className={styles.bottom}>
         <Button
           variant={variants.PRIMARY}
-          title={"Copy private key"}
+          title={t("btn_copy_private_key")}
           className={styles["primary-btn"]}
           onClick={handleRevealCopy}
         />

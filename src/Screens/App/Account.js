@@ -10,21 +10,22 @@ import { MODAL_VARIANTS } from "../../containers/Modal/modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
+import { useTranslation } from "react-i18next";
 
 const cards = [
   {
     icon: SubscriptionsIcon,
-    title: "Subscriptions",
+    title: "subscriptions",
     href: "/account/subscriptions",
   },
   {
     icon: WalletIcon,
-    title: "Wallet",
+    title: "wallet",
     href: "/account/wallet-details",
   },
   {
     icon: LogoutIcon,
-    title: "Logout",
+    title: "logout",
     isLogout: true,
     state: {
       showModal: true,
@@ -35,12 +36,13 @@ const cards = [
 ];
 
 const Account = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
   return (
     <div className={styles.root}>
-      <span className={styles.header}>Account</span>
+      <span className={styles.header}>{t("account")}</span>
       {cards.map((c) => {
         return (
           <Card
@@ -70,7 +72,7 @@ const Account = () => {
             >
               <section className={styles.left}>
                 <img src={c.icon} alt="" />
-                <span className={styles.title}>{c.title}</span>
+                <span className={styles.title}>{t(c.title)}</span>
               </section>
               <section className={styles.right}>
                 <img src={RightArrow} alt="" />

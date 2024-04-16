@@ -7,8 +7,10 @@ import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
 import { MODAL_VARIANTS } from "../Modal/modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const DNSCard = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
@@ -40,7 +42,7 @@ const DNSCard = () => {
         >
           <section>
             <img src={DNSIcon} alt="" />
-            <span>DNS</span>
+            <span>{t("dns")}</span>
           </section>
           <span className={styles.value}>
             {capitalizeFirstLetter(current?.name)}

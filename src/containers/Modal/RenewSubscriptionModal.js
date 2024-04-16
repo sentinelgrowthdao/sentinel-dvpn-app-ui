@@ -19,8 +19,10 @@ import {
 } from "../../actions/home.actions";
 import { MODAL_VARIANTS } from "./modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RenewSubscriptionModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -37,14 +39,17 @@ const RenewSubscriptionModal = () => {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
-              message: "No Plans available to subscribe",
+              message: "error_no_plans_to_subscribe",
             })
           );
         }
       } catch (e) {
         dispatch(CHANGE_MODAL_STATE({ show: false, type: "" }));
         dispatch(
-          CHANGE_ERROR_ALERT({ show: true, message: "Failed to fetch Plans" })
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: "error_failed_to_get_plans",
+          })
         );
       }
     };
@@ -90,7 +95,7 @@ const RenewSubscriptionModal = () => {
         dispatch(
           CHANGE_SUCCESS_ALERT({
             show: true,
-            message: "You have subscribed successfully!",
+            message: "success_subscribed",
           })
         );
         return;
@@ -99,7 +104,7 @@ const RenewSubscriptionModal = () => {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to Subscribe",
+          message: "error_failed_to_subscribe",
         })
       );
     }
@@ -108,21 +113,19 @@ const RenewSubscriptionModal = () => {
   return (
     <div className={styles["renew-subscription-modal"]}>
       <img src={TimeIcon} alt="" />
-      <span className={styles.title}>
-        You do not have an active subscription
-      </span>
+      <span className={styles.title}>{t("modal_no_subscriptions_title")}</span>
       <span className={styles.description}>
-        Purchase one month of subscription to enjoy Sentinel dVPN
+        {t("modal_no_subscriptions_desc")}
       </span>
       <Button
         className={styles.btn}
-        title={`Renew for ${price} DVPN`}
+        title={t("btn_renew", { price })}
         variant={variants.PRIMARY}
         onClick={handleRenewSubcription}
       />
       <Button
         className={styles.btn}
-        title={"Cancel"}
+        title={t("btn_cancel")}
         variant={variants.SECONDARY}
         onClick={() => {
           dispatch(CHANGE_MODAL_STATE({ show: false, type: "" }));

@@ -13,7 +13,7 @@ export const dispatchGetRecentServersList = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Fetching recently connected servers details...",
+          message: "loader_fetching_recent_servers_details",
         })
       );
       const recents = getState().device.recentServers;

@@ -22,8 +22,10 @@ import { MODAL_VARIANTS } from "../Modal/modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
 import proxyServices from "../../services/proxy.services";
 import { GAS_PRICE_AMOUNT } from "../../constants";
+import { useTranslation } from "react-i18next";
 
 const ConnectButton = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -72,7 +74,7 @@ const ConnectButton = () => {
         dispatch(
           CHANGE_ERROR_ALERT({
             show: true,
-            message: `No Countries available`,
+            message: `error_no_countries_available`,
           })
         );
         return [];
@@ -81,7 +83,7 @@ const ConnectButton = () => {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: `Failed to fetch a server`,
+          message: `error_failed_to_fetch_a_server`,
         })
       );
       return [];
@@ -137,7 +139,7 @@ const ConnectButton = () => {
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
-              message: `Selected Node is offline or not available`,
+              message: `error_offline_node`,
             })
           );
         }
@@ -145,7 +147,7 @@ const ConnectButton = () => {
         dispatch(
           CHANGE_ERROR_ALERT({
             show: true,
-            message: `Unable to fetch node details`,
+            message: `error_unable_to_fetch_server_details`,
           })
         );
       } finally {
@@ -175,7 +177,7 @@ const ConnectButton = () => {
     return (
       <Button
         variant={variants.SECONDARY}
-        title={"Disconnect"}
+        title={t("btn_disconnect")}
         className={styles.btn}
         onClick={handleDisconnect}
       />
@@ -188,7 +190,7 @@ const ConnectButton = () => {
       disabled={countries && countries.length === 0}
       icon={QuickConnectIcon}
       variant={variants.PRIMARY}
-      title={"Quick Connect"}
+      title={t("btn_quick_connect")}
       className={styles.btn}
     />
   );

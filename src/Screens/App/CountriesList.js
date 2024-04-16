@@ -34,7 +34,7 @@ const CountriesList = () => {
 
   React.useLayoutEffect(() => {
     dispatch(SET_SEARCH_TEXT(""));
-    dispatch(SET_PAGE_TITLE("Select a Country"));
+    dispatch(SET_PAGE_TITLE("select_a_country"));
     dispatch(SET_CAN_GO_BACK(false));
   }, [dispatch]);
   return (

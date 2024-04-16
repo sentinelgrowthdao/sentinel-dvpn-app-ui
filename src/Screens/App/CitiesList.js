@@ -34,13 +34,13 @@ const CitiesList = () => {
   React.useEffect(() => {
     dispatch(SET_SEARCH_TEXT(""));
     if (country && country.id) {
-      dispatch(SET_PAGE_TITLE(country.name ? country.name : "Select a City"));
+      dispatch(SET_PAGE_TITLE(country.name ? country.name : "select_a_city"));
       dispatch(SET_CAN_GO_BACK(true));
       return;
     }
     countries.forEach((c) => {
       if (c.id === Number.parseInt(params.countryId)) {
-        dispatch(SET_PAGE_TITLE(c.name ? c.name : "Select a City"));
+        dispatch(SET_PAGE_TITLE(c.name ? c.name : "select_a_city"));
         dispatch(SET_CAN_GO_BACK(true));
         return;
       }

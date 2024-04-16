@@ -14,8 +14,10 @@ import {
   dispatchGetIPAddress,
   dispatchGetUserSubscriptions,
 } from "../../actions/home.actions";
+import { useTranslation } from "react-i18next";
 
 const BalanceCard = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { balance, plan, subscription } = useSelector((state) => state.home);
   const handleReloader = () => {
@@ -38,7 +40,7 @@ const BalanceCard = () => {
         <img src={BalanceIcon} alt="" />
       </section>
       <section className={styles.middle}>
-        <span className={styles.title}>Your Balance</span>
+        <span className={styles.title}>{t("your_balance")}</span>
         <span className={styles.description}>
           {`${formatAmount(balance / 1e6)}`} DVPN
         </span>

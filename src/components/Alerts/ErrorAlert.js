@@ -2,10 +2,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
 import styles from "./alerts.module.scss";
+import { useTranslation } from "react-i18next";
 
 const ErrorAlert = () => {
-  const { show, message } = useSelector((state) => state.alerts.error);
+  const { show, message, value } = useSelector((state) => state.alerts.error);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     if (show && message) {
@@ -18,7 +20,7 @@ const ErrorAlert = () => {
   if (show) {
     return (
       <div className={styles.error}>
-        <span>{message}</span>
+        <span>{t(message, { value })}</span>
       </div>
     );
   }

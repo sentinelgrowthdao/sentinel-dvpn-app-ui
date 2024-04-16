@@ -9,8 +9,10 @@ import ReloadIcon from "../../assets/icons/reload-icon.svg";
 import { useNavigate } from "react-router-dom";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { dispatchGetAvailableCountries } from "../../actions/nodes.action";
+import { useTranslation } from "react-i18next";
 
 const PageTitle = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { pageTitle, canGoBack } = useSelector((state) => state.nodes);
@@ -25,7 +27,7 @@ const PageTitle = () => {
             onClick={() => navigate(-1)}
           />
         )}
-        <span className={styles.title}>{pageTitle}</span>
+        <span className={styles.title}>{t(pageTitle)}</span>
         {!canGoBack && (
           <Button
             variant={variants.TRANSPARENT}

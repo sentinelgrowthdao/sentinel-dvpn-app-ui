@@ -23,7 +23,7 @@ export const dispatchGetVPNStatus = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Fetching VPN connection status...",
+          message: "loader_fetching_vpn_status",
         })
       );
       const response = await vpnServices.getStatus();
@@ -32,7 +32,7 @@ export const dispatchGetVPNStatus = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to fetch VPN Status",
+          message: "error_failed_to_fetch_vpn_status",
         })
       );
       return rejectWithValue();
@@ -54,7 +54,7 @@ export const disconnectAction = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to disconnect from VPN",
+          message: "error_failed_to_disconnect_vpn",
         })
       );
       return rejectWithValue();
@@ -77,7 +77,7 @@ export const connectAction = createAsyncThunk(
       const walletAddress = getState().device.walletAddress;
       const subscription = getState().home.subscription;
       dispatch(
-        CHANGE_LOADER_STATE({ show: true, message: "Creating a Session..." })
+        CHANGE_LOADER_STATE({ show: true, message: "loader_creating_session" })
       );
       const { success, message } = await createSession({
         node,
@@ -104,7 +104,7 @@ export const connectAction = createAsyncThunk(
           dispatch(
             CHANGE_LOADER_STATE({
               show: true,
-              message: "Fetching Credentials...",
+              message: "loader_fetching_creds",
             })
           );
           const credentials = await createCredentials({
@@ -116,20 +116,20 @@ export const connectAction = createAsyncThunk(
             dispatch(
               CHANGE_LOADER_STATE({
                 show: true,
-                message: "Connecting to VPN...",
+                message: "loader_connecting_vpn",
               })
             );
             const isConnected = await connectToVPN(credentials);
             if (isConnected) {
               return fulfillWithValue({ isConnected, node });
             } else {
-              throw new Error({ msg: "Failed to connect the VPN" });
+              throw new Error({ msg: "error_failed_to_connect" });
             }
           } else {
-            throw new Error({ msg: "Failed to fetch credentials" });
+            throw new Error({ msg: "error_failed_fetch_creds" });
           }
         } else {
-          throw new Error({ msg: "Failed to Create a Session" });
+          throw new Error({ msg: "error_failed_create_session" });
         }
       }
     } catch (e) {
@@ -140,7 +140,7 @@ export const connectAction = createAsyncThunk(
         dispatch(
           CHANGE_ERROR_ALERT({
             show: true,
-            message: "Failed to connect to VPN",
+            message: "error_failed_to_connect",
           })
         );
         return rejectWithValue();

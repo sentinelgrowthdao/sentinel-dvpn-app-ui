@@ -7,6 +7,7 @@ import GlobeIcon from "../../assets/icons/globe-icon.svg";
 import { useDispatch } from "react-redux";
 import { dispatchWindowOpen } from "../../actions/settings.action";
 import { getMobileOS } from "../../helpers/common.helpers";
+import { useTranslation } from "react-i18next";
 
 const constants = [
   {
@@ -30,6 +31,7 @@ const constants = [
   },
 ];
 const ExternalSupport = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   return (
@@ -52,7 +54,7 @@ const ExternalSupport = () => {
         })}
       </section>
       <section className={styles["report-issue"]}>
-        <span>Any problems?</span>
+        <span>{t("any_problems")}</span>
         <button
           className={styles["report-issue-link"]}
           onClick={(event) => {
@@ -61,7 +63,7 @@ const ExternalSupport = () => {
             dispatch(dispatchWindowOpen("mailto:Support@snt.foundation"));
           }}
         >
-          Report an issue
+          {t("report_an_issue")}
         </button>
       </section>
     </div>

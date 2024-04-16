@@ -19,7 +19,7 @@ export const dispatchGetAvailableCountries = createAsyncThunk(
   "GET_AVAILABLE_COUNTRIES",
   async (_, { fulfillWithValue, rejectWithValue, getState, dispatch }) => {
     dispatch(
-      CHANGE_LOADER_STATE({ show: true, message: "Fetching Countries..." })
+      CHANGE_LOADER_STATE({ show: true, message: "loader_fetching_countries" })
     );
     try {
       const protocols = getState().device.protocols;
@@ -49,7 +49,8 @@ export const dispatchGetAvailableCities = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: `Fetching Cities of ${country.name}`,
+          message: `loader_fetching_cities_of`,
+          value: country.name,
         })
       );
 
@@ -67,7 +68,10 @@ export const dispatchGetAvailableCities = createAsyncThunk(
       return fulfillWithValue({ all: [...list, ...cities], current: cities });
     } catch (e) {
       dispatch(
-        CHANGE_ERROR_ALERT({ show: true, message: "Failed fetch Cities" })
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_fetch_cities",
+        })
       );
       return rejectWithValue();
     }
@@ -81,7 +85,8 @@ export const dispatchGetAvailableNodes = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: `Fetching Servers of ${city.name}`,
+          message: `loader_fetching_servers_of`,
+          value: city.name,
         })
       );
 
@@ -100,7 +105,10 @@ export const dispatchGetAvailableNodes = createAsyncThunk(
       return fulfillWithValue({ all: [...list, ...nodes], current: nodes });
     } catch (e) {
       dispatch(
-        CHANGE_ERROR_ALERT({ show: true, message: "Failed fetch Servers" })
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_fetch_servers",
+        })
       );
       return rejectWithValue();
     }

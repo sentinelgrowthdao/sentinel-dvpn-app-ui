@@ -75,7 +75,7 @@ const ServerCard = ({ server }) => {
             dispatch(
               CHANGE_ERROR_ALERT({
                 show: true,
-                message: `Please dis-connect from VPN before switching`,
+                message: `error_disconnect_before_switch`,
               })
             );
             return;

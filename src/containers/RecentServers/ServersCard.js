@@ -12,7 +12,9 @@ import OfflineIcon from "../../assets/icons/offline-icon.svg";
 import TrashIcon from "../../assets/icons/trash-icon.svg";
 import Button from "../../components/Button";
 import { REMOVE_RECENT_SERVER } from "../../redux/reducers/device.reducer";
+import { useTranslation } from "react-i18next";
 const ServersCard = ({ server }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
@@ -22,7 +24,7 @@ const ServersCard = ({ server }) => {
 
     try {
       const { payload } = await dispatched;
-      if (payload) navigate("/", {replace: true});
+      if (payload) navigate("/", { replace: true });
     } catch (e) {
       console.log("CONSOLE FAILED TO CONNECT", JSON.stringify(e));
     }
@@ -39,7 +41,7 @@ const ServersCard = ({ server }) => {
             dispatch(
               CHANGE_ERROR_ALERT({
                 show: true,
-                message: `Server is offline, please try again later`,
+                message: `error_server_is_offline`,
               })
             );
             return;
@@ -48,7 +50,7 @@ const ServersCard = ({ server }) => {
             dispatch(
               CHANGE_ERROR_ALERT({
                 show: true,
-                message: `Please dis-connect from VPN before switching`,
+                message: `error_disconnect_before_switch`,
               })
             );
             return;
@@ -71,12 +73,12 @@ const ServersCard = ({ server }) => {
           {server.is_available ? (
             <section className={`${styles.health} ${styles.active}`}>
               <img src={OnlineIcon} alt="" />
-              <span>Online</span>
+              <span>{t("online")}</span>
             </section>
           ) : (
             <section className={`${styles.health} ${styles.inactive}`}>
               <img src={OfflineIcon} alt="" />
-              <span>Offline</span>
+              <span>{t("offline")}</span>
             </section>
           )}
         </section>

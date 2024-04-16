@@ -18,7 +18,7 @@ export const dispatchGetAvailableDNS = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to fetch available DNS",
+          message: "error_failed_to_fetch_dnss",
         })
       );
       return rejectWithValue();
@@ -36,7 +36,7 @@ export const dispatchPutSelectedDNS = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to change DNS",
+          message: "error_failed_to_change_dns",
         })
       );
       return rejectWithValue();
@@ -54,7 +54,7 @@ export const dispatchGetLogs = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to Open Share",
+          message: "error_failed_to_open_share",
         })
       );
       return rejectWithValue();
@@ -72,7 +72,7 @@ export const dispatchWindowOpen = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to Open Share",
+          message: "error_failed_to_open_link",
         })
       );
       return rejectWithValue();

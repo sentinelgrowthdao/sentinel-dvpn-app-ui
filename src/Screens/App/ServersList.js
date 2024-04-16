@@ -43,7 +43,7 @@ const ServersList = () => {
     if (city && city.id) {
       dispatch(
         SET_PAGE_TITLE(
-          city.name ? `${city.name}, ${city.code}` : "Select a Node"
+          city.name ? `${city.name}, ${city.code}` : "select_a_node"
         )
       );
       dispatch(SET_CAN_GO_BACK(true));
@@ -53,7 +53,7 @@ const ServersList = () => {
       cities.forEach((c) => {
         if (c.id === Number.parseInt(params.cityId)) {
           dispatch(
-            SET_PAGE_TITLE(c.name ? `${c.name}, ${c.code}` : "Select a Node")
+            SET_PAGE_TITLE(c.name ? `${c.name}, ${c.code}` : "select_a_node")
           );
           dispatch(SET_CAN_GO_BACK(true));
           return;
@@ -61,7 +61,7 @@ const ServersList = () => {
       });
       return;
     }
-    dispatch(SET_PAGE_TITLE("Select a Node"));
+    dispatch(SET_PAGE_TITLE("select_a_node"));
     dispatch(SET_CAN_GO_BACK(true));
   }, [cities, city, dispatch, params.cityId]);
 

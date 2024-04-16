@@ -14,8 +14,10 @@ import {
   dispatchGetIPAddress,
   dispatchGetUserSubscriptions,
 } from "../../actions/home.actions";
+import { useTranslation } from "react-i18next";
 
 const BalanceCard = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { balance, plan, subscription, price } = useSelector(
     (state) => state.home
@@ -37,7 +39,7 @@ const BalanceCard = () => {
   return (
     <Card className={styles.root} variant={variants.PRIMARY}>
       <section className={styles.left}>
-        <span className={styles.title}>Your Balance</span>
+        <span className={styles.title}>{t("your_balance")}</span>
         <section className={styles.bottom}>
           <img src={BalanceIcon} alt="" />
           <span className={styles.description}>

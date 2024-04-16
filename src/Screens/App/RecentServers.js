@@ -13,8 +13,10 @@ import { connectAction } from "../../actions/vpn.actions";
 import { useNavigate } from "react-router-dom";
 import { dispatchGetRecentServersList } from "../../actions/recents.actions";
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
+import { useTranslation } from "react-i18next";
 
 const RecentServers = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -84,7 +86,7 @@ const RecentServers = () => {
             dispatch(
               CHANGE_ERROR_ALERT({
                 show: true,
-                message: `Please dis-connect from VPN before switching`,
+                message: `error_disconnect_before_switch`,
               })
             );
             return;
@@ -107,7 +109,9 @@ const RecentServers = () => {
           {ConnectButton}
         </section>
         <section className={styles["page-handler-bottom"]}>
-          <span className={styles.title}>Recently Connected Servers</span>
+          <span className={styles.title}>
+            {t("recently_connected_servers")}
+          </span>
         </section>
       </section>
       {filtered && filtered.length > 0 && (

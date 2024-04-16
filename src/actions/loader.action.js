@@ -40,7 +40,7 @@ export const dispatchCheckLatestVersion = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: `Checking your app version`,
+          message: `loader_checking_your_app_version`,
         })
       );
 
@@ -52,7 +52,7 @@ export const dispatchCheckLatestVersion = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Connection error, Try again!",
+          message: "error_connection_error",
         })
       );
       return rejectWithValue();

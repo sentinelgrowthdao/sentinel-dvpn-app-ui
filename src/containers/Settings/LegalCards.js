@@ -6,21 +6,23 @@ import VersionIcon from "../../assets/icons/version-icon.svg";
 import Card, { variants } from "../../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { dispatchWindowOpen } from "../../actions/settings.action";
+import { useTranslation } from "react-i18next";
 
 const legalDocs = [
   {
-    title: "Terms of Service",
+    title: "terms_of_service",
     icon: LegalDocIcon,
     href: "https://www.sentinel.co/terms-of-service",
   },
   {
-    title: "Privacy Policy",
+    title: "privacy_policy",
     icon: LegalDocIcon,
     href: "https://www.sentinel.co/privacy-policy",
   },
 ];
 
 const LegalCards = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const version = useSelector((state) => state.home.version);
@@ -47,7 +49,7 @@ const LegalCards = () => {
               >
                 <section>
                   <img src={doc.icon} alt="" />
-                  <span>{doc.title}</span>
+                  <span>{t(doc.title)}</span>
                 </section>
               </button>
             </Card>
@@ -58,7 +60,7 @@ const LegalCards = () => {
           <button className={styles.version}>
             <section>
               <img src={VersionIcon} alt="" />
-              <span>App Version</span>
+              <span>{t("app_version")}</span>
             </section>
             <span className={styles.value}>{version}</span>
           </button>

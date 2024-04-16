@@ -4,7 +4,9 @@ import { dispatchGetLogs } from "../../actions/settings.action";
 import styles from "./share-log-button.module.scss";
 import Card, { variants } from "../../components/Card";
 import ShareIcon from "../../assets/icons/share-icon.svg";
+import { useTranslation } from "react-i18next";
 const ShareLogButton = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const handleClick = () => {
     dispatch(dispatchGetLogs());
@@ -16,7 +18,7 @@ const ShareLogButton = () => {
         <button className={styles.button} onClick={handleClick}>
           <section>
             <img src={ShareIcon} alt="" />
-            <span>Share Logs</span>
+            <span>{t("share_logs")}</span>
           </section>
         </button>
       </Card>

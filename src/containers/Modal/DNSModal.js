@@ -6,8 +6,10 @@ import { capitalizeFirstLetter } from "../../helpers/capitalizeFirstLetter";
 import { dispatchPutSelectedDNS } from "../../actions/settings.action";
 import { withLoader } from "../../actions/loader.action";
 import CheckIcon from "../../assets/icons/check-icon.svg";
+import { useTranslation } from "react-i18next";
 
 const DNSModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const available = useSelector((state) => state.dns.available);
   const current = useSelector((state) => state.dns.current);
@@ -23,7 +25,7 @@ const DNSModal = () => {
 
   return (
     <div className={styles.root}>
-      <span className={styles.title}>Select a DNS</span>
+      <span className={styles.title}>{t("modal_select_a_dns")}</span>
       <section className={styles.list}>
         {available &&
           available.length > 0 &&

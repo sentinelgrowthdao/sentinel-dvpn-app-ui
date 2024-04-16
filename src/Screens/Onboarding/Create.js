@@ -12,8 +12,10 @@ import {
 import { withSingleDispatcherLoader } from "../../actions/loader.action";
 import { createWalletWithMnemonic } from "../../actions/onboarding.action";
 import blockchainServices from "../../services/blockchain.services";
+import { useTranslation } from "react-i18next";
 
 const Create = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [revealed, setRevealed] = React.useState(false);
@@ -25,7 +27,7 @@ const Create = () => {
         dispatch(
           CHANGE_LOADER_STATE({
             show: true,
-            message: "Fetching Private Key...",
+            message: "loader_fetching_private_key",
           })
         );
         const response = await blockchainServices.getPrivateKey();
@@ -46,7 +48,7 @@ const Create = () => {
         dispatch(
           CHANGE_ERROR_ALERT({
             show: true,
-            message: "Failed to get Private Key",
+            message: "error_Failed_to_get_private_key",
           })
         );
       }
@@ -58,7 +60,7 @@ const Create = () => {
     if (revealed) {
       copyToClipboard(mnemonic.join(" "));
       dispatch(
-        CHANGE_SUCCESS_ALERT({ show: true, message: "Copied Successfully" })
+        CHANGE_SUCCESS_ALERT({ show: true, message: "success_key_coped" })
       );
 
       return;
@@ -69,11 +71,11 @@ const Create = () => {
   return (
     <div className={styles.root}>
       <section className={styles.top}>
-        <span className={styles.title}>Your unique private key</span>
+        <span className={styles.title}>
+          {t("your_unique_private_key_title")}
+        </span>
         <span className={styles.description}>
-          Copy down this unique {mnemonic.length} word key somewhere safe. This
-          key will be needed to access your wallet incase you get logged out or
-          need to use your wallet outside this application.
+          {t("your_unique_private_key_desc", { length: mnemonic.length })}
         </span>
       </section>
       <section className={styles.middle}>
@@ -92,7 +94,9 @@ const Create = () => {
       <section className={styles.bottom}>
         <Button
           variant={`${revealed ? variants.SECONDARY : variants.PRIMARY}`}
-          title={`${revealed ? "Copy private key" : "Reveal private key"}`}
+          title={`${
+            revealed ? t("btn_copy_private_key") : t("btn_reveal_private_key")
+          }`}
           className={styles["primary-btn"]}
           onClick={handleRevealCopy}
           disabled={!(mnemonic && mnemonic.length > 0)}
@@ -100,7 +104,7 @@ const Create = () => {
         <Button
           disabled={!revealed}
           variant={`${revealed ? variants.PRIMARY : variants.SECONDARY}`}
-          title={"Create account"}
+          title={t("btn_create_account")}
           className={styles["secondary-btn"]}
           onClick={async (event) => {
             event.preventDefault();
@@ -121,14 +125,16 @@ const Create = () => {
           }}
         />
         <section className={styles.login}>
-          <span className={styles["login-text"]}>Already have an account?</span>
+          <span className={styles["login-text"]}>
+            {t("already_have_an_account")}
+          </span>
           <button
             className={styles["login-btn"]}
             onClick={() => {
               navigate("/import", { replace: true });
             }}
           >
-            Login
+            {t("btn_login")}
           </button>
         </section>
       </section>

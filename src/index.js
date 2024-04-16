@@ -1,4 +1,5 @@
 import "./index.scss";
+import "./i18n.js";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";

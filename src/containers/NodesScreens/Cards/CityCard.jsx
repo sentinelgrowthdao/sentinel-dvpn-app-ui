@@ -44,7 +44,7 @@ const CityQuickConnect = ({ city }) => {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: `Please dis-connect from VPN before switching`,
+          message: `error_disconnect_before_switch`,
         })
       );
       return;
@@ -93,7 +93,8 @@ const CityQuickConnect = ({ city }) => {
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: `Failed fetch Servers of ${city.name}`,
+          message: `error_failed_to_fetch_server_of`,
+          value: city.name,
         })
       );
     }

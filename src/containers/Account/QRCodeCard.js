@@ -6,6 +6,7 @@ import styles from "./qr-code.module.scss";
 import Button from "../../components/Button";
 import copy from "copy-to-clipboard";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
+import { useTranslation } from "react-i18next";
 const parseWalletAddress = (str) => {
   if (str && str.length > 0)
     return str.slice(0, 10) + "..." + str.slice(-6, str.length);
@@ -13,12 +14,13 @@ const parseWalletAddress = (str) => {
 };
 
 const QRCodeCard = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const walletAddress = useSelector((state) => state.device.walletAddress);
   return (
     <Card className={styles.root} variant={variants.PRIMARY}>
       <section className={styles["wallet-address"]}>
-        <span className={styles.title}>Account Address</span>
+        <span className={styles.title}>{t("account_address")}</span>
         <span className={styles.address}>
           {parseWalletAddress(walletAddress)}
         </span>
@@ -30,12 +32,12 @@ const QRCodeCard = () => {
           dispatch(
             CHANGE_SUCCESS_ALERT({
               show: true,
-              message: "Wallet Address Copied!",
+              message: "success_wallet_address_copied",
             })
           );
         }}
         className={styles["copy-wallet-address"]}
-        title={"Copy Address"}
+        title={t("copy_address")}
         variant={variants.PRIMARY}
       />
     </Card>

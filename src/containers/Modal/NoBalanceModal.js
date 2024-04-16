@@ -6,18 +6,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
 import { useNavigate } from "react-router-dom";
 import { formatAmount } from "../../helpers/data.format";
+import { useTranslation } from "react-i18next";
 
 const NoBalanceModal = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { balance } = useSelector((state) => state.home);
 
   return (
     <div className={styles["no-balance-modal"]}>
-      <span className={styles.title}>No Balance</span>
-      <span className={styles.description}>
-        You have insufficient balance in your account!
-      </span>
+      <span className={styles.title}>{t("modal_no_balance_title")}</span>
+      <span className={styles.description}>{t("modal_no_balance_desc")}</span>
       <section className={styles.balance}>
         <img src={BalanceIcon} alt="" />
         <span className={styles.amount}>
@@ -31,7 +31,7 @@ const NoBalanceModal = () => {
           dispatch(CHANGE_MODAL_STATE({ show: false, type: "" }));
           navigate("/account/wallet-details");
         }}
-        title={"Add Balance"}
+        title={t("btn_add_balance")}
       />
     </div>
   );

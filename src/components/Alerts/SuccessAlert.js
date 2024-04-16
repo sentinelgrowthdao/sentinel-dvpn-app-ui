@@ -2,10 +2,12 @@ import React from "react";
 import styles from "./alerts.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_SUCCESS_ALERT } from "../../redux/reducers/alerts.reducer";
+import { useTranslation } from "react-i18next";
 
 const SuccessAlert = () => {
-  const { show, message } = useSelector((state) => state.alerts.success);
+  const { show, message, value } = useSelector((state) => state.alerts.success);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   React.useEffect(() => {
     if (show && message) {
@@ -18,7 +20,7 @@ const SuccessAlert = () => {
   if (show) {
     return (
       <div className={styles.success}>
-        <span>{message}</span>
+        <span>{t(message, { value })}</span>
       </div>
     );
   }

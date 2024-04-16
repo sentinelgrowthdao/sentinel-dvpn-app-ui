@@ -2,7 +2,9 @@ import React from "react";
 import Card, { variants } from "../../components/Card";
 import styles from "./subscriptions-card.module.scss";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 const SubscriptionsCard = () => {
+  const { t } = useTranslation();
   const [value, setValue] = React.useState(0);
   const { subscription } = useSelector((state) => state.home);
 
@@ -20,8 +22,8 @@ const SubscriptionsCard = () => {
 
   return (
     <Card className={styles.root} variant={variants.PRIMARY}>
-      <span className={styles.title}>Subscription Status</span>
-      <span className={styles.value}>{value} Days remaining</span>
+      <span className={styles.title}>{t("subscription_status")}</span>
+      <span className={styles.value}>{t("days_remaining", { value })}</span>
     </Card>
   );
 };

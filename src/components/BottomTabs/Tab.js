@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./bottom-tabs.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Tab = ({ icon, href, className, title, isActive }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -21,7 +23,7 @@ const Tab = ({ icon, href, className, title, isActive }) => {
       disabled={isActive}
     >
       <img src={icon} alt="" />
-      <span>{title}</span>
+      <span>{t(title)}</span>
     </button>
   );
 };

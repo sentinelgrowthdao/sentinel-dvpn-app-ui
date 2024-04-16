@@ -6,37 +6,31 @@ import SentinelIcon from "../../assets/images/sentinel-logo.png";
 import GitHubIcon from "../../assets/icons/github-blue-icon.svg";
 import { useDispatch } from "react-redux";
 import { dispatchWindowOpen } from "../../actions/settings.action";
+import { useTranslation } from "react-i18next";
 const Start = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
     <div className={styles.root}>
       <section className={styles.top}>
         <img className={styles["sentinel-logo"]} src={SentinelIcon} alt="" />
-        <span className={styles.title}>Welcome to Sentinel</span>
-        <span className={styles.description}>
-          Create a new on-chain account anonymously today or import an existing
-          account from Sentinel's Layer-1 Networking DePin focused chain.
-        </span>
+        <span className={styles.title}>{t("welcome_to_sentinel_title")}</span>
+        <span className={styles.description}>{t("welcome_to_sentinel_desc")}</span>
       </section>
       <section className={styles.github}>
         <img className={styles.img} src={GitHubIcon} alt="" />
-        <span className={styles.text}>Sentinel dVPN Github</span>
+        <span className={styles.text}>{t("sentinel_dvpn_github")}</span>
       </section>
       <section className={styles.middle}>
-        <span className={styles.title}>How does Sentinel dVPN work?</span>
+        <span className={styles.title}>
+          {t("how_does_sentinel_dvpn_work_title")}
+        </span>
         <span className={styles.description}>
-          A Sentinel dVPN account that you can generate has a public key and a
-          private key. The public key is like your phone number and is shared
-          with others in order to receive an incoming transaction. The private
-          key is the password and must be stored safely as there is no back-up
-          being stored anywhere on any server. You are the only one who has your
-          password and if you lose it your account is lost. This is real
-          security, real trust, and real decentralization. Don't trust
-          centralized VPN applications which offer 0 transparency.
+          {t("how_does_sentinel_dvpn_work_desc")}
         </span>
         <section className={styles.external}>
-          <span className={styles.text}>for more info visit</span>
+          <span className={styles.text}>{t("for_more_info_visit")}</span>
           <button
             className={styles.btn}
             onClick={() => {
@@ -50,21 +44,23 @@ const Start = () => {
       <section className={styles.bottom}>
         <Button
           variant={variants.PRIMARY}
-          title={"Continue"}
+          title={t("btn_continue")}
           className={styles["continue-btn"]}
           onClick={() => {
             navigate("/create", { replace: true });
           }}
         />
         <section className={styles.login}>
-          <span className={styles["login-text"]}>Already have an account?</span>
+          <span className={styles["login-text"]}>
+            {t("already_have_an_account")}
+          </span>
           <button
             className={styles["login-btn"]}
             onClick={() => {
               navigate("/import", { replace: true });
             }}
           >
-            Login
+            {t("btn_login")}
           </button>
         </section>
       </section>

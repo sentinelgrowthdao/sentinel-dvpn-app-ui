@@ -2,8 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./selected-node.module.scss";
 import ReactCountryFlag from "react-country-flag";
+import { useTranslation } from "react-i18next";
 
 const SelectedNode = () => {
+  const { t } = useTranslation();
   const node = useSelector((state) => state.device.selectedNode);
   return (
     <>
@@ -20,7 +22,9 @@ const SelectedNode = () => {
           <span className={styles.name}>{`${node.city}, ${node.code}`}</span>
         </section>
       ) : (
-        <span className={styles["no-node-text"]}>Server is not selected</span>
+        <span className={styles["no-node-text"]}>
+          {t("server_is_not_selected")}
+        </span>
       )}
     </>
   );

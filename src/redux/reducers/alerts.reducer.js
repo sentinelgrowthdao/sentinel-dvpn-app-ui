@@ -12,14 +12,17 @@ const initialState = {
   success: {
     show: false,
     message: null,
+    value: null,
   },
   error: {
     show: false,
     message: null,
+    value: null,
   },
   loader: {
     show: false,
     message: null,
+    value: null,
   },
   modal: {
     show: false,

@@ -22,7 +22,7 @@ export const dispatchGetIPAddress = createAsyncThunk(
     dispatch(
       CHANGE_LOADER_STATE({
         show: true,
-        message: "Fetching IP address...",
+        message: "loader_fetching_ip_address",
       })
     );
 
@@ -33,7 +33,7 @@ export const dispatchGetIPAddress = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Connection Error, Try again.",
+          message: "error_connection_error",
         })
       );
 
@@ -48,7 +48,7 @@ export const dispatchGetAccountBalance = createAsyncThunk(
     dispatch(
       CHANGE_LOADER_STATE({
         show: true,
-        message: "Fetching Account Balance...",
+        message: "loader_fetching_account_balance",
       })
     );
     try {
@@ -58,7 +58,10 @@ export const dispatchGetAccountBalance = createAsyncThunk(
       return fulfillWithValue(balance);
     } catch (e) {
       dispatch(
-        CHANGE_ERROR_ALERT({ show: true, message: "Failed to get Balance" })
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_get_balance",
+        })
       );
       return rejectWithValue();
     }
@@ -68,14 +71,16 @@ export const dispatchGetAccountBalance = createAsyncThunk(
 export const dispatchGetAvailablePlans = createAsyncThunk(
   "GET_AVAILABLE_PLANS",
   async (_, { fulfillWithValue, rejectWithValue, dispatch }) => {
-    dispatch(CHANGE_LOADER_STATE({ show: true, message: "Fetching Plans..." }));
+    dispatch(
+      CHANGE_LOADER_STATE({ show: true, message: "loader_fetching_plans" })
+    );
     try {
       const response = await blockchainServices.getPlans();
       const plan = parsePlans(response);
       return fulfillWithValue(plan);
     } catch (e) {
       dispatch(
-        CHANGE_ERROR_ALERT({ show: true, message: "Failed to get Plans" })
+        CHANGE_ERROR_ALERT({ show: true, message: "error_failed_to_get_plans" })
       );
       return rejectWithValue();
     }
@@ -86,7 +91,10 @@ export const dispatchGetUserSubscriptions = createAsyncThunk(
   "GET_USER_SUBSCRIPTIONS",
   async (_, { fulfillWithValue, rejectWithValue, getState, dispatch }) => {
     dispatch(
-      CHANGE_LOADER_STATE({ show: true, message: "Fetching Subscriptions..." })
+      CHANGE_LOADER_STATE({
+        show: true,
+        message: "loader_fetching_subscriptions",
+      })
     );
     try {
       const walletAddress = getState().device.walletAddress;
@@ -97,7 +105,7 @@ export const dispatchGetUserSubscriptions = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to get Subscriptions",
+          message: "error_failed_to_get_subscriptions",
         })
       );
       return rejectWithValue();
@@ -112,7 +120,7 @@ export const dispatchCurrentPrice = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Fetching current price...",
+          message: "loader_fetching_current_price",
         })
       );
       const price = await otherServices.getCurrentPrice();
@@ -121,7 +129,7 @@ export const dispatchCurrentPrice = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Failed to get current price",
+          message: "error_failed_to_get_price",
         })
       );
       return rejectWithValue();
@@ -136,7 +144,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Renewing your Subscription",
+          message: "loader_renewing_your_subscription",
         })
       );
       const response = await blockchainServices.postSubscription(
@@ -166,7 +174,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
-              message: "Failed to subscribe due to insufficient balance",
+              message: "error_failed_subscription_no_balance",
             })
           );
           return;
@@ -175,7 +183,8 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
           dispatch(
             CHANGE_ERROR_ALERT({
               show: true,
-              message: `Failed to subscribe [CODE: ${response.code}]`,
+              message: `error_failed_subscription_of`,
+              value: response.code,
             })
           );
           return;
@@ -186,7 +195,7 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
-          message: "Error while Subscribing",
+          message: "error_error_while_subscribe",
         })
       );
       return rejectWithValue();
@@ -203,7 +212,7 @@ export const dispatchGetAppVersion = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Fetching App Version",
+          message: "loader_fetching_app_version",
         })
       );
       const response = await registryServices.getUserVersion();
@@ -223,7 +232,7 @@ export const dispatchPostFeeGrant = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
-          message: "Initiating the application",
+          message: "loader_initiating_the_app",
         })
       );
       const response = await proxyServices.postFeeGrantWallet(address);
@@ -232,7 +241,7 @@ export const dispatchPostFeeGrant = createAsyncThunk(
       }
       console.log(response);
       return rejectWithValue({
-        message: `${response?.response?.data?.error}: ${response?.response?.data?.reason}`,
+        message: `${response?.response?.statusText} ${response?.response?.data?.error}: ${response?.response?.data?.reason}`,
       });
     } catch (e) {
       return rejectWithValue({ message: e.message });
