@@ -30,8 +30,17 @@ export const dispatchPutSelectedDNS = createAsyncThunk(
   "PUT_SELECTED_DNS",
   async (dns, { fulfillWithValue, rejectWithValue, dispatch }) => {
     try {
-      await dnsServices.putDNS({ server: dns.name });
-      return fulfillWithValue(dns);
+      const response = await dnsServices.putDNS(dns);
+      if (response.status === 200) {
+        return fulfillWithValue(dns);
+      }
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_change_dns",
+        })
+      );
+      return rejectWithValue();
     } catch (e) {
       dispatch(
         CHANGE_ERROR_ALERT({

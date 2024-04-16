@@ -17,7 +17,7 @@ const dnsServices = {
 
   putDNS: (data) =>
     Axios.put("/dns", data)
-      .then((response) => response.data)
+      .then((response) => response)
       .catch((e) => {
         throw new Error(e);
       }),
