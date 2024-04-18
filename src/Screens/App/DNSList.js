@@ -41,9 +41,7 @@ const DNSList = () => {
           {available &&
             available.length > 0 &&
             [...available, ...custom].map((dns, index) => {
-              const isChecked =
-                dns.addresses === current.addresses &&
-                dns.name === current.name;
+              const isChecked = dns.addresses === current.addresses;
               return (
                 <Card
                   variant={variants.SECONDARY}

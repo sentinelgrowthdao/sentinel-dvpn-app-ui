@@ -104,7 +104,6 @@ const Import = () => {
     event.preventDefault();
     try {
       const response = await registryServices.getClipboard();
-      console.log(response);
 
       const values = String(response.text)?.split(" ");
       if (values && values.length > 0) {

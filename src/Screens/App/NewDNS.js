@@ -22,34 +22,51 @@ const NewDNS = () => {
   const [alternateIP, setAlternateIP] = React.useState("");
 
   const checkIsAlredyThere = () => {
-    return customDNSList.filter(
-      (i) =>
-        i.preferredName === name ||
-        i.addresses === `${preferredIP}, ${alternateIP}`
+    const listByAddress = customDNSList.filter(
+      (i) => i.addresses === `${preferredIP}, ${alternateIP}`
     );
+    if (listByAddress && listByAddress.length > 0) {
+      return {
+        isDuplicate: true,
+        reason: "IP addresses are already exist in the list",
+      };
+    }
+    const listByName = customDNSList.filter(
+      (i) => String(i.preferredName).trim() === String(name).trim()
+    );
+    if (listByName && listByName.length > 0) {
+      return {
+        isDuplicate: true,
+        reason: "Name of the DNS is already exist in the list",
+      };
+    }
+    return { isDuplicate: false };
   };
 
   const handleSaveNewDNS = async () => {
     const isValidPreferredIP = isValidIP(preferredIP, IPType);
     const isValidAlternateIP = isValidIP(alternateIP, IPType);
 
+    const isAlreadyThere = checkIsAlredyThere();
+    console.log("isAlreadyThere", isAlreadyThere);
+    if (isAlreadyThere.isDuplicate) {
+      setError(isAlreadyThere.reason);
+      return;
+    }
     if (isValidPreferredIP && isValidAlternateIP) {
       const { payload } = dispatch(
         CHANGE_CUSTOM_DNS_LIST({
           name: "custom",
-          addresses: `${preferredIP}, ${alternateIP}`,
+          addresses: `${String(preferredIP).trim()}, ${String(
+            alternateIP
+          ).trim()}`,
           isCustom: true,
-          preferredName: name,
+          preferredName: String(name).trim(),
         })
       );
       if (payload && payload.isCustom) {
         navigate(-1, { replace: true });
       }
-      return;
-    }
-    const isAlreadyThere = checkIsAlredyThere();
-    if (isAlreadyThere && isAlreadyThere.preferredName) {
-      setError("DNS details alredy there in the list");
       return;
     }
     setError("Invalid / Incorrect IP address");
@@ -142,7 +159,11 @@ const NewDNS = () => {
             variant={variants.PRIMARY}
             title={"Save"}
             onClick={handleSaveNewDNS}
-            disabled={[name, preferredIP, alternateIP].includes("")}
+            disabled={[
+              String(name).trim(),
+              String(preferredIP).trim(),
+              String(alternateIP).trim(),
+            ].includes("")}
           />
           <Button
             className={styles["btn-clear"]}
