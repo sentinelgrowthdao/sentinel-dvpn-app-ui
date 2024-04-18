@@ -17,6 +17,9 @@ import RecentServers from "./Screens/App/RecentServers";
 import AccountLayout from "./layouts/AccountLayout";
 import WalletDetails from "./Screens/App/WalletDetails";
 import SubscriptionsDetails from "./Screens/App/SubscriptionsDetails";
+import DNSList from "./Screens/App/DNSList";
+import NewDNS from "./Screens/App/NewDNS";
+import SettingsLayout from "./layouts/SettingsLayout";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -40,7 +43,11 @@ const Navigation = () => {
             <Route path="wallet-details" element={<WalletDetails />} />
             <Route path="subscriptions" element={<SubscriptionsDetails />} />
           </Route>
-          <Route path="settings" element={<Settings />} />
+          <Route path="settings" element={<SettingsLayout />}>
+            <Route index element={<Settings />} />
+            <Route path="dns-list" element={<DNSList />} />
+            <Route path="new-dns" element={<NewDNS />} />
+          </Route>
           <Route path="private-key" element={<PrivateKey />} />
           <Route path="recent-servers" element={<RecentServers />} />
         </Route>

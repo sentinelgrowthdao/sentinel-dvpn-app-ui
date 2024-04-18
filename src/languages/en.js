@@ -14,6 +14,7 @@ const en = {
   btn_disconnect: "Disconnect",
   btn_quick_connect: "Quick Connect",
   btn_renew: "Renew for {{price}} DVPN",
+  btn_add_dns: "Add DNS",
   modal_something_wrong: "Something went wrong...!",
   modal_error_while_initiating_the_app:
     "There is an error while initiating the app.",
@@ -154,6 +155,14 @@ const en = {
   success_wallet_address_copied: "Wallet Address Copied!",
   success_subscribed: "You have subscribed successfully!",
   success_key_coped: "Key Copied Successfully!",
+  dns_details: "DNS Details",
+  add_custom_dns: "Add Custom DNS",
+  dns_input_name: "Name of DNS: ",
+  dns_input_address_1: "Preferred IP Address: ",
+  dns_input_address_2: "Alternate IP Address: ",
+  ipv4: "IPv4",
+  ipv6: "IPv6",
+  internet_protocol: "Internet Protocol: ",
 };
 
 export default en;

@@ -19,6 +19,7 @@ const initialState = {
   isVPNConnected: false,
   protocols: "V2RAY,WIREGUARD",
   recentServers: [],
+  customDNSList: [],
 };
 
 const deviceSlice = createSlice({
@@ -42,6 +43,23 @@ const deviceSlice = createSlice({
       return {
         ...state,
         recentServers,
+      };
+    },
+    CHANGE_CUSTOM_DNS_LIST: (state, { payload }) => {
+      return {
+        ...state,
+        customDNSList: [...state.customDNSList, payload],
+      };
+    },
+    REMOVE_FROM_CUSTOM_DNS_LIST: (state, { payload }) => {
+      const customDNSList = state.customDNSList.filter(
+        (i) =>
+          i.preferredName !== payload.preferredName &&
+          i.addresses !== payload.addresses
+      );
+      return {
+        ...state,
+        customDNSList,
       };
     },
     REMOVE_RECENT_SERVER: (state, { payload }) => {
@@ -101,6 +119,8 @@ export const {
   SET_PROTOCOL,
   CHANGE_RECENT_SERVERS,
   REMOVE_RECENT_SERVER,
+  CHANGE_CUSTOM_DNS_LIST,
+  REMOVE_FROM_CUSTOM_DNS_LIST,
 } = deviceSlice.actions;
 
 export default deviceSlice.reducer;

@@ -32,7 +32,7 @@ export const dispatchPutSelectedDNS = createAsyncThunk(
     try {
       const response = await dnsServices.putDNS(dns);
       if (response.status === 200) {
-        return fulfillWithValue(dns);
+        return fulfillWithValue({ ...dns, isCustom: false });
       }
       dispatch(
         CHANGE_ERROR_ALERT({
@@ -84,6 +84,36 @@ export const dispatchWindowOpen = createAsyncThunk(
           message: "error_failed_to_open_link",
         })
       );
+      return rejectWithValue();
+    }
+  }
+);
+
+export const dispatchAddCustomDNS = createAsyncThunk(
+  "ADD_CUSTOM_DNS",
+  async (dns, { rejectWithValue, fulfillWithValue, dispatch }) => {
+    try {
+      const { name, preferredIP, alternateIP } = dns;
+
+      const response = await dnsServices.putDNS({
+        name: "custom",
+        addresses: `${preferredIP}, ${alternateIP}`,
+      });
+      if (response.status === 200) {
+        return fulfillWithValue({
+          name,
+          addresses: `${preferredIP}, ${alternateIP}`,
+          isCustom: true,
+        });
+      }
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_change_dns",
+        })
+      );
+      return rejectWithValue();
+    } catch (e) {
       return rejectWithValue();
     }
   }
