@@ -71,33 +71,34 @@
         }
       }
     }
-    .error {
-      height: 48px;
-      width: 100%;
-      text-align: center;
-      .text {
-        font-size: 12px;
-        font-weight: 400;
-        color: #ff0000;
-      }
+  }
+  .error {
+    height: 48px;
+    width: 100%;
+    text-align: center;
+    .text {
+      font-size: 12px;
+      font-weight: 400;
+      color: #ff0000;
     }
-    .btns {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      margin: 16px 0;
+  }
+  .btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0;
+    padding: 0 16px;
+    width: 100%;
+    .btn-save {
+      height: 42px;
       width: 100%;
-      .btn-save {
-        height: 42px;
-        width: 100%;
-        margin-right: 6px;
-      }
-      .btn-clear {
-        height: 42px;
-        width: 100%;
-        margin-left: 6px;
-      }
+      margin-right: 6px;
+    }
+    .btn-clear {
+      height: 42px;
+      width: 100%;
+      margin-left: 6px;
     }
   }
 }

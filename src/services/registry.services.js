@@ -7,7 +7,7 @@ const registryServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getKey: (key) =>
     Axios.get(`/registry?key=${key}`)
@@ -15,7 +15,7 @@ const registryServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getUserVersion: () =>
     Axios.get("/registry/version")
@@ -23,7 +23,7 @@ const registryServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getLogs: () =>
     Axios.get("/registry/logs")
@@ -31,7 +31,7 @@ const registryServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getClipboard: () =>
     Axios.get("/registry/clipboard")
@@ -39,7 +39,7 @@ const registryServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
 };
 

@@ -8,7 +8,7 @@ const blockchainServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getWalletAddress: () =>
     Axios.get("/blockchain/wallet")
@@ -16,15 +16,18 @@ const blockchainServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getBalance: (walletAddress) =>
     Axios.get(`/blockchain/wallet/${walletAddress}/balance`)
       .then((response) => {
+        if (response.request.status === 500) {
+          return { data: null, error: true };
+        }
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getPlans: () =>
     Axios.get("/blockchain/plans", { params: { limit: 100000, offset: 0 } })
@@ -32,7 +35,7 @@ const blockchainServices = {
         return response.data.plans;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getSubScriptions: (walletAddress) =>
     Axios.get(`/blockchain/wallet/${walletAddress}/subscriptions`, {
@@ -42,7 +45,7 @@ const blockchainServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getSession: (walletAddress) =>
     Axios.get(`/blockchain/wallet/${walletAddress}/session`)
@@ -69,7 +72,7 @@ const blockchainServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   postSubscription: (planId, data) =>
     Axios.post(`/blockchain/plans/${planId}/subscription`, data, {
@@ -82,7 +85,7 @@ const blockchainServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   postSession: (walletAddress, data) =>
     Axios.post(`/blockchain/wallet/${walletAddress}/session`, data, {
@@ -93,7 +96,7 @@ const blockchainServices = {
     })
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
   postCredentials: (data) =>
     Axios.post("/blockchain/wallet/connect", data, {
@@ -104,13 +107,13 @@ const blockchainServices = {
     })
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
   deleteWallet: () =>
     Axios.delete("blockchain/wallet")
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
 };
 

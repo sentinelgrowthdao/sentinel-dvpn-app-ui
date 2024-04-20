@@ -37,13 +37,13 @@ const AppLayout = () => {
           dispatchGetVPNStatus(),
           dispatchGetAppVersion(),
           dispatchCheckLatestVersion(),
-          dispatchCurrentPrice(),
-          dispatchGetAccountBalance(),
-          dispatchGetAvailablePlans(),
-          dispatchGetUserSubscriptions(),
+          dispatchGetAvailableCountries(),
           dispatchGetAvailableDNS(),
           dispatchGetIPAddress(),
-          dispatchGetAvailableCountries(),
+          dispatchCurrentPrice(),
+          dispatchGetAvailablePlans(),
+          dispatchGetAccountBalance(),
+          dispatchGetUserSubscriptions(),
           CHANGE_IS_HOME_LOADED(),
         ])
       );

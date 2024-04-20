@@ -5,21 +5,21 @@ const dnsServices = {
     Axios.get("/dns/list")
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
 
   getCurrentDNS: () =>
     Axios.get("/dns/current")
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
 
   putDNS: (data) =>
     Axios.put("/dns", data)
       .then((response) => response)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
 };
 

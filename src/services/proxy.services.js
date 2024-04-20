@@ -7,7 +7,7 @@ const proxyServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getOnlineVersion: () =>
     Axios.get("/proxy/version")
@@ -15,7 +15,7 @@ const proxyServices = {
         return response.data;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   getCountriesList: async (protocols = []) => {
     const promises = [];
@@ -113,19 +113,19 @@ const proxyServices = {
     Axios.post("/proxy/browser", data)
       .then((response) => response.data)
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   postRecentServersList: (data) =>
     Axios.post(`/proxy/servers`, data)
       .then((response) => response.data)
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
   postFeeGrantWallet: (address) =>
     Axios.post(`/proxy/wallet`, { address })
       .then((response) => response)
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
 };
 export default proxyServices;

@@ -30,6 +30,15 @@ export const dispatchGetIPAddress = createAsyncThunk(
       let response = await proxyServices.getIpAddress();
       return fulfillWithValue(response.data);
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
@@ -57,6 +66,15 @@ export const dispatchGetAccountBalance = createAsyncThunk(
       const balance = parseAccountBalance(response.balances);
       return fulfillWithValue(balance);
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
@@ -79,6 +97,15 @@ export const dispatchGetAvailablePlans = createAsyncThunk(
       const plan = parsePlans(response);
       return fulfillWithValue(plan);
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({ show: true, message: "error_failed_to_get_plans" })
       );
@@ -102,6 +129,15 @@ export const dispatchGetUserSubscriptions = createAsyncThunk(
       const subscription = parseSubscriptions(response.planSubscriptions);
       return fulfillWithValue(subscription);
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
@@ -126,6 +162,15 @@ export const dispatchCurrentPrice = createAsyncThunk(
       const price = await otherServices.getCurrentPrice();
       return fulfillWithValue(Number.parseFloat(price));
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,
@@ -193,6 +238,15 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       }
       return fulfillWithValue();
     } catch (e) {
+      if (e.reason) {
+        dispatch(
+          CHANGE_ERROR_ALERT({
+            show: true,
+            message: e.reason,
+          })
+        );
+        return rejectWithValue();
+      }
       dispatch(
         CHANGE_ERROR_ALERT({
           show: true,

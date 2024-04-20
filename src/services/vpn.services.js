@@ -11,13 +11,13 @@ const vpnServices = {
     Axios.post("/connect", data)
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
   postDisconnect: () =>
     Axios.post("/disconnect")
       .then((response) => response.data)
       .catch((e) => {
-        throw new Error(e);
+        throw e;
       }),
 };
 

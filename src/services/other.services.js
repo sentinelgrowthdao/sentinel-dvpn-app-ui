@@ -19,7 +19,7 @@ const otherServices = {
         return response?.data?.market_data?.current_price?.usd;
       })
       .catch((error) => {
-        throw new Error(error);
+        throw error;
       }),
 };
 

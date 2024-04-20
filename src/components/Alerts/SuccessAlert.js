@@ -13,7 +13,7 @@ const SuccessAlert = () => {
     if (show && message) {
       setTimeout(() => {
         dispatch(CHANGE_SUCCESS_ALERT({ show: false, message: null }));
-      }, 2000);
+      }, 3000);
     }
   }, [show, dispatch, message]);
 

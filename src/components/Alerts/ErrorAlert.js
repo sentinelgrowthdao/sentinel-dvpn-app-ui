@@ -13,7 +13,7 @@ const ErrorAlert = () => {
     if (show && message) {
       setTimeout(() => {
         dispatch(CHANGE_ERROR_ALERT({ show: false, message: null }));
-      }, 2000);
+      }, 3000);
     }
   }, [show, dispatch, message]);
 

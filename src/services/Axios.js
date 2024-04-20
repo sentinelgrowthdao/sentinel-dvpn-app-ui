@@ -35,7 +35,11 @@ Axios.interceptors.response.use(
       REQ: req,
       RESP: resp,
     });
-    return error;
+    // eslint-disable-next-line no-throw-literal
+    throw {
+      status: error.request.status,
+      ...JSON.parse(error.request.response),
+    };
   }
 );
 

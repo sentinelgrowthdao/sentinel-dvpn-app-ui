@@ -152,6 +152,7 @@ const en = {
   error_Failed_to_get_private_key: "Failed to get Private Key",
   error_nothing_to_paste: "Nothing to paste in Clipboard",
   error_failed_to_paste: "Error while pasting from Clipboard!",
+  error_failed_to_change_endpoint: "Failed to change the Endpoint",
   success_wallet_address_copied: "Wallet Address Copied!",
   success_subscribed: "You have subscribed successfully!",
   success_key_coped: "Key Copied Successfully!",
@@ -163,6 +164,10 @@ const en = {
   ipv4: "IPv4",
   ipv6: "IPv6",
   internet_protocol: "Internet Protocol: ",
+  rpc: "RPC",
+  blockchain_endpoint: "Blockchain Endpoint",
+  host: "Host",
+  port: "Port",
 };
 
 export default en;
