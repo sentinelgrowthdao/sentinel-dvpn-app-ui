@@ -13,7 +13,7 @@
     margin: 8px 0;
   }
   .dns-card {
-    margin-bottom: 8px;
+    margin: 4px 0;
   }
   .dns {
     background: transparent;
@@ -37,7 +37,11 @@
       justify-content: flex-start;
       text-align: left;
       img {
+        padding: 0;
+        margin: 0;
         margin-right: 8px;
+        width: 22px;
+        height: 22px;
       }
     }
     .value {

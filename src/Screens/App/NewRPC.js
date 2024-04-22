@@ -4,7 +4,7 @@ import BackButton from "../../components/BackButton";
 import { useTranslation } from "react-i18next";
 import Button, { variants } from "../../components/Button";
 import Axios from "../../services/Axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_ERROR_ALERT } from "../../redux/reducers/alerts.reducer";
 import { useNavigate } from "react-router-dom";
 import { withLoader } from "../../actions/loader.action";
@@ -19,8 +19,10 @@ const NewRPC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [host, setHost] = React.useState("");
-  const [port, setPort] = React.useState("");
+  const rpc = useSelector((state) => state.dns.rpc);
+
+  const [host, setHost] = React.useState(rpc.host);
+  const [port, setPort] = React.useState(rpc.port);
   const [error, setError] = React.useState("");
 
   const handleClear = () => {
@@ -42,7 +44,7 @@ const NewRPC = () => {
             dispatchGetUserSubscriptions(),
           ])
         );
-        navigate("/", { replace: true });
+        navigate(-1, { replace: true });
       } catch (e) {
         dispatch(
           CHANGE_ERROR_ALERT({
@@ -98,15 +100,16 @@ const NewRPC = () => {
         <Button
           className={styles["btn-save"]}
           variant={variants.PRIMARY}
-          title={"Save"}
+          title={t("btn_save")}
           onClick={handleChangeRPC}
           disabled={String(host).trim() === "" || ![3, 4].includes(port.length)}
         />
         <Button
           className={styles["btn-clear"]}
           variant={variants.SECONDARY}
-          title={"Clear"}
+          title={t("btn_clear")}
           onClick={handleClear}
+          disabled={host === rpc.host || port === rpc.port}
         />
       </section>
     </div>

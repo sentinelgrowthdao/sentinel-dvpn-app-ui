@@ -48,7 +48,7 @@ const NewDNS = () => {
     const isValidAlternateIP = isValidIP(alternateIP, IPType);
 
     const isAlreadyThere = checkIsAlredyThere();
-    console.log("isAlreadyThere", isAlreadyThere);
+
     if (isAlreadyThere.isDuplicate) {
       setError(isAlreadyThere.reason);
       return;
@@ -157,7 +157,7 @@ const NewDNS = () => {
           <Button
             className={styles["btn-save"]}
             variant={variants.PRIMARY}
-            title={"Save"}
+            title={t("btn_save")}
             onClick={handleSaveNewDNS}
             disabled={[
               String(name).trim(),
@@ -168,7 +168,7 @@ const NewDNS = () => {
           <Button
             className={styles["btn-clear"]}
             variant={variants.SECONDARY}
-            title={"Clear"}
+            title={t("btn_clear")}
             onClick={handleClear}
           />
         </section>

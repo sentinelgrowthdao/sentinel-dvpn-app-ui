@@ -44,12 +44,27 @@ const LogoutModal = () => {
         variant={variants.SECONDARY}
         className={`${styles.btn} ${styles["logout-btn"]}`}
         onClick={async () => {
-          await window.localStorage.clear();
-          await vpnServices.postDisconnect();
-          await dispatch(dispatchDeleteWallet());
-          navigate("/", { replace: true });
-          navigate(0, { replace: true });
-          navigate(0, { replace: true });
+          try {
+            await window.localStorage.clear();
+            await vpnServices.postDisconnect();
+            await dispatch(dispatchDeleteWallet());
+            navigate("/", { replace: true });
+            navigate(0, { replace: true });
+            navigate(0, { replace: true });
+          } catch (e) {
+            try {
+              await window.localStorage.clear();
+              await vpnServices.postDisconnect();
+              navigate("/", { replace: true });
+              navigate(0, { replace: true });
+              navigate(0, { replace: true });
+            } catch (e) {
+              await window.localStorage.clear();
+              navigate("/", { replace: true });
+              navigate(0, { replace: true });
+              navigate(0, { replace: true });
+            }
+          }
         }}
         disabled={!isUserSavedKey}
       />

@@ -20,6 +20,7 @@ const initialState = {
   protocols: "V2RAY,WIREGUARD",
   recentServers: [],
   customDNSList: [],
+  feeGrantEnabled: true,
 };
 
 const deviceSlice = createSlice({
@@ -71,6 +72,10 @@ const deviceSlice = createSlice({
         recentServers,
       };
     },
+    CHANGE_FEE_GRANT_ENABLED: (state, { payload }) => ({
+      ...state,
+      feeGrantEnabled: payload,
+    }),
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -121,6 +126,7 @@ export const {
   REMOVE_RECENT_SERVER,
   CHANGE_CUSTOM_DNS_LIST,
   REMOVE_FROM_CUSTOM_DNS_LIST,
+  CHANGE_FEE_GRANT_ENABLED,
 } = deviceSlice.actions;
 
 export default deviceSlice.reducer;

@@ -15,6 +15,8 @@ const en = {
   btn_quick_connect: "Quick Connect",
   btn_renew: "Renew for {{price}} DVPN",
   btn_add_dns: "Add DNS",
+  btn_save: "Save",
+  btn_clear: "Clear",
   modal_something_wrong: "Something went wrong...!",
   modal_error_while_initiating_the_app:
     "There is an error while initiating the app.",
@@ -112,6 +114,7 @@ const en = {
   loader_fetching_creds: "Fetching Credentials...",
   loader_connecting_vpn: "Connecting to VPN...",
   loader_fetching_private_key: "Fetching Private Key...",
+  loader_fetching_current_rpc: "Fetching Current RPC details...",
   error_connection_error: "Connection Error, Try again!",
   error_failed_to_get_balance: "Failed to fetch Balance",
   error_failed_to_get_plans: "Failed to fetch Plans",
@@ -146,6 +149,10 @@ const en = {
   error_no_plans_to_subscribe: "No Plans available to subscribe",
   error_disconnect_before_switch:
     "Please dis-connect from VPN before switching",
+  error_disconnect_before_changing_rpc:
+    "Please dis-connect from VPN before Changing RPC",
+  error_disconnect_before_changing_fee_granter:
+    "Please dis-connect from VPN before Changing Fee Granter",
   error_failed_to_fetch_server_of: "Failed fetch Servers of {{value}}",
   error_failed_to_fetch_cities_of: "Failed fetch Cities of {{value}}",
   error_server_is_offline: "Server is offline, please try again later",
@@ -168,6 +175,9 @@ const en = {
   blockchain_endpoint: "Blockchain Endpoint",
   host: "Host",
   port: "Port",
+  fee_grant: "Set Fee Granter",
+  default_granter_address: "Default Granter Address",
+  no_granter: "No Granter (You Pay Gas Yourself)",
 };
 
 export default en;

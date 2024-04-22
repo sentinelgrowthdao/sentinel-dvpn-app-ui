@@ -1,3 +1,4 @@
+/* eslint-disable no-throw-literal */
 import axios from "axios";
 
 const Axios = axios.create({
@@ -35,11 +36,18 @@ Axios.interceptors.response.use(
       REQ: req,
       RESP: resp,
     });
-    // eslint-disable-next-line no-throw-literal
-    throw {
-      status: error.request.status,
-      ...JSON.parse(error.request.response),
-    };
+
+    if (
+      error?.request?.response &&
+      typeof error?.request?.response === "object"
+    ) {
+      throw {
+        status: error.request.status,
+        ...JSON.parse(error?.request?.response),
+      };
+    } else {
+      throw error;
+    }
   }
 );
 

@@ -1,4 +1,4 @@
-import { GAS_PRICE_AMOUNT } from "../constants";
+import { FEE_GRANT_WALLET_ADDERSS, GAS_PRICE_AMOUNT } from "../constants";
 import Axios from "./Axios";
 
 const blockchainServices = {
@@ -65,7 +65,10 @@ const blockchainServices = {
     Axios.get(`blockchain/transactions/${txHash}`)
       .then((response) => response)
       .catch((error) => error),
-
+  getCurrnetRPC: () =>
+    Axios.get("/blockchain/endpoint")
+      .then((response) => response.data)
+      .catch((error) => error),
   postWalletAddress: (data) =>
     Axios.post("/blockchain/wallet", data)
       .then((response) => {
@@ -74,11 +77,14 @@ const blockchainServices = {
       .catch((error) => {
         throw error;
       }),
-  postSubscription: (planId, data) =>
+  postSubscription: (planId, data, feeGrantEnabled) =>
     Axios.post(`/blockchain/plans/${planId}/subscription`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
+        ...(feeGrantEnabled
+          ? { "x-fee-granter": FEE_GRANT_WALLET_ADDERSS }
+          : {}),
       },
     })
       .then((response) => {
@@ -87,22 +93,28 @@ const blockchainServices = {
       .catch((error) => {
         throw error;
       }),
-  postSession: (walletAddress, data) =>
+  postSession: (walletAddress, data, feeGrantEnabled) =>
     Axios.post(`/blockchain/wallet/${walletAddress}/session`, data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
+        ...(feeGrantEnabled
+          ? { "x-fee-granter": FEE_GRANT_WALLET_ADDERSS }
+          : {}),
       },
     })
       .then((response) => response.data)
       .catch((e) => {
         throw e;
       }),
-  postCredentials: (data) =>
+  postCredentials: (data, feeGrantEnabled) =>
     Axios.post("/blockchain/wallet/connect", data, {
       headers: {
         "x-chain-id": "sentinelhub-2",
         "x-gas-prices": GAS_PRICE_AMOUNT,
+        ...(feeGrantEnabled
+          ? { "x-fee-granter": FEE_GRANT_WALLET_ADDERSS }
+          : {}),
       },
     })
       .then((response) => response.data)

@@ -21,7 +21,12 @@ const getSessionId = (sessionGot) => {
   return null;
 };
 
-export const createSession = async ({ node, subscription, walletAddress }) => {
+export const createSession = async ({
+  node,
+  subscription,
+  walletAddress,
+  feeGrantEnabled,
+}) => {
   try {
     const sessionGot = await getSession(walletAddress);
     if (sessionGot && sessionGot === 500) {
@@ -32,9 +37,11 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
       subscriptionID: Number.parseInt(subscription.id),
       node: node.address,
     };
+
     const response = await blockchainServices.postSession(
       walletAddress,
-      payload
+      payload,
+      feeGrantEnabled
     );
 
     if (response.code) {
@@ -77,7 +84,12 @@ export const createSession = async ({ node, subscription, walletAddress }) => {
   }
 };
 
-export const createCredentials = async ({ session, node, walletAddress }) => {
+export const createCredentials = async ({
+  session,
+  node,
+  walletAddress,
+  feeGrantEnabled,
+}) => {
   try {
     const payload = {
       url: node.remote_url,
@@ -85,7 +97,10 @@ export const createCredentials = async ({ session, node, walletAddress }) => {
       address: walletAddress,
       session: Number.parseInt(session.id),
     };
-    const credentials = await blockchainServices.postCredentials(payload);
+    const credentials = await blockchainServices.postCredentials(
+      payload,
+      feeGrantEnabled
+    );
     return credentials;
   } catch (e) {
     return null;

@@ -21,6 +21,7 @@ import DNSList from "./Screens/App/DNSList";
 import NewDNS from "./Screens/App/NewDNS";
 import SettingsLayout from "./layouts/SettingsLayout";
 import NewRPC from "./Screens/App/NewRPC";
+import FeeGranter from "./Screens/App/FeeGranter";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -49,6 +50,7 @@ const Navigation = () => {
             <Route path="dns-list" element={<DNSList />} />
             <Route path="new-dns" element={<NewDNS />} />
             <Route path="rpc-change" element={<NewRPC />} />
+            <Route path="fee-granter" element={<FeeGranter />} />
           </Route>
           <Route path="private-key" element={<PrivateKey />} />
           <Route path="recent-servers" element={<RecentServers />} />

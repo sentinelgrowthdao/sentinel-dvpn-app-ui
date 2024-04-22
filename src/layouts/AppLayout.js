@@ -13,6 +13,7 @@ import {
   dispatchGetAccountBalance,
   dispatchGetAppVersion,
   dispatchGetAvailablePlans,
+  dispatchGetCurrnetRPC,
   dispatchGetIPAddress,
   dispatchGetUserSubscriptions,
 } from "../actions/home.actions";
@@ -37,6 +38,7 @@ const AppLayout = () => {
           dispatchGetVPNStatus(),
           dispatchGetAppVersion(),
           dispatchCheckLatestVersion(),
+          dispatchGetCurrnetRPC(),
           dispatchGetAvailableCountries(),
           dispatchGetAvailableDNS(),
           dispatchGetIPAddress(),

@@ -184,8 +184,12 @@ export const dispatchCurrentPrice = createAsyncThunk(
 
 export const dispatchSubscribeToPlan = createAsyncThunk(
   "SUBSCRIBE_TO_PLAN",
-  async (payload, { fulfillWithValue, rejectWithValue, dispatch }) => {
+  async (
+    payload,
+    { fulfillWithValue, rejectWithValue, dispatch, getState }
+  ) => {
     try {
+      const feeGrantEnabled = getState().device.feeGrantEnabled;
       dispatch(
         CHANGE_LOADER_STATE({
           show: true,
@@ -194,7 +198,8 @@ export const dispatchSubscribeToPlan = createAsyncThunk(
       );
       const response = await blockchainServices.postSubscription(
         SUBSCRIPTION_PLAN_ID_NUMBER,
-        payload
+        payload,
+        feeGrantEnabled
       );
 
       if (response.code) {
@@ -273,7 +278,25 @@ export const dispatchGetAppVersion = createAsyncThunk(
       const response = await registryServices.getUserVersion();
       return fulfillWithValue(response);
     } catch (e) {
-      console.error(e);
+      return rejectWithValue();
+    }
+  }
+);
+
+export const dispatchGetCurrnetRPC = createAsyncThunk(
+  "GET_CURRENT_RPC",
+  async (_, { fulfillWithValue, rejectWithValue, dispatch }) => {
+    try {
+      dispatch(
+        CHANGE_LOADER_STATE({
+          show: true,
+          message: "loader_fetching_current_rpc",
+        })
+      );
+      const response = await blockchainServices.getCurrnetRPC();
+      console.log(response);
+      return fulfillWithValue(response);
+    } catch (e) {
       return rejectWithValue();
     }
   }

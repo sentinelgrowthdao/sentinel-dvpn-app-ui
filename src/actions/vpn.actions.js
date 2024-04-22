@@ -74,6 +74,7 @@ export const connectAction = createAsyncThunk(
   "CONNECT_ACTION",
   async (node, { fulfillWithValue, rejectWithValue, dispatch, getState }) => {
     try {
+      const feeGrantEnabled = getState().device.feeGrantEnabled;
       const walletAddress = getState().device.walletAddress;
       const subscription = getState().home.subscription;
       dispatch(
@@ -83,6 +84,7 @@ export const connectAction = createAsyncThunk(
         node,
         subscription,
         walletAddress,
+        feeGrantEnabled,
       });
 
       if (!success) {
@@ -111,6 +113,7 @@ export const connectAction = createAsyncThunk(
             session,
             node,
             walletAddress,
+            feeGrantEnabled,
           });
           if (credentials) {
             dispatch(
