@@ -294,7 +294,7 @@ export const dispatchGetCurrnetRPC = createAsyncThunk(
         })
       );
       const response = await blockchainServices.getCurrnetRPC();
-      console.log(response);
+
       return fulfillWithValue(response);
     } catch (e) {
       return rejectWithValue();

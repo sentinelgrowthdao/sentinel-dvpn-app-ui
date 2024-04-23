@@ -11,6 +11,7 @@ import { withLoader } from "../../actions/loader.action";
 import {
   dispatchGetAccountBalance,
   dispatchGetAvailablePlans,
+  dispatchGetCurrnetRPC,
   dispatchGetUserSubscriptions,
 } from "../../actions/home.actions";
 
@@ -31,30 +32,45 @@ const NewRPC = () => {
   };
 
   const handleChangeRPC = async () => {
-    if (port < Number.parseInt(9999) && port > Number.parseInt(100)) {
-      try {
-        await Axios.post("/blockchain/endpoint", {
-          host,
-          port: Number.parseInt(port),
-        });
-        dispatch(
-          withLoader([
-            dispatchGetAvailablePlans(),
-            dispatchGetAccountBalance(),
-            dispatchGetUserSubscriptions(),
-          ])
-        );
-        navigate(-1, { replace: true });
-      } catch (e) {
-        dispatch(
-          CHANGE_ERROR_ALERT({
-            show: true,
-            message: "error_failed_to_change_endpoint",
-          })
-        );
-      }
-    } else {
+
+    if (port === rpc.port && host === rpc.host) {
+      navigate(-1, { replace: true });
+      return;
+    }
+    
+    if (String(host).trim().length === 0) {
+      setError("Invalid Host");
+      return;
+    }
+
+    const portInt = Number.parseInt(port);
+
+    if (!(portInt >= 100 && portInt <= 9999)) {
       setError("Invalid Port");
+      return;
+    }
+
+    try {
+      await Axios.post("/blockchain/endpoint", {
+        host,
+        port: portInt,
+      });
+      dispatch(
+        withLoader([
+          dispatchGetCurrnetRPC(),
+          dispatchGetAvailablePlans(),
+          dispatchGetAccountBalance(),
+          dispatchGetUserSubscriptions(),
+        ])
+      );
+      navigate(-1, { replace: true });
+    } catch (e) {
+      dispatch(
+        CHANGE_ERROR_ALERT({
+          show: true,
+          message: "error_failed_to_change_endpoint",
+        })
+      );
     }
   };
   return (
@@ -102,14 +118,12 @@ const NewRPC = () => {
           variant={variants.PRIMARY}
           title={t("btn_save")}
           onClick={handleChangeRPC}
-          disabled={String(host).trim() === "" || ![3, 4].includes(port.length)}
         />
         <Button
           className={styles["btn-clear"]}
           variant={variants.SECONDARY}
           title={t("btn_clear")}
           onClick={handleClear}
-          disabled={host === rpc.host || port === rpc.port}
         />
       </section>
     </div>
