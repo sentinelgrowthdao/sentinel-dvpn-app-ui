@@ -301,3 +301,18 @@ export const dispatchGetCurrnetRPC = createAsyncThunk(
     }
   }
 );
+
+export const dispatchIsFeeGrantEnabled = createAsyncThunk(
+  "IS_FEE_GRANT_ENABLED",
+  async (_, { getState, fulfillWithValue, rejectWithValue }) => {
+    try {
+      const walletAddress = getState().device.walletAddress;
+      await blockchainServices.getIsFeeGrantEnabled({
+        walletAddress,
+      });
+      return fulfillWithValue();
+    } catch (e) {
+      return rejectWithValue();
+    }
+  }
+);

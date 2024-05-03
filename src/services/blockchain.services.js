@@ -69,6 +69,14 @@ const blockchainServices = {
     Axios.get("/blockchain/endpoint")
       .then((response) => response.data)
       .catch((error) => error),
+  getIsFeeGrantEnabled: ({ walletAddress }) =>
+    Axios.get(
+      `blockchain/wallet/${walletAddress}/grants/${FEE_GRANT_WALLET_ADDERSS}`
+    )
+      .then((response) => response)
+      .catch((error) => {
+        throw error;
+      }),
   postWalletAddress: (data) =>
     Axios.post("/blockchain/wallet", data)
       .then((response) => {

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CHANGE_FEE_GRANT_ENABLED } from "../../redux/reducers/device.reducer";
 import Button, { variants } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { dispatchIsFeeGrantEnabled } from "../../actions/home.actions";
 const FeeGranter = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ const FeeGranter = () => {
           title={t("btn_save")}
           onClick={() => {
             dispatch(CHANGE_FEE_GRANT_ENABLED(isEnabled));
+            if (isEnabled) {
+              dispatch(dispatchIsFeeGrantEnabled());
+            }
             navigate(-1, { replace: true });
           }}
           disabled={isEnabled === feeGrantEnabled}

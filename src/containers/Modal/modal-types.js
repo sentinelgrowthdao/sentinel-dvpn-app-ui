@@ -1,4 +1,5 @@
 import DNSModal from "./DNSModal";
+import FeeGranterModal from "./FeeGranterModal";
 import FiltersModal from "./FiltersModal";
 import LogoutModal from "./LogoutModal";
 import NoBalanceModal from "./NoBalanceModal";
@@ -10,6 +11,7 @@ const types = {
   filters: FiltersModal,
   dns: DNSModal,
   logout: LogoutModal,
+  "fee-granter": FeeGranterModal,
 };
 
 export const MODAL_VARIANTS = {

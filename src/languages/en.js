@@ -17,6 +17,7 @@ const en = {
   btn_add_dns: "Add DNS",
   btn_save: "Save",
   btn_clear: "Clear",
+  btn_proceed: "Proceed",
   modal_something_wrong: "Something went wrong...!",
   modal_error_while_initiating_the_app:
     "There is an error while initiating the app.",
@@ -178,6 +179,9 @@ const en = {
   fee_grant: "Set Fee Granter",
   default_granter_address: "Default Granter Address",
   no_granter: "No Granter (You Pay Gas Yourself)",
+  fee_grant_subheader:
+    "Fee Granter will soon be available. Please proceed without fee grant, your wallet has been funded for gas payments. Please check your internet connection before proceed.",
+  what_is_fee_grant: "What is fee grant?",
 };
 
 export default en;
