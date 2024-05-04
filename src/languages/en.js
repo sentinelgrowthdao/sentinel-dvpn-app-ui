@@ -21,10 +21,11 @@ const en = {
   modal_something_wrong: "Something went wrong...!",
   modal_error_while_initiating_the_app:
     "There is an error while initiating the app.",
-  modal_update_available: "Update available...!",
+  modal_update_available: "Update available!",
   modal_your_app_version: "Your app version is {{version}}",
   modal_latest_app_version: "Latest version available {{version}}",
-  modal_update_app_to_enjoy: "Please update the app to enjoy.",
+  modal_update_app_to_enjoy:
+    "Please update the app to fix any bugs and ensure security.",
   modal_select_a_dns: "Select a DNS",
   modal_filter_by_protocols: "Filter by Protocols",
   modal_all: "All",
