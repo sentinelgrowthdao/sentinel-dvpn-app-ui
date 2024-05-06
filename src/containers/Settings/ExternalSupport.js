@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 const constants = [
   {
     icon: TwitterIcon,
-    link: "https://twitter.com/SentinelVPN",
+    link: "https://twitter.com/SentinelDVPN",
   },
   {
     icon: GithubIcon,
@@ -23,7 +23,7 @@ const constants = [
   },
   {
     icon: TelegramIcon,
-    link: "https://t.me/sentinel_co",
+    link: "https://t.me/SentinelDVPN",
   },
   {
     icon: GlobeIcon,
