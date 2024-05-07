@@ -117,7 +117,7 @@ const RecentServers = () => {
       {filtered && filtered.length > 0 && (
         <section className={styles.list}>
           {filtered.map((s, i) => {
-            return <ServersCard server={s} key={`server_${i}`} />;
+            return <ServersCard server={s} index={i} key={`server_${i}`} />;
           })}
         </section>
       )}

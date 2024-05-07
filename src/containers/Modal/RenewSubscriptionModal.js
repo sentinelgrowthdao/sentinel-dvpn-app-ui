@@ -20,6 +20,7 @@ import {
 import { MODAL_VARIANTS } from "./modal-types";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { dispatchWindowOpen } from "../../actions/settings.action";
 
 const RenewSubscriptionModal = () => {
   const { t } = useTranslation();
@@ -114,9 +115,23 @@ const RenewSubscriptionModal = () => {
     <div className={styles["renew-subscription-modal"]}>
       <img src={TimeIcon} alt="" />
       <span className={styles.title}>{t("modal_no_subscriptions_title")}</span>
-      <span className={styles.description}>
-        {t("modal_no_subscriptions_desc")}
-      </span>
+      <section className={styles.subtitle}>
+        <span className={styles.description}>
+          {t("modal_no_subscriptions_desc")}
+        </span>
+        <span
+          className={styles.link}
+          onClick={() =>
+            dispatch(
+              dispatchWindowOpen(
+                "https://medium.com/sentinel/introduction-of-on-chain-subscriptions-and-time-based-payments-sentinels-biggest-dvpn-protocol-a2b240199f18#:~:text=Sentinel's%20biggest%20upgrade%20to%20its,dVPN%20applications%20built%20on%20Sentinel"
+              )
+            )
+          }
+        >
+          {t("modal_no_subscriptions_link_text")}
+        </span>
+      </section>
       <Button
         className={styles.btn}
         title={t("btn_renew", { price })}

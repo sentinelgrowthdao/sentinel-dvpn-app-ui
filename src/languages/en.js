@@ -39,7 +39,8 @@ const en = {
   modal_no_balance_desc: "You have insufficient balance in your account!",
   modal_no_subscriptions_title: "You do not have an active subscription",
   modal_no_subscriptions_desc:
-    "Purchase one month of subscription to enjoy Sentinel dVPN",
+    "Purchase one month of subscription from a decentralized contract on",
+  modal_no_subscriptions_link_text: "Sentinel's Blockchain",
   welcome_to_sentinel_title: "Welcome to Sentinel",
   welcome_to_sentinel_desc: `Create a new on-chain account anonymously today or import an existing
   account from Sentinel's Layer-1 Networking DePin focused chain.`,
@@ -181,8 +182,46 @@ const en = {
   default_granter_address: "Default Granter Address",
   no_granter: "No Granter (You Pay Gas Yourself)",
   fee_grant_subheader:
-    "Fee Granter will soon be available. Please proceed without fee grant, your wallet has been funded for gas payments. Please check your internet connection before proceed.",
+    "Fee Granter will soon be available. Please proceed without fee grant, your wallet has been funded for gas payments. Please check your internet connection before proceeding.",
   what_is_fee_grant: "What is fee grant?",
+  onboarding: {
+    home_welcome_to: "Welcome to",
+    sentinel_shield_dvpn: "Sentinel Shield dVPN",
+    home_description:
+      "Decentralized, Open-Source, p2p VPN application powered by the Sentinel Blockchain",
+    slides: {
+      one: {
+        text_one: `Sentinel Shield is a fully decentralized, open-source, and peer to peer
+          VPN application. Browse the internet with no centralized servers or
+          obscure code monitoring you.`,
+        text_two: "The Sentinel Shield dVPN is built on",
+        text_three: "powered by the Cosmos-SDK.",
+        text_four: "Find out more about",
+        text_five: "to see this dVPN application's code on Github",
+        link_one: "Sentinel's blockchain",
+        link_two: "Cosmos.",
+        link_three: "Click here",
+      },
+      two: {
+        text_one:
+          "Servers hosted on Sentinel are hosted by individuals from all over the world. These servers communicate directly with the Sentinel blockchain to indicate their availability, and the Sentinel Shield dVPN scans the Sentinel blockchain to identify available servers.",
+        text_two: "See the Sentinel dVPN",
+        link_one: "Node Map",
+      },
+      three: {
+        text_one: "The",
+        text_two: `is used as a payment for subscription in this application. The current
+        rate for 1 month of subscription is 1333.33 $DVPN. New payment methods
+        will be added in the near future.`,
+        text_three: "On-Chain subscription",
+        text_four:
+          "on Sentinel allow for users to receive 1-click access to thousands of nodes.",
+        link_one: "Sentinel $DVPN",
+        link_two: "contracts",
+      },
+    },
+  },
+  click_here: "Click here",
 };
 
 export default en;

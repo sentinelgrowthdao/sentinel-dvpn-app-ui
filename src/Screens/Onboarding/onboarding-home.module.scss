@@ -1,0 +1,30 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 16px;
+  transform: translateY(-48px);
+  .home-img {
+    aspect-ratio: 1 / 1;
+    height: 200px;
+  }
+  .title {
+    margin: 36px 0;
+    font-size: 28px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .description {
+    color: #9cabc9;
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

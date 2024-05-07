@@ -22,6 +22,7 @@ import NewDNS from "./Screens/App/NewDNS";
 import SettingsLayout from "./layouts/SettingsLayout";
 import NewRPC from "./Screens/App/NewRPC";
 import FeeGranter from "./Screens/App/FeeGranter";
+import OnboardingHome from "./Screens/Onboarding/OnboardingHome";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -61,7 +62,8 @@ const Navigation = () => {
   return (
     <Routes>
       <Route path="/" element={<OnboardingLayout />}>
-        <Route index element={<Start />} />
+        <Route index element={<OnboardingHome />} />
+        <Route path="start" element={<Start />} />
         <Route path="create" element={<Create />} />
         <Route path="import" element={<Import />} />
       </Route>

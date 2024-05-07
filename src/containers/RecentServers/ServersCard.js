@@ -13,7 +13,7 @@ import TrashIcon from "../../assets/icons/trash-icon.svg";
 import Button from "../../components/Button";
 import { REMOVE_RECENT_SERVER } from "../../redux/reducers/device.reducer";
 import { useTranslation } from "react-i18next";
-const ServersCard = ({ server }) => {
+const ServersCard = ({ server, index }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -90,13 +90,15 @@ const ServersCard = ({ server }) => {
         </section>
       </button>
       <section className={styles.right}>
-        <Button
-          icon={TrashIcon}
-          variant={variants.TRANSPARENT}
-          onClick={() => {
-            dispatch(REMOVE_RECENT_SERVER(server));
-          }}
-        />
+        {index !== 0 && (
+          <Button
+            icon={TrashIcon}
+            variant={variants.TRANSPARENT}
+            onClick={() => {
+              dispatch(REMOVE_RECENT_SERVER(server));
+            }}
+          />
+        )}
       </section>
     </Card>
   );
