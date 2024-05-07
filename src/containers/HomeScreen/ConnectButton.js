@@ -184,7 +184,7 @@ const ConnectButton = () => {
       />
     );
   }
-  console.log("isConnecting", isConnecting);
+
   return (
     <Button
       onClick={handleConnect}

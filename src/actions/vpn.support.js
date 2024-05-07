@@ -1,3 +1,4 @@
+import { CHANGE_LOADER_STATE } from "../redux/reducers/alerts.reducer";
 import blockchainServices from "../services/blockchain.services";
 import vpnServices from "../services/vpn.services";
 import { getTxDetails } from "./common.support";
@@ -21,12 +22,10 @@ const getSessionId = (sessionGot) => {
   return null;
 };
 
-export const createSession = async ({
-  node,
-  subscription,
-  walletAddress,
-  feeGrantEnabled,
-}) => {
+export const createSession = async (
+  { node, subscription, walletAddress, feeGrantEnabled },
+  dispatch
+) => {
   try {
     const sessionGot = await getSession(walletAddress);
     if (sessionGot && sessionGot === 500) {
@@ -37,7 +36,9 @@ export const createSession = async ({
       subscriptionID: Number.parseInt(subscription.id),
       node: node.address,
     };
-
+    dispatch(
+      CHANGE_LOADER_STATE({ show: true, message: "loader_creating_session" })
+    );
     const response = await blockchainServices.postSession(
       walletAddress,
       payload,
@@ -59,7 +60,9 @@ export const createSession = async ({
         };
       }
     }
-
+    dispatch(
+      CHANGE_LOADER_STATE({ show: true, message: "loader_creating_session" })
+    );
     const details = await getTxDetails(response.txhash);
 
     if (details.code) {

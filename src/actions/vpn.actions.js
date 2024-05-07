@@ -80,12 +80,15 @@ export const connectAction = createAsyncThunk(
       dispatch(
         CHANGE_LOADER_STATE({ show: true, message: "loader_creating_session" })
       );
-      const { success, message } = await createSession({
-        node,
-        subscription,
-        walletAddress,
-        feeGrantEnabled,
-      });
+      const { success, message } = await createSession(
+        {
+          node,
+          subscription,
+          walletAddress,
+          feeGrantEnabled,
+        },
+        dispatch
+      );
 
       if (!success) {
         dispatch(
