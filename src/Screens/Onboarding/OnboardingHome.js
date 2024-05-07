@@ -9,7 +9,7 @@ const OnboardingHome = () => {
   const { t } = useTranslation();
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      navigate("/start");
+      navigate("/start", { replace: true });
     }, 2000);
     return () => clearTimeout(timeout);
   }, [navigate]);

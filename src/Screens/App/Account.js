@@ -11,7 +11,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
 import { useTranslation } from "react-i18next";
-
+import BuiltOnCosmosImg from "../../assets/images/built-on-cosmos.svg";
 const cards = [
   {
     icon: SubscriptionsIcon,
@@ -81,6 +81,10 @@ const Account = () => {
           </Card>
         );
       })}
+
+      <section className={styles.bottom}>
+        <img className={styles["cosmos-img"]} src={BuiltOnCosmosImg} alt="" />
+      </section>
     </div>
   );
 };

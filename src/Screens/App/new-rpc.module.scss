@@ -71,6 +71,19 @@
         }
       }
     }
+    .link {
+      font-size: 14px;
+      background: none;
+      outline: none;
+      border: none;
+      color: #0184fc;
+      padding: 0;
+      margin-right: 4px;
+      text-decoration: none;
+      transform: translateY(2px);
+      cursor: pointer;
+      font-weight: 500;
+    }
   }
   .error {
     height: 48px;

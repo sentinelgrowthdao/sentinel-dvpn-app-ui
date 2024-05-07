@@ -52,4 +52,16 @@
       }
     }
   }
+  .bottom {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 156px;
+    .cosmos-img {
+      width: 100%;
+      max-width: 200px;
+      margin: 24px 0;
+    }
+  }
 }

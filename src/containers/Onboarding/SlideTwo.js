@@ -29,6 +29,22 @@ const SlideTwo = () => {
           {t("onboarding.slides.two.link_one")}
         </span>
       </section>
+      <section
+        className={`${styles.para} ${styles["para-with-links"]} ${styles.center}`}
+      >
+        <span
+          onClick={() => {
+            dispatch(
+              dispatchWindowOpen(
+                "https://docs.sentinel.co/assets/files/whitepaper-513665f81a5d6c4b462e111926d26f57.pdf"
+              )
+            );
+          }}
+          className={styles.link}
+        >
+          {t("onboarding.slides.two.link_two")}
+        </span>
+      </section>
     </div>
   );
 };

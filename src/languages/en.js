@@ -207,6 +207,7 @@ const en = {
           "Servers hosted on Sentinel are hosted by individuals from all over the world. These servers communicate directly with the Sentinel blockchain to indicate their availability, and the Sentinel Shield dVPN scans the Sentinel blockchain to identify available servers.",
         text_two: "See the Sentinel dVPN",
         link_one: "Node Map",
+        link_two: "Download the Sentinel Whitepaper",
       },
       three: {
         text_one: "The",

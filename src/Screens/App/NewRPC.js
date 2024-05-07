@@ -14,6 +14,7 @@ import {
   dispatchGetCurrnetRPC,
   dispatchGetUserSubscriptions,
 } from "../../actions/home.actions";
+import { dispatchWindowOpen } from "../../actions/settings.action";
 
 const NewRPC = () => {
   const { t } = useTranslation();
@@ -32,12 +33,11 @@ const NewRPC = () => {
   };
 
   const handleChangeRPC = async () => {
-
     if (port === rpc.port && host === rpc.host) {
       navigate(-1, { replace: true });
       return;
     }
-    
+
     if (String(host).trim().length === 0) {
       setError("Invalid Host");
       return;
@@ -106,6 +106,16 @@ const NewRPC = () => {
             />
           </label>
         </section>
+        <span
+          className={styles.link}
+          onClick={() =>
+            dispatch(
+              dispatchWindowOpen("https://cosmos.directory/sentinel/nodes")
+            )
+          }
+        >
+          Sentinel Community RPC List
+        </span>
       </div>
       <section className={styles.error}>
         {error && error.length > 0 && (
