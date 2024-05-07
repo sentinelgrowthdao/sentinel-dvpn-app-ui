@@ -18,6 +18,7 @@ const ServersCard = ({ server, index }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
+  const isConnecting = useSelector((state) => state.alerts.isConnecting);
 
   const connect = async () => {
     const dispatched = dispatch(connectAction(server));
@@ -57,6 +58,7 @@ const ServersCard = ({ server, index }) => {
           }
           connect();
         }}
+        disabled={isConnecting}
       >
         <section className={styles.top}>
           <ReactCountryFlag

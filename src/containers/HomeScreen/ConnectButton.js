@@ -35,6 +35,7 @@ const ConnectButton = () => {
   const countries = useSelector((state) => state.nodes.countries);
   const cities = useSelector((state) => state.nodes.cities.all);
   const nodes = useSelector((state) => state.nodes.servers.all);
+  const isConnecting = useSelector((state) => state.alerts.isConnecting);
 
   const getServers = async () => {
     try {
@@ -183,11 +184,11 @@ const ConnectButton = () => {
       />
     );
   }
-
+  console.log("isConnecting", isConnecting);
   return (
     <Button
       onClick={handleConnect}
-      disabled={countries && countries.length === 0}
+      disabled={(countries && countries.length === 0) || isConnecting}
       icon={QuickConnectIcon}
       variant={variants.PRIMARY}
       title={t("btn_quick_connect")}

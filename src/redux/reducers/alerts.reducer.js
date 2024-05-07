@@ -9,6 +9,7 @@ import { MODAL_VARIANTS } from "../../containers/Modal/modal-types";
 import { dispatchIsFeeGrantEnabled } from "../../actions/home.actions";
 
 const initialState = {
+  isConnecting: false,
   success: {
     show: false,
     message: null,
@@ -112,15 +113,30 @@ const alertsSlice = createSlice({
     builder
       .addCase(connectAction.pending, (state) => ({
         ...state,
-        loader: { ...state.loader, show: true, message: "Loading..." },
+        loader: {
+          ...state.loader,
+          show: true,
+          message: "Loading...",
+        },
+        isConnecting: true,
       }))
       .addCase(connectAction.rejected, (state) => ({
         ...state,
-        loader: { ...state.loader, show: false, message: null },
+        loader: {
+          ...state.loader,
+          show: false,
+          message: null,
+        },
+        isConnecting: false,
       }))
       .addCase(connectAction.fulfilled, (state) => ({
         ...state,
-        loader: { ...state.loader, show: false, message: null },
+        loader: {
+          ...state.loader,
+          show: false,
+          message: null,
+        },
+        isConnecting: false,
       }));
 
     builder
@@ -163,7 +179,7 @@ export const {
   CHANGE_LOADER_STATE,
   CHANGE_SUCCESS_ALERT,
   CHANGE_MODAL_STATE,
-  CHANGE_GRANTER_LOADING
+  CHANGE_GRANTER_LOADING,
 } = alertsSlice.actions;
 
 export default alertsSlice.reducer;

@@ -31,6 +31,7 @@ const QuickConnectButton = () => {
   const cities = useSelector((state) => state.nodes.cities.all);
   const nodes = useSelector((state) => state.nodes.servers.all);
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
+  const isConnecting = useSelector((state) => state.alerts.isConnecting);
 
   const getServers = async () => {
     try {
@@ -155,6 +156,7 @@ const QuickConnectButton = () => {
         }
         connect();
       }}
+      disabled={isConnecting}
       variant={isVPNConnected ? variants.SECONDARY : variants.PRIMARY}
       className={styles.root}
       icon={QuickConnectIcon}

@@ -18,6 +18,7 @@ const ServerCard = ({ server }) => {
   const dispatch = useDispatch();
   const { balance, subscription } = useSelector((state) => state.home);
   const isVPNConnected = useSelector((state) => state.device.isVPNConnected);
+  const isConnecting = useSelector((state) => state.alerts.isConnecting);
 
   const connect = async (node) => {
     if (balance <= GAS_PRICE_AMOUNT) {
@@ -82,6 +83,7 @@ const ServerCard = ({ server }) => {
           }
           connect(server);
         }}
+        disabled={isConnecting}
       >
         <section className={styles.details}>
           <span className={styles.name}>{server.name}</span>
