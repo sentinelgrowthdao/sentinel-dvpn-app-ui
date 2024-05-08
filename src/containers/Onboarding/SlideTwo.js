@@ -3,6 +3,7 @@ import styles from "./page-slider.module.scss";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { dispatchWindowOpen } from "../../actions/settings.action";
+import MapImage from "../../assets/images/map.png";
 const SlideTwo = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -11,12 +12,8 @@ const SlideTwo = () => {
       <section className={styles.para}>
         <span>{t("onboarding.slides.two.text_one")}</span>
       </section>
-      <section className={styles.frame}>
-        <iframe
-          src="https://map.sentinel.co"
-          title="Sentinel Map"
-          className={styles["map-frame"]}
-        />
+      <section className={styles.image}>
+        <img className={styles["map-img"]} src={MapImage} alt="" />
       </section>
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
         <span>{t("onboarding.slides.two.text_two")}</span>

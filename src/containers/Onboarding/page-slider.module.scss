@@ -64,6 +64,10 @@
       max-width: 200px;
       margin: 24px 0;
     }
+    .map-img {
+      width: calc(100% - 16px);
+      margin: 24px 0;
+    }
   }
   .frame {
     width: 100%;
