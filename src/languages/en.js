@@ -18,6 +18,7 @@ const en = {
   btn_save: "Save",
   btn_clear: "Clear",
   btn_proceed: "Proceed",
+  btn_retry: "Retry",
   modal_something_wrong: "Something went wrong...!",
   modal_error_while_initiating_the_app:
     "There is an error while initiating the app.",
@@ -41,6 +42,11 @@ const en = {
   modal_no_subscriptions_desc:
     "Purchase one month of subscription from a decentralized contract on",
   modal_no_subscriptions_link_text: "Sentinel's Blockchain",
+  modal_try_again: "Try again!",
+  modal_failed_fetch_subcriptions:
+    "Unable to get your subcription details now!",
+  modal_try_again_subsctiptions:
+    "Please retry to fetch the subcription details!",
   welcome_to_sentinel_title: "Welcome to Sentinel",
   welcome_to_sentinel_desc: `Create a new on-chain account anonymously today or import an existing
   account from Sentinel's Layer-1 Networking DePin focused chain.`,

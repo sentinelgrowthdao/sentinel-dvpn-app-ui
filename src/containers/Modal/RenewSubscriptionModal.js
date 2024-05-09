@@ -27,7 +27,9 @@ const RenewSubscriptionModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { balance, subscription, plan } = useSelector((state) => state.home);
+  const { balance, subscription, plan, isSubscriptionsLoaded } = useSelector(
+    (state) => state.home
+  );
 
   const [price, setPrice] = React.useState(0.0);
 
@@ -110,6 +112,47 @@ const RenewSubscriptionModal = () => {
       );
     }
   };
+
+  const handleRetry = () => {
+    dispatch(
+      withLoader([
+        CHANGE_MODAL_STATE({ show: false, type: "" }),
+        dispatchGetUserSubscriptions(),
+      ])
+    );
+  };
+
+  if (!isSubscriptionsLoaded) {
+    return (
+      <div className={styles["renew-subscription-try-again-modal"]}>
+        <span className={styles.title}>{t("modal_try_again")}</span>
+        <section className={styles.subtitle}>
+          <span className={styles.description}>
+            {t("modal_failed_fetch_subcriptions")}
+          </span>
+          <span className={styles.description}>
+            {t("modal_try_again_subsctiptions")}
+          </span>
+        </section>
+        <section className={styles.btns}>
+          <Button
+            className={styles.btn}
+            title={t("btn_cancel")}
+            variant={variants.SECONDARY}
+            onClick={() => {
+              dispatch(CHANGE_MODAL_STATE({ show: false, type: "" }));
+            }}
+          />
+          <Button
+            className={styles.btn}
+            title={t("btn_retry")}
+            variant={variants.PRIMARY}
+            onClick={handleRetry}
+          />
+        </section>
+      </div>
+    );
+  }
 
   return (
     <div className={styles["renew-subscription-modal"]}>

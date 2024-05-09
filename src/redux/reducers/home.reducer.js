@@ -19,6 +19,7 @@ const initialState = {
     providerAddress: null,
     denom: "udvpn",
   },
+  isSubscriptionsLoaded: false,
   subscription: {},
   version: "0.0.0",
   isHomeLoaded: false,
@@ -55,13 +56,19 @@ const homeSlice = createSlice({
         },
       })
     );
-    builder.addCase(
-      dispatchGetUserSubscriptions.fulfilled,
-      (state, { payload }) => ({
+    builder
+      .addCase(dispatchGetUserSubscriptions.rejected, (state) => ({
         ...state,
-        subscription: payload,
-      })
-    );
+        isSubscriptionsLoaded: false,
+      }))
+      .addCase(
+        dispatchGetUserSubscriptions.fulfilled,
+        (state, { payload }) => ({
+          ...state,
+          isSubscriptionsLoaded: true,
+          subscription: payload,
+        })
+      );
     builder.addCase(dispatchCurrentPrice.fulfilled, (state, { payload }) => ({
       ...state,
       price: payload,
