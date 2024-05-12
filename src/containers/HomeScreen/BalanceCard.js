@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../../components/Card";
 import styles from "./balance-card.module.scss";
 import BalanceIcon from "../../assets/icons/balance-icon.svg";
+import PoweredByCosmosIcon from "../../assets/icons/powered-by-cosmos.svg";
 import ReloadIcon from "../../assets/icons/reload-icon.svg";
 import Button, { variants } from "../../components/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,21 +37,30 @@ const BalanceCard = () => {
   };
   return (
     <Card className={styles.root}>
-      <section className={styles.left}>
-        <img src={BalanceIcon} alt="" />
+      <section className={styles.top}>
+        <section className={styles.left}>
+          <img src={BalanceIcon} alt="" />
+        </section>
+        <section className={styles.middle}>
+          <span className={styles.title}>{t("your_balance")}</span>
+          <span className={styles.description}>
+            {`${formatAmount(balance / 1e6)}`} DVPN
+          </span>
+        </section>
+        <section className={styles.right}>
+          <Button
+            variant={variants.TRANSPARENT}
+            icon={ReloadIcon}
+            onClick={handleReloader}
+            className={`${styles["reload-btn"]}`}
+          />
+        </section>
       </section>
-      <section className={styles.middle}>
-        <span className={styles.title}>{t("your_balance")}</span>
-        <span className={styles.description}>
-          {`${formatAmount(balance / 1e6)}`} DVPN
-        </span>
-      </section>
-      <section className={styles.right}>
-        <Button
-          variant={variants.TRANSPARENT}
-          icon={ReloadIcon}
-          onClick={handleReloader}
-          className={`${styles["reload-btn"]}`}
+      <section className={styles.bottom}>
+        <img
+          className={styles["powered-by-cosmos"]}
+          src={PoweredByCosmosIcon}
+          alt=""
         />
       </section>
     </Card>

@@ -9,6 +9,9 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   font-weight: 500;
+  @media only screen and (max-width: 300px) {
+    font-size: 12px;
+  }
   img {
     margin: 0 4px;
   }
