@@ -1,7 +1,4 @@
-import React, { useRef } from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React from "react";
 import Button, { variants } from "../../components/Button";
 import styles from "./page-slider.module.scss";
 import SlideOne from "./SlideOne";
@@ -10,39 +7,15 @@ import SlideThree from "./SlideThree";
 
 const slides = [SlideOne, SlideTwo, SlideThree];
 
-const settings = {
-  dots: false,
-  arrows: false,
-  infinite: false,
-  draggable: false,
-  swipe: false,
-  touchMove: false,
-  speed: 0,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  onSwipe: () => {},
-  adaptiveHeight: true,
-};
-
-const PageSlider = ({ navigateTo }) => {
-  const sliderRef = useRef();
-  const [currentSlide, setCurrentSlide] = React.useState(1);
-  const goToNextSlide = () => {
-    if (sliderRef && sliderRef.current) {
-      sliderRef.current.slickNext();
-      setCurrentSlide(currentSlide + 1);
-    }
-  };
-
+const PageSlider = ({ navigateTo, currentSlide, goToNextSlide }) => {
   return (
     <div className={styles.root}>
-      <Slider className={styles.slider} ref={sliderRef} {...settings}>
-        {slides.map((Slide, index) => (
-          <Slide key={`slide-${index}`} />
-        ))}
-      </Slider>
+      {currentSlide === 0 && <SlideOne />}
+      {currentSlide === 1 && <SlideTwo />}
+      {currentSlide === 2 && <SlideThree />}
+
       <section className={styles.bottom}>
-        {slides.length === currentSlide ? (
+        {slides.length - 1 === currentSlide ? (
           <Button
             className={styles.btn}
             variant={variants.PRIMARY}

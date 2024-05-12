@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.deb816d9.css",
-    "main.js": "/static/js/main.adef4dc5.js",
+    "main.css": "/static/css/main.ba2fbdfd.css",
+    "main.js": "/static/js/main.bfd01a1a.js",
     "static/js/879.e7e91aa3.chunk.js": "/static/js/879.e7e91aa3.chunk.js",
     "static/media/map.png": "/static/media/map.1220a4270f0ca519c1ce.png",
     "static/media/onboarding-screen-bg.png": "/static/media/onboarding-screen-bg.6113a53309e8c6ea3d2d.png",
@@ -13,15 +13,11 @@
     "static/media/balance-icon.svg": "/static/media/balance-icon.57feba6f26c1ecc53e6d859778792d2c.svg",
     "static/media/onboarding-lock-icon.svg": "/static/media/onboarding-lock-icon.54f1e33c57ca3a0951e4.svg",
     "static/media/onboarding-home.svg": "/static/media/onboarding-home.c4cd5541f20e717acc6d3c0ea4d9c541.svg",
-    "static/media/slick.svg": "/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/trash-icon.svg": "/static/media/trash-icon.d878fd380b135c59abb54ac52275a0f1.svg",
     "static/media/fee-icon.svg": "/static/media/fee-icon.b55bcb29a705cc636665a56f4fb5aa0f.svg",
     "static/media/globe-icon.svg": "/static/media/globe-icon.96ce2a25ec78c136fe0bd946c179c2f0.svg",
     "static/media/tab-nodes-icon.svg": "/static/media/tab-nodes-icon.592e15f87bb9dba03228de45d6031221.svg",
     "static/media/tab-recents-icon.svg": "/static/media/tab-recents-icon.e693a5b69c310f969625edb84f97c886.svg",
-    "static/media/slick.woff": "/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/index.html",
     "static/media/github-icon.svg": "/static/media/github-icon.0d250a0caa57293a4afa504af4188579.svg",
     "static/media/time-icon.svg": "/static/media/time-icon.3e3ea3d9832053d4663f1bb7384b35d7.svg",
@@ -50,12 +46,12 @@
     "static/media/share-icon.svg": "/static/media/share-icon.f40e0daf3ece60e073f4e96cdadb3ae9.svg",
     "static/media/offline-icon.svg": "/static/media/offline-icon.72df1a1a4f32d694fea5ada0ed042cae.svg",
     "static/media/online-icon.svg": "/static/media/online-icon.9458fc7c44a64b2a80cb6043ef29ea0e.svg",
-    "main.deb816d9.css.map": "/static/css/main.deb816d9.css.map",
-    "main.adef4dc5.js.map": "/static/js/main.adef4dc5.js.map",
+    "main.ba2fbdfd.css.map": "/static/css/main.ba2fbdfd.css.map",
+    "main.bfd01a1a.js.map": "/static/js/main.bfd01a1a.js.map",
     "879.e7e91aa3.chunk.js.map": "/static/js/879.e7e91aa3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.deb816d9.css",
-    "static/js/main.adef4dc5.js"
+    "static/css/main.ba2fbdfd.css",
+    "static/js/main.bfd01a1a.js"
   ]
 }

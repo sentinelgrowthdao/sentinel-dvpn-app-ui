@@ -12,6 +12,7 @@
     grid-template-columns: 48px 1fr 48px;
     align-items: center;
     padding: 8px;
+    overflow-x: hidden;
     .left {
       width: 100%;
       height: 100%;
@@ -90,6 +91,7 @@
     }
   }
   .bottom {
+    max-height: 20px;
     width: 100%;
     height: 100%;
     background-color: #000000;

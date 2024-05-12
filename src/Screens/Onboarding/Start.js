@@ -7,9 +7,17 @@ import PageSlider from "../../containers/Onboarding/PageSlider";
 const Start = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [currentSlide, setCurrentSlide] = React.useState(0);
+
   const navigateTo = (href) => {
     navigate(href, { replace: true });
   };
+
+  const goToNextSlide = () => {
+    window.scrollTo(0, 0);
+    setCurrentSlide(currentSlide + 1);
+  };
+
   return (
     <div className={styles.root}>
       <section className={styles.top}>
@@ -19,7 +27,11 @@ const Start = () => {
         </span>
       </section>
       <section className={styles.middle}>
-        <PageSlider navigateTo={navigateTo} />
+        <PageSlider
+          navigateTo={navigateTo}
+          goToNextSlide={goToNextSlide}
+          currentSlide={currentSlide}
+        />
       </section>
     </div>
   );
