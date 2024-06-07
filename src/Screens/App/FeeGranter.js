@@ -17,7 +17,7 @@ const FeeGranter = () => {
 
   return (
     <div className={styles.root}>
-      <BackButton to={"Home"} />
+      <BackButton to={"home"} />
       <div className={styles.container}>
         <span className={styles.header}>{t("fee_grant")}</span>
         <section className={styles.form}>

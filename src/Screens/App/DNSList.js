@@ -34,7 +34,7 @@ const DNSList = () => {
 
   return (
     <div className={styles.root}>
-      <BackButton to={"Home"} />
+      <BackButton to={"home"} />
       <div className={styles.container}>
         <span className={styles.header}>{t("dns_details")}</span>
         <section className={styles.list}>

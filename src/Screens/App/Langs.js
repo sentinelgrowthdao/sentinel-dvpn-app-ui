@@ -14,7 +14,7 @@ const Langs = () => {
   const current = window.localStorage.getItem("language") || "en";
   return (
     <div className={styles.root}>
-      <BackButton to={"Home"} />
+      <BackButton to={"home"} />
       <section className={styles.container}>
         <span className={styles.header}>{t("choose_lang")}</span>
         <section className={styles.list}>

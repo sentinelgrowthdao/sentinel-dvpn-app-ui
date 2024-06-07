@@ -75,7 +75,7 @@ const NewRPC = () => {
   };
   return (
     <div className={styles.root}>
-      <BackButton to={"Home"} />
+      <BackButton to={"home"} />
       <div className={styles.container}>
         <span className={styles.header}>{t("blockchain_endpoint")}</span>
         <section className={styles.form}>

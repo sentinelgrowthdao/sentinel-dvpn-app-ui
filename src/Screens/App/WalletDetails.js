@@ -13,7 +13,7 @@ const WalletDetails = () => {
 
   return (
     <div className={styles.root}>
-      <BackButton to="Home" />
+      <BackButton to="home" />
       <span className={styles.header}>{t("wallet_details")}</span>
       <BalanceCard />
       <QRCodeCard />

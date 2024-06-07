@@ -8,6 +8,8 @@ const BackButton = ({ to }) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const path = t(to);
+
   return (
     <section className={styles["back-handler"]}>
       <button
@@ -17,7 +19,7 @@ const BackButton = ({ to }) => {
         }}
       >
         <img src={BackArrowIcon} alt="" />
-        <span>{t(`back_to`, { to })}</span>
+        <span>{t(`back_to`, { to: path })}</span>
       </button>
     </section>
   );

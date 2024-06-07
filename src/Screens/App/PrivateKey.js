@@ -22,7 +22,7 @@ const PrivateKey = () => {
 
   return (
     <div className={styles.root}>
-      <BackButton to={t("wallet_details")} />
+      <BackButton to={"wallet_details"} />
       <section className={styles.top}>
         <span className={styles.title}>
           {t("your_unique_private_key_title")}

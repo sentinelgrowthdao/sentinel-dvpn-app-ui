@@ -82,7 +82,7 @@ const NewDNS = () => {
 
   return (
     <div className={styles.root}>
-      <BackButton to={"DNS Details"} />
+      <BackButton to={"dns_details"} />
       <div className={styles.container}>
         <span className={styles.header}>{t("add_custom_dns")}</span>
         <section className={styles.form}>
