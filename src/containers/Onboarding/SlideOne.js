@@ -11,29 +11,29 @@ const SlideOne = () => {
   return (
     <div className={styles.slide}>
       <section className={styles.para}>
-        <span>{t("onboarding.slides.one.text_one")}</span>
+        <span>{t("intro_slides_one_text_one")}</span>
       </section>
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
-        <span>{t("onboarding.slides.one.text_two")}</span>
+        <span>{t("intro_slides_one_text_two")}</span>
         <span
           onClick={() => {
             dispatch(dispatchWindowOpen("https://www.mintscan.io/sentinel"));
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.one.link_one")}
+          {t("intro_slides_one_link_one")}
         </span>
-        <span>{t("onboarding.slides.one.text_three")}</span>
+        <span>{t("intro_slides_one_text_three")}</span>
       </section>
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
-        <span>{t("onboarding.slides.one.text_four")}</span>
+        <span>{t("intro_slides_one_text_four")}</span>
         <span
           onClick={() => {
             dispatch(dispatchWindowOpen("https://cosmos.network/"));
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.one.link_two")}
+          {t("intro_slides_one_link_two")}
         </span>
       </section>
       <section className={styles.image}>
@@ -46,9 +46,9 @@ const SlideOne = () => {
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.one.link_three")}
+          {t("intro_slides_one_link_three")}
         </span>
-        <span>{t("onboarding.slides.one.text_five")}</span>
+        <span>{t("intro_slides_one_text_five")}</span>
       </section>
     </div>
   );

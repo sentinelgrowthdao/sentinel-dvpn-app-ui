@@ -22,7 +22,10 @@ const OnboardingLayout = () => {
   }, [isRegistered, isWalletCreated, dispatch]);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    const topAnchor = document.getElementById("top");
+    if (topAnchor) {
+      topAnchor.scrollIntoView({ behavior: "smooth" });
+    }
   }, [location.pathname]);
 
   if (isRegistered && isWalletCreated) {
@@ -30,7 +33,7 @@ const OnboardingLayout = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} id="top">
       <Outlet />
     </div>
   );

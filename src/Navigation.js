@@ -23,6 +23,7 @@ import SettingsLayout from "./layouts/SettingsLayout";
 import NewRPC from "./Screens/App/NewRPC";
 import FeeGranter from "./Screens/App/FeeGranter";
 import OnboardingHome from "./Screens/Onboarding/OnboardingHome";
+import Langs from "./Screens/App/Langs";
 
 const Navigation = () => {
   const { isWalletCreated, isRegistered } = useSelector(
@@ -52,6 +53,7 @@ const Navigation = () => {
             <Route path="new-dns" element={<NewDNS />} />
             <Route path="rpc-change" element={<NewRPC />} />
             <Route path="fee-granter" element={<FeeGranter />} />
+            <Route path="langs" element={<Langs />} />
           </Route>
           <Route path="private-key" element={<PrivateKey />} />
           <Route path="recent-servers" element={<RecentServers />} />

@@ -10,20 +10,20 @@ const SlideTwo = () => {
   return (
     <div className={styles.slide}>
       <section className={styles.para}>
-        <span>{t("onboarding.slides.two.text_one")}</span>
+        <span>{t("intro_slides_two_text_one")}</span>
       </section>
       <section className={styles.image}>
         <img className={styles["map-img"]} src={MapImage} alt="" />
       </section>
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
-        <span>{t("onboarding.slides.two.text_two")}</span>
+        <span>{t("intro_slides_two_text_two")}</span>
         <span
           onClick={() => {
             dispatch(dispatchWindowOpen("https://map.sentinel.co/"));
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.two.link_one")}
+          {t("intro_slides_two_link_one")}
         </span>
       </section>
       <section
@@ -39,7 +39,7 @@ const SlideTwo = () => {
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.two.link_two")}
+          {t("intro_slides_two_link_two")}
         </span>
       </section>
     </div>

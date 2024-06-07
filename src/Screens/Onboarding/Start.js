@@ -23,7 +23,7 @@ const Start = () => {
       <section className={styles.top}>
         <img className={styles.logo} src={SentinelIcon} alt="" />
         <span className={styles.title}>
-          {t("onboarding.sentinel_shield_dvpn")}
+          {t("welcome_sentinel_shield_dvpn")}
         </span>
       </section>
       <section className={styles.middle}>

@@ -10,16 +10,16 @@ const SlideThree = () => {
   return (
     <div className={styles.slide}>
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
-        <span>{t("onboarding.slides.three.text_one")}</span>
+        <span>{t("intro_slides_three_text_one")}</span>
         <span
           onClick={() => {
             dispatch(dispatchWindowOpen("https://sentinel.co"));
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.three.link_one")}
+          {t("intro_slides_three_link_one")}
         </span>
-        <span>{t("onboarding.slides.three.text_two")}</span>
+        <span>{t("intro_slides_three_text_two")}</span>
       </section>
       <section className={styles.image}>
         <img
@@ -30,7 +30,7 @@ const SlideThree = () => {
       </section>
 
       <section className={`${styles.para} ${styles["para-with-links"]}`}>
-        <span>{t("onboarding.slides.three.text_three")}</span>
+        <span>{t("intro_slides_three_text_three")}</span>
         <span
           onClick={() => {
             dispatch(
@@ -41,9 +41,9 @@ const SlideThree = () => {
           }}
           className={styles.link}
         >
-          {t("onboarding.slides.three.link_two")}
+          {t("intro_slides_three_link_two")}
         </span>
-        <span>{t("onboarding.slides.three.text_four")}</span>
+        <span>{t("intro_slides_three_text_four")}</span>
       </section>
     </div>
   );

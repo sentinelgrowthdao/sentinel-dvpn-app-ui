@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ba2fbdfd.css",
-    "main.js": "/static/js/main.bfd01a1a.js",
+    "main.css": "/static/css/main.dadee9a8.css",
+    "main.js": "/static/js/main.1a5dfadb.js",
     "static/js/879.e7e91aa3.chunk.js": "/static/js/879.e7e91aa3.chunk.js",
     "static/media/map.png": "/static/media/map.1220a4270f0ca519c1ce.png",
     "static/media/onboarding-screen-bg.png": "/static/media/onboarding-screen-bg.6113a53309e8c6ea3d2d.png",
@@ -12,6 +12,7 @@
     "static/media/powered-by-cosmos.svg": "/static/media/powered-by-cosmos.b7331ad6e807bb8a9728e35bfb84d02a.svg",
     "static/media/balance-icon.svg": "/static/media/balance-icon.57feba6f26c1ecc53e6d859778792d2c.svg",
     "static/media/onboarding-lock-icon.svg": "/static/media/onboarding-lock-icon.54f1e33c57ca3a0951e4.svg",
+    "static/media/language-icon.svg": "/static/media/language-icon.2e4add88b1f764d4b92f28baa76be79c.svg",
     "static/media/onboarding-home.svg": "/static/media/onboarding-home.c4cd5541f20e717acc6d3c0ea4d9c541.svg",
     "static/media/trash-icon.svg": "/static/media/trash-icon.d878fd380b135c59abb54ac52275a0f1.svg",
     "static/media/fee-icon.svg": "/static/media/fee-icon.b55bcb29a705cc636665a56f4fb5aa0f.svg",
@@ -46,12 +47,12 @@
     "static/media/share-icon.svg": "/static/media/share-icon.f40e0daf3ece60e073f4e96cdadb3ae9.svg",
     "static/media/offline-icon.svg": "/static/media/offline-icon.72df1a1a4f32d694fea5ada0ed042cae.svg",
     "static/media/online-icon.svg": "/static/media/online-icon.9458fc7c44a64b2a80cb6043ef29ea0e.svg",
-    "main.ba2fbdfd.css.map": "/static/css/main.ba2fbdfd.css.map",
-    "main.bfd01a1a.js.map": "/static/js/main.bfd01a1a.js.map",
+    "main.dadee9a8.css.map": "/static/css/main.dadee9a8.css.map",
+    "main.1a5dfadb.js.map": "/static/js/main.1a5dfadb.js.map",
     "879.e7e91aa3.chunk.js.map": "/static/js/879.e7e91aa3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ba2fbdfd.css",
-    "static/js/main.bfd01a1a.js"
+    "static/css/main.dadee9a8.css",
+    "static/js/main.1a5dfadb.js"
   ]
 }

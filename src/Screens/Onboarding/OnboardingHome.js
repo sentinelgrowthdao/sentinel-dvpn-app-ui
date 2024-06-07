@@ -17,13 +17,11 @@ const OnboardingHome = () => {
     <div className={styles.root}>
       <img className={styles["home-img"]} src={HomeImage} alt="" />
       <section className={styles.title}>
-        <span className={styles.text}>{t("onboarding.home_welcome_to")}</span>
-        <span className={styles.text}>
-          {t("onboarding.sentinel_shield_dvpn")}
-        </span>
+        <span className={styles.text}>{t("welcome_home_welcome_to")}</span>
+        <span className={styles.text}>{t("welcome_sentinel_shield_dvpn")}</span>
       </section>
       <span className={styles.description}>
-        {t("onboarding.home_description")}
+        {t("welcome_home_description")}
       </span>
     </div>
   );

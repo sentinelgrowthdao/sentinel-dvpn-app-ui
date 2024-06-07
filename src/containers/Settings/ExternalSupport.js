@@ -55,7 +55,7 @@ const ExternalSupport = () => {
       </section>
       <section className={styles["report-issue"]}>
         <span>{t("any_problems")}</span>
-        <button
+        <span
           className={styles["report-issue-link"]}
           onClick={(event) => {
             event.preventDefault();
@@ -64,7 +64,7 @@ const ExternalSupport = () => {
           }}
         >
           {t("report_an_issue")}
-        </button>
+        </span>
       </section>
     </div>
   );
