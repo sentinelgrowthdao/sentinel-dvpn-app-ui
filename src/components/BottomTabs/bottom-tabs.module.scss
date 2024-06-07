@@ -23,7 +23,7 @@
     height: 22px;
     width: 22px;
     margin-bottom: 2px;
-    @media only screen and (max-width: 300px) {
+    @media only screen and (max-width: 321px) {
       height: 16px;
       width: 16px;
     }
@@ -31,8 +31,8 @@
   span {
     color: $textSecondaryColor;
     font-size: 12px;
-    @media only screen and (max-width: 300px) {
-      font-size: 8px;
+    @media only screen and (max-width: 321px) {
+      font-size: 9px;
     }
   }
   &:active {
