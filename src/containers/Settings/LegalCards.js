@@ -12,12 +12,12 @@ const legalDocs = [
   {
     title: "terms_of_service",
     icon: LegalDocIcon,
-    href: "https://www.sentinel.co/terms-of-service",
+    href: "https://www.sentinel.co/terms-of-service?hide-header=true&hide-footer=true",
   },
   {
     title: "privacy_policy",
     icon: LegalDocIcon,
-    href: "https://www.sentinel.co/privacy-policy",
+    href: "https://www.sentinel.co/privacy-policy?hide-header=true&hide-footer=true",
   },
 ];
 

@@ -24,6 +24,7 @@ const NoBalanceModal = () => {
           {`${formatAmount(balance / 1e6)} DVPN`}
         </span>
       </section>
+
       <Button
         variant={variants.PRIMARY}
         className={styles["ok-btn"]}

@@ -40,7 +40,7 @@ const LogoutModal = () => {
         }}
       />
       <Button
-        title={t("modal_logout_title")}
+        title={t("logout")}
         variant={variants.SECONDARY}
         className={`${styles.btn} ${styles["logout-btn"]}`}
         onClick={async () => {

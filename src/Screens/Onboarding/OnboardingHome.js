@@ -3,13 +3,19 @@ import styles from "./onboarding-home.module.scss";
 import HomeImage from "../../assets/images/onboarding-home.svg";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getMobileOS } from "../../helpers/common.helpers";
 
 const OnboardingHome = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   React.useEffect(() => {
     const timeout = setTimeout(() => {
-      navigate("/start", { replace: true });
+      const os = getMobileOS();
+      if (os === "ios") {
+        navigate("/import", { replace: true });
+      } else {
+        navigate("/start", { replace: true });
+      }
     }, 2000);
     return () => clearTimeout(timeout);
   }, [navigate]);

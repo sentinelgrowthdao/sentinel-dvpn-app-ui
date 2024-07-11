@@ -128,14 +128,14 @@ const Create = () => {
           <span className={styles["login-text"]}>
             {t("already_have_an_account")}
           </span>
-          <button
+          <span
             className={styles["login-btn"]}
             onClick={() => {
               navigate("/import", { replace: true });
             }}
           >
             {t("btn_login")}
-          </button>
+          </span>
         </section>
       </section>
     </div>
