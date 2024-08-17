@@ -1,0 +1,85 @@
+.root {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  .top {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    .left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100%;
+      width: 100%;
+      max-width: min(60vw, 280px);
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
+      .details {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        .balance {
+          display: flex;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          // width: max(50vw, 120px);
+        }
+      }
+    }
+    .right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      height: 100%;
+      width: 100%;
+      max-width: 64px;
+      .icon {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        img {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 20px;
+    background-color: #000000;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    .icon {
+      height: 12px;
+      width: 100%;
+    }
+  }
+}
