@@ -28,10 +28,10 @@ const FiltersModal = () => {
       currentValue: protocols,
       onChange: changeProtocol,
     },
-    {
-      title: "nodes",
-      options: nodes,
-    },
+    // {
+    //   title: "nodes",
+    //   options: nodes,
+    // },
   ];
 
   return (
