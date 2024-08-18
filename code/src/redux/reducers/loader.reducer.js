@@ -12,12 +12,14 @@ const initialState = {
   canGoBack: false,
   isWalletRegistered: false,
   isFeegrantChecked: false,
+  loadingApp: true,
 };
 
 const slice = createSlice({
   name: "LOADER",
   initialState,
   reducers: {
+    CHANGE_LOADING_APP: (state, { payload }) => ({ ...state, loadingApp: payload }),
     START_LOADER: (state, { payload }) => ({
       ...state,
       loading: true,
@@ -64,6 +66,6 @@ const slice = createSlice({
   },
 });
 
-export const { START_LOADER, STOP_LOADER, CHANGE_MESSAGE, SET_HOME_LOADED, CHANGE_LIST_TITLE, SET_FEEGRANT_CHECKED } = slice.actions;
+export const { START_LOADER, STOP_LOADER, CHANGE_MESSAGE, SET_HOME_LOADED, CHANGE_LIST_TITLE, SET_FEEGRANT_CHECKED, CHANGE_LOADING_APP } = slice.actions;
 
 export default slice.reducer;

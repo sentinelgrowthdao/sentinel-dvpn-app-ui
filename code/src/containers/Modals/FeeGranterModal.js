@@ -1,39 +1,29 @@
 import React from "react";
 import styles from "./fee-granter.module.scss";
-import { useTranslation } from "react-i18next";
-import Button, { variants } from "../../components/Button";
+
 import { useDispatch } from "react-redux";
-import { CHANGE_FEE_GRANT_ENABLED } from "../../redux/reducers/device.reducer";
-import { CHANGE_MODAL_STATE } from "../../redux/reducers/alerts.reducer";
-import { dispatchWindowOpen } from "../../actions/settings.action";
+import { Button, Text } from "@components/index";
+import useModal from "@hooks/use-modal";
+import { CHANGE_LOADING_APP, SET_FEEGRANT_CHECKED } from "@reducers/loader.reducer";
+import { CHANGE_FEE_GRANT } from "@reducers/settings.reducer";
 const FeeGranterModal = () => {
-  const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { hideModal } = useModal();
   return (
-    <div className={styles.root}>
-      <span className={styles.header}>{t("fee_grant")}</span>
-      <span className={styles.subheader}>{t("fee_grant_subheader")}</span>
-      <button
-        className={styles["link-btn"]}
+    <div className={`${styles.root} p-16 py-24`}>
+      <Text text={"fee_grant"} className="fs-18 fw-5 mb-16" />
+      <Text text={"fee_grant_desc"} className="fs-14 fw-4 text-9cabc9 mb-16" />
+      <Text text={"what_is_fee_grant"} className="text-link mb-32" />
+      <Button
         onClick={() => {
-          dispatch(
-            dispatchWindowOpen(
-              "https://docs.cosmos.network/v0.46/modules/feegrant/"
-            )
-          );
+          hideModal();
+          dispatch(CHANGE_LOADING_APP(true));
+          dispatch(SET_FEEGRANT_CHECKED(true));
+          dispatch(CHANGE_FEE_GRANT(false));
         }}
       >
-        {t("what_is_fee_grant")}
-      </button>
-      <Button
-        variant={variants.PRIMARY}
-        title={t("btn_proceed")}
-        className={styles["proceed-btn"]}
-        onClick={() => {
-          dispatch(CHANGE_FEE_GRANT_ENABLED(false));
-          dispatch(CHANGE_MODAL_STATE({ show: false, type: null }));
-        }}
-      />
+        <Text text={"proceed"} className="py-8 fs-14" />
+      </Button>
     </div>
   );
 };

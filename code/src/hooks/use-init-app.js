@@ -17,7 +17,7 @@ const useInitApp = () => {
   const { startLoader, stopLoader } = useLoader();
   const { walletAddress } = useAuthSelector();
   const { isHomeLoaded } = useLoaderSelector();
-  const { showModal, variants } = useModal();
+  const { showModal, MODAL_VARIANTS } = useModal();
 
   const initApp = useCallback(async () => {
     if (isHomeLoaded) {
@@ -32,7 +32,7 @@ const useInitApp = () => {
       const { payload } = await dispatch(dispatchFetchApplicationVersion());
 
       if (payload && payload.isLatestAvailable) {
-        showModal({ name: "update-app", cancellable: false, variant: variants.secondary });
+        showModal({ name: "update-app", cancellable: false, variant: MODAL_VARIANTS.secondary });
         return;
       }
 
@@ -52,6 +52,7 @@ const useInitApp = () => {
     } finally {
       stopLoader();
       dispatch(SET_HOME_LOADED(true));
+      return true;
     }
   }, [dispatch, isHomeLoaded]);
   return { initApp };

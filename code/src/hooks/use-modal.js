@@ -36,12 +36,12 @@ const useModal = () => {
     return { show, name, cancellable, variant };
   }, [show, name, variant]);
 
-  const variants = {
+  const MODAL_VARIANTS = {
     primary: "primary",
     secondary: "secondary",
   };
 
-  return { showModal, hideModal, getModalDetails, variants };
+  return { showModal, hideModal, getModalDetails, MODAL_VARIANTS };
 };
 
 export default useModal;

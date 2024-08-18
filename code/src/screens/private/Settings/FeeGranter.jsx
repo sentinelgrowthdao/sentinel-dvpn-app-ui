@@ -1,6 +1,6 @@
 import { RadioButton } from "@components/index";
 import { useSettingsSelector } from "@hooks/use-selector";
-import { CHANGE_LIST_TITLE } from "@reducers/loader.reducer";
+import { CHANGE_LIST_TITLE, CHANGE_LOADING_APP } from "@reducers/loader.reducer";
 import { CHANGE_FEE_GRANT } from "@reducers/settings.reducer";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -26,6 +26,7 @@ const FeeGranter = () => {
         value={"default_granter_address"}
         onChange={async () => {
           await dispatch(CHANGE_FEE_GRANT(true));
+          await dispatch(CHANGE_LOADING_APP(true));
           navigate(-2, { replace: true });
         }}
         isChecked={feeGrantEnabled}

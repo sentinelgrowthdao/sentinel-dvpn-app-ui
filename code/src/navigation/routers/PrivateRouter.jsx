@@ -6,57 +6,54 @@ import styles from "./private-router.module.scss";
 import settingsServices from "@services/settings.services";
 import useInitApp from "@hooks/use-init-app";
 import useModal from "@hooks/use-modal";
-import { dispatchGetFeeGrantDetails } from "@actions/auth.actions";
+import { dispatchGetFeeGrantDetails, dispatchRegisterWalletAddress } from "@actions/auth.actions";
 import { useDispatch } from "react-redux";
 import useLoader from "@hooks/use-loader";
-import { SET_FEEGRANT_CHECKED } from "@reducers/loader.reducer";
+import { CHANGE_LOADING_APP, SET_FEEGRANT_CHECKED } from "@reducers/loader.reducer";
 
 const PrivateRouter = React.memo(() => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { isAuthenticated, walletAddress } = useAuthSelector();
-  const { isFeegrantChecked } = useLoaderSelector();
+  const { isFeegrantChecked, loadingApp } = useLoaderSelector();
   const { feeGrantEnabled } = useSettingsSelector();
   const { initApp } = useInitApp();
-  const { showModal } = useModal();
+  const { showModal, MODAL_VARIANTS } = useModal();
   const { startLoader, stopLoader } = useLoader();
 
   const showBottomNavbar = React.useMemo(() => ["/user", "/user/countries", "/user/account", "/user/settings", "/user/recent-servers"].includes(location.pathname), [location.pathname]);
 
-  // const shouldUserPay = React.useCallback(async () => {
-  //   if (feeGrantEnabled) {
-  //     try {
-  //       const response = await settingsServices.fetchFeeGrantDetails(walletAddress);
-  //       if (response.status === 200) {
-  //         return false;
-  //       }
-  //       return true;
-  //     } catch (e) {
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }, [feeGrantEnabled]);
-
   const shouldUserPay = React.useCallback(async () => {
     startLoader({ message: "checking_feegrant" });
-    const isEnabled = await dispatch(dispatchGetFeeGrantDetails({ walletAddress, feeGrantEnabled }));
-    stopLoader();
-    return !isEnabled;
+    const { payload: isRegisted } = await dispatch(dispatchRegisterWalletAddress(walletAddress));
+    if (isRegisted) {
+      const { payload: isEnabled } = await dispatch(dispatchGetFeeGrantDetails({ walletAddress, feeGrantEnabled }));
+      return { isRegistered: true, showFeegrantModal: !isEnabled };
+    }
+    showModal({ name: "retry-register", cancellable: false });
+    return { isRegistered: false };
   }, [feeGrantEnabled, walletAddress]);
 
   const init = React.useCallback(async () => {
-    if (!isFeegrantChecked) {
-      const should = await shouldUserPay();
-      if (should) {
-        showModal({ name: "fee-grant", cancellable: false });
+    if (isFeegrantChecked && !loadingApp) {
+      initApp();
+      return;
+    }
+    if (loadingApp) {
+      const response = await shouldUserPay();
+      await dispatch(CHANGE_LOADING_APP(false));
+      stopLoader();
+
+      if (!response.isRegistered) {
         return;
       }
-      dispatch(SET_FEEGRANT_CHECKED(true));
+      if (response.showFeegrantModal) {
+        showModal({ name: "fee-grant", cancellable: false, variant: MODAL_VARIANTS.secondary });
+        return;
+      }
+      await dispatch(SET_FEEGRANT_CHECKED(true));
     }
-
-    initApp();
-  }, [initApp, shouldUserPay]);
+  }, [initApp, shouldUserPay, loadingApp, isFeegrantChecked]);
 
   React.useEffect(() => {
     if (isAuthenticated) {

@@ -12,6 +12,8 @@ import Filters from "@containers/Modals/FiltersModal";
 import Logout from "@containers/Modals/LogoutModal";
 import NSR from "@containers/Modals/NoSubscriptionsRetry";
 import NPR from "@containers/Modals/NoPlansRetry";
+import RetryRegister from "@containers/Modals/RetryRegister";
+import FeeGranterModal from "@containers/Modals/FeeGranterModal";
 
 const types = {
   filters: Filters,
@@ -22,6 +24,8 @@ const types = {
   "no-plans-retry": NPR,
   "update-app": AppUpdateModal,
   "no-balance": NoBalanceModal,
+  "retry-register": RetryRegister,
+  "fee-grant": FeeGranterModal,
 };
 
 const ModalComponent = ({ name }) => {
