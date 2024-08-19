@@ -200,4 +200,5 @@ export default {
   what_is_fee_grant: "什么是费用补助？",
   fetching_countries: "正在获取国家",
   error_login: "登录时出错",
+  please_disconnect_from_vpn: "请断开VPN以进行修改",
 };

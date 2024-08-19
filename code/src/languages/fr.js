@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "Qu'est-ce que la subvention de frais ?",
   fetching_countries: "Récupération des pays",
   error_login: "Erreur lors de la connexion",
+  please_disconnect_from_vpn: "Veuillez vous déconnecter du VPN pour modifier",
 };

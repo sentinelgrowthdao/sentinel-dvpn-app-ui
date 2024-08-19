@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "ما هي منحة الرسوم؟",
   fetching_countries: "جلب الدول",
   error_login: "خطأ أثناء تسجيل الدخول",
+  please_disconnect_from_vpn: "يرجى فصل الاتصال من VPN لتعديل",
 };

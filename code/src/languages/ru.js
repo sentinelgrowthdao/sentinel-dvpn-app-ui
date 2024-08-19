@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "Что такое грант на комиссию?",
   fetching_countries: "Получение стран",
   error_login: "Ошибка при входе",
+  please_disconnect_from_vpn: "Пожалуйста, отключитесь от VPN, чтобы внести изменения",
 };

@@ -200,4 +200,5 @@ export default {
   what_is_fee_grant: "फी ग्रांट क्या है?",
   fetching_countries: "देश प्राप्त कर रहा है",
   error_login: "लॉगिन में त्रुटि",
+  please_disconnect_from_vpn: "संपादित करने के लिए कृपया VPN से डिस्कनेक्ट करें",
 };

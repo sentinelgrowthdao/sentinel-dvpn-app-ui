@@ -200,4 +200,5 @@ export default {
   what_is_fee_grant: "수수료 보조란 무엇인가요?",
   fetching_countries: "국가를 가져오는 중",
   error_login: "로그인 중 오류 발생",
+  please_disconnect_from_vpn: "수정하려면 VPN에서 연결을 끊어주세요",
 };

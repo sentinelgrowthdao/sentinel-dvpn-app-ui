@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "¿Qué es el subsidio de tarifa?",
   fetching_countries: "Obteniendo países",
   error_login: "Error al iniciar sesión",
+  please_disconnect_from_vpn: "Por favor, desconéctese de la VPN para modificar",
 };

@@ -6,19 +6,28 @@ import DNSIcon from "@svgs/dns-icon.svg";
 import FeeGranterIcon from "@svgs/fee-granter-icon.svg";
 import RPCIcon from "@svgs/rpc-icon.svg";
 import RightArrowIcon from "@svgs/right-arrow-icon.svg";
-import { useUserSelector } from "@hooks/use-selector";
+import { useUserSelector, useVPNSelector } from "@hooks/use-selector";
 import capitalizeFirstLetter from "@helpers/capitalizeFirstLetter";
+import useAlerts from "@hooks/use-alerts";
 
 const DVPN = () => {
   const navigate = useNavigate();
+  const showAlert = useAlerts();
   const { dns } = useUserSelector();
+  const { isConnected } = useVPNSelector();
 
   return (
     <div className={`${styles.root} my-18`}>
       <Text text={"dvpn"} className="fs-16 fw-6 text-9cabc9" />
       <Card
         variant={CARD_VARIANTS.SECONDARY}
-        onClick={() => navigate("dns-details")}
+        onClick={() => {
+          if (isConnected) {
+            showAlert({ message: "please_disconnect_from_vpn" });
+            return;
+          }
+          navigate("dns-details");
+        }}
         className={`${styles.card} my-4 px-14`}
       >
         <section className={styles.left}>
@@ -26,15 +35,18 @@ const DVPN = () => {
           <Text text={"dns"} className="fs-14 fw-5 ml-8" />
         </section>
         <section className={styles.right}>
-          <Text
-            text={`${capitalizeFirstLetter(dns.name || "")}`}
-            className="fs-14 fw-5 ml-8 text-9cabc9"
-          />
+          <Text text={`${capitalizeFirstLetter(dns.name || "")}`} className="fs-14 fw-5 ml-8 text-9cabc9" />
         </section>
       </Card>
       <Card
         variant={CARD_VARIANTS.SECONDARY}
-        onClick={() => navigate("rpc-details")}
+        onClick={() => {
+          if (isConnected) {
+            showAlert({ message: "please_disconnect_from_vpn" });
+            return;
+          }
+          navigate("rpc-details");
+        }}
         className={`${styles.card} my-4 px-14`}
       >
         <section className={styles.left}>
@@ -47,7 +59,13 @@ const DVPN = () => {
       </Card>
       <Card
         variant={CARD_VARIANTS.SECONDARY}
-        onClick={() => navigate("fee-granter")}
+        onClick={() => {
+          if (isConnected) {
+            showAlert({ message: "please_disconnect_from_vpn" });
+            return;
+          }
+          navigate("fee-granter");
+        }}
         className={`${styles.card} my-4 px-14`}
       >
         <section className={styles.left}>

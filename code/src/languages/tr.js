@@ -200,4 +200,5 @@ export default {
   what_is_fee_grant: "Ücret yardımı nedir?",
   fetching_countries: "Ülkeler alınıyor",
   error_login: "Giriş sırasında hata",
+  please_disconnect_from_vpn: "Düzenlemek için lütfen VPN'den bağlantınızı kesiniz",
 };

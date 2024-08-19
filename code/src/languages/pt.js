@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "O que é subsídio de taxa?",
   fetching_countries: "Buscando países",
   error_login: "Erro durante o login",
+  please_disconnect_from_vpn: "Por favor, desconecte-se da VPN para modificar",
 };

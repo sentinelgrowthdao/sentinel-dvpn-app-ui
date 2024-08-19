@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "What is fee grant?",
   fetching_countries: "Fetching countries",
   error_login: "Error while Login",
+  please_disconnect_from_vpn: "Please disconnect from VPN to modify",
 };

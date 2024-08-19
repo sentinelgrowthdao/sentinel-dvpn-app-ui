@@ -201,4 +201,5 @@ export default {
   what_is_fee_grant: "Was ist ein Gebührenzuschuss?",
   fetching_countries: "Länder abrufen",
   error_login: "Fehler beim Login",
+  please_disconnect_from_vpn: "Bitte trennen Sie sich vom VPN, um zu ändern",
 };

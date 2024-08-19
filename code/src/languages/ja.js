@@ -200,4 +200,5 @@ export default {
   what_is_fee_grant: "手数料補助とは？",
   fetching_countries: "国を取得しています",
   error_login: "ログイン中にエラーが発生しました",
+  please_disconnect_from_vpn: "変更するにはVPNから切断してください",
 };
