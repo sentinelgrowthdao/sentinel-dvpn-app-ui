@@ -1,5 +1,5 @@
 import vpnServices from "@services/vpn.services";
-import { useAuthSelector, useDeviceSelector, useUserSelector } from "./use-selector";
+import { useAuthSelector, useDeviceSelector, useSettingsSelector, useUserSelector } from "./use-selector";
 import { getTxDetails } from "@root/redux/helpers/getTxDetails";
 import useLoader from "./use-loader";
 import { useDispatch } from "react-redux";
@@ -7,14 +7,13 @@ import { dispatchFetchAccountBalance } from "@actions/auth.actions";
 import { dispatchConnectToVPN, dispatchDisconnectFromVPN, dispatchFetchConnectionStatus, dispatchFetchIPAddress } from "@actions/vpn.actions";
 import { useCallback } from "react";
 import useAlerts, { ALERT_TYPES } from "./use-alerts";
-import isThereResponseCode from "@helpers/isThereResponseCode";
 
 const useVPN = () => {
   const dispatch = useDispatch();
   const showAlert = useAlerts();
   const { walletAddress } = useAuthSelector();
   const { subscription } = useUserSelector();
-  const { feeGrantEnabled } = useDeviceSelector();
+  const { feeGrantEnabled } = useSettingsSelector();
   const { startLoader, stopLoader, changeMessage } = useLoader();
 
   const fetchSessionDetails = async (walletAddress) => {
