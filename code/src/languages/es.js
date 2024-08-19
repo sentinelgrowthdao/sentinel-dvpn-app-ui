@@ -194,4 +194,10 @@ export default {
   intro_slides_two_text_two: "Consulta Sentinel dVPN",
   next: "Siguiente",
   continue: "Continuar",
+  retry: "Reintentar",
+  error_registering_wallet: "Error al recuperar los detalles de la billetera. Por favor, inténtelo de nuevo.",
+  fee_grant: "Establecer Subsidio de Tarifa",
+  fee_grant_desc: "El Subsidio de Tarifa estará disponible pronto. Por favor, continúe sin subsidio de tarifa; su billetera ha sido financiada para pagos de gas.",
+  what_is_fee_grant: "¿Qué es el subsidio de tarifa?",
+  fetching_countries: "Obteniendo países",
 };

@@ -193,4 +193,10 @@ export default {
   intro_slides_two_text_two: "センチネル dVPN をチェック",
   next: "次へ",
   continue: "続ける",
+  retry: "再試行",
+  error_registering_wallet: "ウォレットの詳細を取得中にエラーが発生しました。もう一度お試しください。",
+  fee_grant: "手数料補助の設定",
+  fee_grant_desc: "手数料補助はまもなく利用可能になります。手数料補助なしで進めてください。ウォレットはガス料金の支払いのために資金提供されています。",
+  what_is_fee_grant: "手数料補助とは？",
+  fetching_countries: "国を取得しています",
 };

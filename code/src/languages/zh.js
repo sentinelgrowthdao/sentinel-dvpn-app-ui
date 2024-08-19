@@ -193,4 +193,10 @@ export default {
   intro_slides_two_text_two: "查看 Sentinel dVPN",
   next: "下一步",
   continue: "继续",
+  retry: "重试",
+  error_registering_wallet: "获取钱包详情时出错。请再试一次。",
+  fee_grant: "设置费用补助",
+  fee_grant_desc: "费用补助将很快提供。请在没有费用补助的情况下继续，您的钱包已为燃气支付提供了资金。",
+  what_is_fee_grant: "什么是费用补助？",
+  fetching_countries: "正在获取国家",
 };

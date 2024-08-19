@@ -193,4 +193,10 @@ export default {
   intro_slides_two_text_two: "센티넬 dVPN을 확인하세요",
   next: "다음",
   continue: "계속",
+  retry: "다시 시도",
+  error_registering_wallet: "지갑 세부 정보를 가져오는 중 오류가 발생했습니다. 다시 시도해 주세요.",
+  fee_grant: "수수료 보조 설정",
+  fee_grant_desc: "수수료 보조가 곧 제공될 예정입니다. 수수료 보조 없이 진행해 주세요. 귀하의 지갑은 가스 지불을 위해 자금이 지원되었습니다.",
+  what_is_fee_grant: "수수료 보조란 무엇인가요?",
+  fetching_countries: "국가를 가져오는 중",
 };

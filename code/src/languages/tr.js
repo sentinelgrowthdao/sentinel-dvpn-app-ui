@@ -193,4 +193,10 @@ export default {
   intro_slides_two_text_two: "Sentinel dVPN'i kontrol edin",
   next: "Sonraki",
   continue: "Devam Et",
+  retry: "Yeniden dene",
+  error_registering_wallet: "Cüzdan ayrıntılarını alırken bir hata oluştu. Lütfen tekrar deneyin.",
+  fee_grant: "Ücret Yardımını Ayarla",
+  fee_grant_desc: "Ücret yardımı yakında kullanılabilir olacak. Lütfen ücret yardımı olmadan devam edin, cüzdanınız gaz ödemeleri için finanse edilmiştir.",
+  what_is_fee_grant: "Ücret yardımı nedir?",
+  fetching_countries: "Ülkeler alınıyor",
 };

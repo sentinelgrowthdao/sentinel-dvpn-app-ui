@@ -194,4 +194,10 @@ export default {
   intro_slides_two_text_two: "تفقد سنتينل dVPN",
   next: "التالي",
   continue: "استمرار",
+  retry: "إعادة المحاولة",
+  error_registering_wallet: "حدث خطأ أثناء استرجاع تفاصيل المحفظة. يرجى المحاولة مرة أخرى.",
+  fee_grant: "تعيين منح الرسوم",
+  fee_grant_desc: "ستكون منحة الرسوم متاحة قريبًا. يرجى المتابعة بدون منحة الرسوم، حيث تم تمويل محفظتك لمدفوعات الغاز.",
+  what_is_fee_grant: "ما هي منحة الرسوم؟",
+  fetching_countries: "جلب الدول",
 };

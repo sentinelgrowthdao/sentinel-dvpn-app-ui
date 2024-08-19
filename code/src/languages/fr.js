@@ -194,4 +194,10 @@ export default {
   intro_slides_two_text_two: "Consultez Sentinel dVPN",
   next: "Suivant",
   continue: "Continuer",
+  retry: "Réessayer",
+  error_registering_wallet: "Erreur lors de la récupération des détails du portefeuille. Veuillez réessayer.",
+  fee_grant: "Définir la Subvention de Frais",
+  fee_grant_desc: "La Subvention de Frais sera bientôt disponible. Veuillez continuer sans la subvention de frais, votre portefeuille a été financé pour les paiements de gaz.",
+  what_is_fee_grant: "Qu'est-ce que la subvention de frais ?",
+  fetching_countries: "Récupération des pays",
 };

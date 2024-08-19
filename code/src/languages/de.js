@@ -194,4 +194,10 @@ export default {
   intro_slides_two_text_two: "Überprüfen Sie Sentinel dVPN",
   next: "Weiter",
   continue: "Fortfahren",
+  retry: "Erneut versuchen",
+  error_registering_wallet: "Fehler beim Abrufen der Wallet-Details. Bitte versuchen Sie es erneut.",
+  fee_grant: "Gebührenzuschuss festlegen",
+  fee_grant_desc: "Der Gebührenzuschuss wird bald verfügbar sein. Bitte fahren Sie ohne Gebührenzuschuss fort, Ihre Wallet wurde für Gaszahlungen aufgeladen.",
+  what_is_fee_grant: "Was ist ein Gebührenzuschuss?",
+  fetching_countries: "Länder abrufen",
 };

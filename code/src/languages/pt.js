@@ -194,4 +194,10 @@ export default {
   intro_slides_two_text_two: "Confira o Sentinel dVPN",
   next: "Próximo",
   continue: "Continuar",
+  retry: "Tentar novamente",
+  error_registering_wallet: "Erro ao recuperar os detalhes da carteira. Por favor, tente novamente.",
+  fee_grant: "Definir Subsídio de Taxa",
+  fee_grant_desc: "O Subsídio de Taxa estará disponível em breve. Por favor, prossiga sem o subsídio de taxa, sua carteira foi financiada para pagamentos de gás.",
+  what_is_fee_grant: "O que é subsídio de taxa?",
+  fetching_countries: "Buscando países",
 };
