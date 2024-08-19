@@ -15,32 +15,41 @@ const useRefetch = () => {
   const { isPlansFetched, isSubscriptionFetched, rpc, dns } = useUserSelector();
   const { dnsList } = useSettingsSelector();
 
-  const refetch = async () => {
+  const refetch = async (all = false) => {
     try {
       startLoader({
         message: "refreshing_your_details",
+        description: "may_take_upto_30_secs",
       });
 
       const promises = [dispatch(dispatchFetchAccountBalance(walletAddress)), dispatch(dispatchFetchTokenPrice())];
 
-      if (!(rpc && rpc.host)) {
+      if (all) {
         promises.push(dispatch(dispatchFetchCurrentRPC()));
-      }
-
-      if (!(dns && dns.name)) {
         promises.push(dispatch(dispatchFetchCurrentDNS()));
-      }
-
-      if (!(dnsList && dnsList.length > 0)) {
         promises.push(dispatch(dispatchFetchAvailableDNS()));
-      }
-
-      if (!isPlansFetched) {
         promises.push(dispatch(dispatchFetchAvailablePlans()));
-      }
-
-      if (!isSubscriptionFetched) {
         promises.push(dispatch(dispatchFetchAvailableSubscriptions(walletAddress)));
+      } else {
+        if (!(rpc && rpc.host)) {
+          promises.push(dispatch(dispatchFetchCurrentRPC()));
+        }
+
+        if (!(dns && dns.name)) {
+          promises.push(dispatch(dispatchFetchCurrentDNS()));
+        }
+
+        if (!(dnsList && dnsList.length > 0)) {
+          promises.push(dispatch(dispatchFetchAvailableDNS()));
+        }
+
+        if (!isPlansFetched) {
+          promises.push(dispatch(dispatchFetchAvailablePlans()));
+        }
+
+        if (!isSubscriptionFetched) {
+          promises.push(dispatch(dispatchFetchAvailableSubscriptions(walletAddress)));
+        }
       }
 
       await Promise.all(promises);

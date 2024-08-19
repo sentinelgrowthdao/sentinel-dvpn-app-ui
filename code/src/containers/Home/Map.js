@@ -46,8 +46,6 @@ const Map = () => {
     }
   }, []);
 
-  const mapStyle = React.useMemo(() => REACT_APP_MAP_STYLE, []);
-
   const reactMapGl = React.useMemo(() => {
     return (
       <ReactMapGl
@@ -69,7 +67,7 @@ const Map = () => {
         cursor="default"
         zoom={zoom}
         mapboxAccessToken={REACT_APP_MAPBOX_ACCESS_TOKEN}
-        mapStyle={mapStyle}
+        mapStyle={REACT_APP_MAP_STYLE}
         {...mapSettings}
       />
     );

@@ -199,4 +199,5 @@ export default {
   fee_grant_desc: "Ücret yardımı yakında kullanılabilir olacak. Lütfen ücret yardımı olmadan devam edin, cüzdanınız gaz ödemeleri için finanse edilmiştir.",
   what_is_fee_grant: "Ücret yardımı nedir?",
   fetching_countries: "Ülkeler alınıyor",
+  error_login: "Giriş sırasında hata",
 };

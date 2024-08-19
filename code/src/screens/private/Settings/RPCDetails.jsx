@@ -38,7 +38,7 @@ const RPCDetails = () => {
   const handleChangeRPC = async () => {
     try {
       await dispatch(dispatchChangeCurrentRPC({ host: state.host, port: state.port }));
-      const response = await refetch();
+      const response = await refetch(true);
       if (response) {
         navigate(-2, { replace: true });
       }

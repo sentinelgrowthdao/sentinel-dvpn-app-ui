@@ -199,4 +199,5 @@ export default {
   fee_grant_desc: "费用补助将很快提供。请在没有费用补助的情况下继续，您的钱包已为燃气支付提供了资金。",
   what_is_fee_grant: "什么是费用补助？",
   fetching_countries: "正在获取国家",
+  error_login: "登录时出错",
 };

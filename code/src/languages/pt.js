@@ -200,4 +200,5 @@ export default {
   fee_grant_desc: "O Subsídio de Taxa estará disponível em breve. Por favor, prossiga sem o subsídio de taxa, sua carteira foi financiada para pagamentos de gás.",
   what_is_fee_grant: "O que é subsídio de taxa?",
   fetching_countries: "Buscando países",
+  error_login: "Erro durante o login",
 };

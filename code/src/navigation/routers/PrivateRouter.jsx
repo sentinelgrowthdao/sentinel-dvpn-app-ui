@@ -3,7 +3,6 @@ import { useAuthSelector, useLoaderSelector, useSettingsSelector } from "@hooks/
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import styles from "./private-router.module.scss";
-import settingsServices from "@services/settings.services";
 import useInitApp from "@hooks/use-init-app";
 import useModal from "@hooks/use-modal";
 import { dispatchGetFeeGrantDetails, dispatchRegisterWalletAddress } from "@actions/auth.actions";

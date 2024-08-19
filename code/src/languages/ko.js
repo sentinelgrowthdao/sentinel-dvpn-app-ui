@@ -199,4 +199,5 @@ export default {
   fee_grant_desc: "수수료 보조가 곧 제공될 예정입니다. 수수료 보조 없이 진행해 주세요. 귀하의 지갑은 가스 지불을 위해 자금이 지원되었습니다.",
   what_is_fee_grant: "수수료 보조란 무엇인가요?",
   fetching_countries: "국가를 가져오는 중",
+  error_login: "로그인 중 오류 발생",
 };

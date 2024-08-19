@@ -200,4 +200,5 @@ export default {
   fee_grant_desc: "El Subsidio de Tarifa estará disponible pronto. Por favor, continúe sin subsidio de tarifa; su billetera ha sido financiada para pagos de gas.",
   what_is_fee_grant: "¿Qué es el subsidio de tarifa?",
   fetching_countries: "Obteniendo países",
+  error_login: "Error al iniciar sesión",
 };

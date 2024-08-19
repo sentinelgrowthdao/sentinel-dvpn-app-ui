@@ -28,10 +28,8 @@ Axios.interceptors.response.use(
     const resp = error?.response || {};
     const req = error?.request || {};
     const url = error.request.responseURL || "";
-    console.error(`${new Date().toISOString()}: ${url}: ${name}: ${message}`, {
-      REQ: req,
-      RESP: resp,
-    });
+
+    console.error(`${new Date().toISOString()}: ${url}: ${name}: ${message}`, { REQ: req, RESP: resp });
 
     if (error?.request?.response && typeof error?.request?.response === "object") {
       throw {

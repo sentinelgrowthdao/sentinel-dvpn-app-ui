@@ -199,4 +199,5 @@ export default {
   fee_grant_desc: "手数料補助はまもなく利用可能になります。手数料補助なしで進めてください。ウォレットはガス料金の支払いのために資金提供されています。",
   what_is_fee_grant: "手数料補助とは？",
   fetching_countries: "国を取得しています",
+  error_login: "ログイン中にエラーが発生しました",
 };

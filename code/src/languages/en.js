@@ -200,4 +200,5 @@ export default {
   fee_grant_desc: "Fee Grant will soon be available. Please proceed without fee grant, your wallet has been funded for gas payments.",
   what_is_fee_grant: "What is fee grant?",
   fetching_countries: "Fetching countries",
+  error_login: "Error while Login",
 };

@@ -200,4 +200,5 @@ export default {
   fee_grant_desc: "Der Gebührenzuschuss wird bald verfügbar sein. Bitte fahren Sie ohne Gebührenzuschuss fort, Ihre Wallet wurde für Gaszahlungen aufgeladen.",
   what_is_fee_grant: "Was ist ein Gebührenzuschuss?",
   fetching_countries: "Länder abrufen",
+  error_login: "Fehler beim Login",
 };

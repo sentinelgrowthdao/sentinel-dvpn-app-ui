@@ -200,4 +200,5 @@ export default {
   fee_grant_desc: "La Subvention de Frais sera bientôt disponible. Veuillez continuer sans la subvention de frais, votre portefeuille a été financé pour les paiements de gaz.",
   what_is_fee_grant: "Qu'est-ce que la subvention de frais ?",
   fetching_countries: "Récupération des pays",
+  error_login: "Erreur lors de la connexion",
 };
