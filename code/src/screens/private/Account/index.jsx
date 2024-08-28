@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import BuiltOnCosmos from "@svgs/built-on-cosmos.svg";
 import SubscriptionsIcon from "@svgs/subscriptions-icon.svg";
 import WalletDetailsIcon from "@svgs/wallet-details-icon.svg";
+import AddDVPNIcon from "@svgs/payments.svg";
 import LogoutIcon from "@svgs/logout-icon.svg";
 import SwapIcon from "@svgs/swap-icon.svg";
 
@@ -25,6 +26,11 @@ const navs = [
     title: "wallet_details",
     icon: WalletDetailsIcon,
     href: "/user/wallet-details",
+  },
+  {
+    title: "add_balance",
+    icon: AddDVPNIcon,
+    href: "/user/add-balance",
   },
 ];
 

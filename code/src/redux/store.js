@@ -5,18 +5,10 @@ import nodesReducer from "@reducers/nodes.reducer";
 import userReducer from "@reducers/user.reducer";
 import vpnReducer from "@reducers/vpn.reducer";
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import process from "process";
+import paymentsReducer from "@reducers/payments.reducer";
 
 const persistConfig = {
   device: {
@@ -54,6 +46,7 @@ const reducer = combineReducers({
   nodes: nodesReducer,
   user: userReducer,
   vpn: vpnReducer,
+  payments: paymentsReducer,
 });
 
 const store = configureStore({

@@ -202,4 +202,13 @@ export default {
   fetching_countries: "Fetching countries",
   error_login: "Error while Login",
   please_disconnect_from_vpn: "Please disconnect from VPN to modify",
+  add_balance: "Add DVPN",
+  get_some_dvpn: "Get Some DVPN",
+  get_some_dvpn_desc: "Purchase DVPN tokens and spend them on fast, secure & decentralized VPN service within Sentinel Blockchain.",
+  buy_now: "Buy Now",
+  get_some_dvpn_foot_note: "Payment of {{amount}} will be charged to your iTunes Account at confirmation of purchase. You're about to purchase {{tokens}} DVPN tokens. DVPN tokens can be only used for decentralized VPN services within the app. Proceeding with purchase, you confirm you've read our Terms of Service and Privacy Policy.",
+  error_fetching_products: "Error while fetching Products",
+  adding_balance: "Adding Balance",
+  please_autorize_transaction: "Please autorize the transaction",
+  error_adding_balance: "Error while adding balance",
 };

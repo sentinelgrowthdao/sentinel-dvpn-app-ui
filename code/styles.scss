@@ -30,14 +30,14 @@
   @for $i from $start through $end {
     .fs-#{$i} {
       font-size: #{$i}px;
-      line-height: 140%;
+      line-height: calc(#{$i}px + 2px);
       letter-spacing: 0.05px;
     }
 
     @media (max-width: 321px) {
       .fs-#{$i} {
-        font-size: calc(#{$i}px - 4px);
-        line-height: 140%;
+        font-size: calc(#{$i}px - 0.25em);
+        line-height: #{$i}px;
         letter-spacing: 0.05px;
       }
     }

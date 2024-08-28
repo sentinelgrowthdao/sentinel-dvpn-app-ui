@@ -26,6 +26,7 @@ import DNSDetails from "@private/Settings/DNSDetails";
 import FeeGranter from "@private/Settings/FeeGranter";
 import AddCustomDNS from "@private/Settings/AddCustomDNS";
 import useModal from "@hooks/use-modal";
+import AddBalance from "@private/Account/AddBalance";
 
 const Navigator = () => {
   const { getModalDetails, hideModal } = useModal();
@@ -62,6 +63,7 @@ const Navigator = () => {
           <Route path="wallet-details" element={<WalletDetails />} />
           <Route path="subscriptions" element={<Subscriptions />} />
           <Route path="private-key" element={<PrivateKey />} />
+          <Route path="add-balance" element={<AddBalance />} />
           <Route path="settings" element={<Settings />} />
           <Route path="settings/languages" element={<Languages />} />
           <Route path="settings/rpc-details" element={<RPCDetails />} />

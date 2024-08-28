@@ -10,6 +10,7 @@ import useAlerts, { ALERT_TYPES } from "./use-alerts";
 import { SET_HOME_LOADED } from "@reducers/loader.reducer";
 import { dispatchFetchApplicationVersion, dispatchFetchAvailablePlans, dispatchFetchAvailableSubscriptions, dispatchFetchCurrentDNS, dispatchFetchCurrentRPC } from "@actions/user.actions";
 import useModal from "./use-modal";
+import { dispatchPaymentLogin } from "@actions/payments.actions";
 
 const useInitApp = () => {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ const useInitApp = () => {
         });
       }
 
-      await Promise.all([dispatch(dispatchFetchConnectionStatus()), dispatch(dispatchFetchIPAddress()), dispatch(dispatchFetchAccountBalance(walletAddress)), dispatch(dispatchFetchTokenPrice()), dispatch(dispatchFetchCurrentRPC()), dispatch(dispatchFetchCurrentDNS()), dispatch(dispatchFetchAvailableDNS()), dispatch(dispatchFetchAvailablePlans()), dispatch(dispatchFetchAvailableSubscriptions(walletAddress)), dispatch(dispatchFetchCountriesList())]);
+      await Promise.all([dispatch(dispatchFetchConnectionStatus()), dispatch(dispatchPaymentLogin(walletAddress)), dispatch(dispatchFetchIPAddress()), dispatch(dispatchFetchAccountBalance(walletAddress)), dispatch(dispatchFetchTokenPrice()), dispatch(dispatchFetchCurrentRPC()), dispatch(dispatchFetchCurrentDNS()), dispatch(dispatchFetchAvailableDNS()), dispatch(dispatchFetchAvailablePlans()), dispatch(dispatchFetchAvailableSubscriptions(walletAddress)), dispatch(dispatchFetchCountriesList())]);
     } catch (err) {
       showAlert({
         type: ALERT_TYPES.error,

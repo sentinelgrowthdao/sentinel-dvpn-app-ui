@@ -42,4 +42,12 @@ Axios.interceptors.response.use(
   }
 );
 
+export const AxiosNoTimeout = axios.create({
+  baseURL: "/api",
+  headers: {
+    "Content-type": "application/json",
+    "x-key": "SnLnkORrZuzYsEPb",
+  },
+});
+
 export default Axios;

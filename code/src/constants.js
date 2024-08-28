@@ -1,8 +1,12 @@
+import { getMobileOS } from "@helpers/getOSType";
+import process from "process";
 export const APP_DENOM = "udvpn";
 export const STATUS_ACTIVE = "STATUS_ACTIVE";
 export const PLAN_ID = "32";
 export const GAS_PRICE_AMOUNT = 200000;
 export const FEE_GRANT_ADDERSS = "sent1vtakcr67ejvknr00vmq8vh6dm9mn5hr6gzu27m";
+export const PAYMENT_KEY = getMobileOS() === "ios" ? process.env.REACT_APP_APPLE_PAY_KEY : process.env.REACT_APP_ANDROID_KEY;
+export const PRODUCT_IDENTIFIER = "sentinel.dvpn";
 
 export const links = {
   RENEW_FIND_MORE: "https://medium.com/sentinel/introduction-of-on-chain-subscriptions-and-time-based-payments-sentinels-biggest-dvpn-protocol-a2b240199f18",
