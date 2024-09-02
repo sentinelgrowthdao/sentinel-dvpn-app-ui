@@ -10,18 +10,23 @@ import { dispatchBuyProduct } from "@actions/payments.actions";
 import useRefetch from "@hooks/use-refetch";
 import { useNavigate } from "react-router-dom";
 import useAlerts, { ALERT_TYPES } from "@hooks/use-alerts";
+import useModal from "@hooks/use-modal";
+import { sleep } from "@root/redux/helpers/getTxDetails";
+import useLoader from "@hooks/use-loader";
 
 const AddBalance = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const refetch = useRefetch();
   const showAlert = useAlerts();
+  const { showModal } = useModal();
+  const { startLoader, stopLoader } = useLoader();
   const { products = [] } = usePaymentsSelector();
   const [selected, setSelected] = React.useState({});
 
   const { balance } = useUserSelector();
 
-  const oldBalance = React.useMemo(() => balance, []);
+  const oldBalance = balance;
 
   React.useEffect(() => {
     dispatch(
@@ -38,19 +43,38 @@ const AddBalance = () => {
     }
   }, [products.length]);
 
-  const refresh = React.useCallback(async () => {
-    while (true) {
-      const isRefetched = await refetch();
-      if (isRefetched && balance !== oldBalance) {
-        return true;
+  const refresh = React.useCallback(
+    async (td) => {
+      try {
+        const maxAttempts = 5;
+        let attempt = 0;
+        startLoader({ message: "refreshing_your_details" });
+        while (attempt < maxAttempts) {
+          const isRefetched = await refetch(false, false);
+          if (isRefetched && balance !== oldBalance) {
+            stopLoader();
+            return true;
+          }
+          await sleep(3000);
+          attempt++;
+        }
+        stopLoader();
+        if (balance === oldBalance && Object.keys(td).length > 0) {
+          showModal({ name: "purchase-pending", cancellable: false, data: td, variant: "primary" });
+        }
+        return false;
+      } catch (e) {
+        showModal({ name: "purchase-pending", cancellable: false, data: td, variant: "primary" });
+        return false;
       }
-    }
-  }, [balance]);
+    },
+    [balance]
+  );
 
   return (
     <div className={`${styles.root} px-14 pb-24`}>
       <section className={styles.top}>
-        <Text text={"get_some_dvpn"} className="fs-22 fw-6 mb-16 " />
+        <Text text={"get_some_dvpn"} className="fs-24 fw-6 mb-16 " />
         <Text text={"get_some_dvpn_desc"} className="fs-14 fw-4 text-9cabc9 mb-28" />
         <section className={styles.offers}>
           {products.map((p) => {
@@ -75,8 +99,8 @@ const AddBalance = () => {
             try {
               const payload = await dispatch(dispatchBuyProduct(selected)).unwrap();
               if (payload && payload.transaction) {
-                const isRefetched = await refresh();
-                if (isRefetched) {
+                const isRefreshed = await refresh(payload.transaction);
+                if (isRefreshed) {
                   navigate(-1, { replace: true });
                 }
               }
@@ -87,7 +111,7 @@ const AddBalance = () => {
         >
           <Text text={"buy_now"} className="py-8" />
         </Button>
-        <Text text={"get_some_dvpn_foot_note"} className="text-9cabc9 fs-12 fw-4" data={{ amount: selected?.localizedPriceString, tokens: Number.parseInt(selected?.identifier?.split("_")[1])?.toLocaleString() }} />
+        <Text text={"get_some_dvpn_foot_note"} className={`text-9cabc9 fw-4 ${styles.footnote}`} data={{ amount: selected?.localizedPriceString, tokens: Number.parseInt(selected?.identifier?.split("_")[1])?.toLocaleString() }} />
       </section>
     </div>
   );

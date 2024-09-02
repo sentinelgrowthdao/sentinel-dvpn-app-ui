@@ -54,7 +54,12 @@ const createWebpackConfig = ({ devServer, mode, plugins }) => {
   const module = { rules };
 
   return {
-    cache: true,
+    cache: {
+      type: "filesystem",
+      buildDependencies: {
+        config: [__filename],
+      },
+    },
     mode,
     entry,
     output,

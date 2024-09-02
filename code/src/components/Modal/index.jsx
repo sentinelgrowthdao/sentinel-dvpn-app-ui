@@ -14,6 +14,7 @@ import NSR from "@containers/Modals/NoSubscriptionsRetry";
 import NPR from "@containers/Modals/NoPlansRetry";
 import RetryRegister from "@containers/Modals/RetryRegister";
 import FeeGranterModal from "@containers/Modals/FeeGranterModal";
+import PurchasePending from "@containers/Modals/PurchasePending";
 
 const types = {
   filters: Filters,
@@ -26,6 +27,7 @@ const types = {
   "no-balance": NoBalanceModal,
   "retry-register": RetryRegister,
   "fee-grant": FeeGranterModal,
+  "purchase-pending": PurchasePending,
 };
 
 const ModalComponent = ({ name }) => {

@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import { Provider as StoreProvider } from "react-redux";
 import store, { persistor } from "@store";
 import { PersistGate } from "redux-persist/integration/react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, useLocation } from "react-router-dom";
 import { Alerts, Loader, Modal } from "./components";
 
 const TranslationsProvider = React.lazy(() => import("./TranslationsProvider"));

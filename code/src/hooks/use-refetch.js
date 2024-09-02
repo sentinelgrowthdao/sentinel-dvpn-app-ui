@@ -15,12 +15,14 @@ const useRefetch = () => {
   const { isPlansFetched, isSubscriptionFetched, rpc, dns } = useUserSelector();
   const { dnsList } = useSettingsSelector();
 
-  const refetch = async (all = false) => {
+  const refetch = async (all = false, isLoader = true) => {
     try {
-      startLoader({
-        message: "refreshing_your_details",
-        description: "may_take_upto_30_secs",
-      });
+      if (isLoader) {
+        startLoader({
+          message: "refreshing_your_details",
+          description: "may_take_upto_30_secs",
+        });
+      }
 
       const promises = [dispatch(dispatchFetchAccountBalance(walletAddress)), dispatch(dispatchFetchTokenPrice())];
 
@@ -61,7 +63,9 @@ const useRefetch = () => {
       });
       return false;
     } finally {
-      stopLoader();
+      if (isLoader) {
+        stopLoader();
+      }
     }
   };
 

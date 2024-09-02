@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import PublicRouter from "./routers/PublicRouter";
 import OnboardingHome from "@public/OnboardingHome";
