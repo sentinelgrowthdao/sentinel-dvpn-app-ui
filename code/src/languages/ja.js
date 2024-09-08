@@ -113,7 +113,7 @@ export default {
   clear: "クリア",
   save: "保存",
   default_granter_address: "デフォルトのグランターアドレス",
-  no_granter: "グランターなし（ガス代を自分で支払う）",
+  no_granter: "ノーグランター（自分のDVPNトークンを使用してください）",
   legal: "法的",
   terms_of_service: "サービス利用規約",
   privacy_policy: "プライバシーポリシー",

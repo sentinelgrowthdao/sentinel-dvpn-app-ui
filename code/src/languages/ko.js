@@ -113,7 +113,7 @@ export default {
   clear: "지우기",
   save: "저장",
   default_granter_address: "기본 그랜터 주소",
-  no_granter: "그랜터 없음 (가스 비용 스스로 지불)",
+  no_granter: "제공자 없음 (자신의 DVPN 토큰을 사용하세요)",
   legal: "법적",
   terms_of_service: "서비스 약관",
   privacy_policy: "개인정보 보호정책",

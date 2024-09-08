@@ -25,10 +25,12 @@ const BottomCard = () => {
           <SelectedServer />
           <IPAddress />
         </section>
-        <section className={`${styles.protected} py-8 px-14`}>
-          <img src={InfoIcon} alt="" />
-          <Text text={"you_are_not_protected"} className={`fs-14 fw-5 ml-4`} />
-        </section>
+        {!isConnected && (
+          <section className={`${styles.protected} py-8 px-14`}>
+            <img src={InfoIcon} alt="" />
+            <Text text={"you_are_not_protected"} className={`fs-14 fw-5 ml-4`} />
+          </section>
+        )}
       </Card>
       <Button
         className={styles["quick-connect-btn"]}

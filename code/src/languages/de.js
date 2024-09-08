@@ -113,7 +113,7 @@ export default {
   clear: "Löschen",
   save: "Speichern",
   default_granter_address: "Standard-Granter-Adresse",
-  no_granter: "Kein Granter (Sie zahlen die Gebühren selbst)",
+  no_granter: "Kein Granter (Verwenden Sie Ihre eigenen DVPN-Token)",
   legal: "Rechtlich",
   terms_of_service: "Nutzungsbedingungen",
   privacy_policy: "Datenschutzrichtlinie",

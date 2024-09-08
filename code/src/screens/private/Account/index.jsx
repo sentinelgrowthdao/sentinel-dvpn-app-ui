@@ -15,6 +15,7 @@ import RightArrowIcon from "@svgs/right-arrow-icon.svg";
 import useModal from "@hooks/use-modal";
 import useOpenWindow from "@hooks/use-open-window";
 import { links } from "@root/constants";
+import { getMobileOS } from "@helpers/getOSType";
 
 const navs = [
   {
@@ -65,17 +66,19 @@ const Account = () => {
             </Card>
           );
         })}
-        <Card variant={CARD_VARIANTS.PRIMARY} onClick={() => openWindow({ url: links.SWAP_DVPN })} className={`${styles.card} my-12 px-16`}>
-          <section className={styles.left}>
-            <section className={styles.image}>
-              <Image src={SwapIcon} height={"20px"} />
+        {getMobileOS() !== "ios" && (
+          <Card variant={CARD_VARIANTS.PRIMARY} onClick={() => openWindow({ url: links.SWAP_DVPN })} className={`${styles.card} my-12 px-16`}>
+            <section className={styles.left}>
+              <section className={styles.image}>
+                <Image src={SwapIcon} height={"20px"} />
+              </section>
+              <Text text={"swap_to_get_dvpn"} className="fs-14 fw-5 ml-6" />
             </section>
-            <Text text={"swap_to_get_dvpn"} className="fs-14 fw-5 ml-6" />
-          </section>
-          <section className={styles.right}>
-            <Image src={RightArrowIcon} height={"14px"} />
-          </section>
-        </Card>
+            <section className={styles.right}>
+              <Image src={RightArrowIcon} height={"14px"} />
+            </section>
+          </Card>
+        )}
         <Card variant={CARD_VARIANTS.PRIMARY} onClick={() => showModal({ name: "logout" })} className={`${styles.card} my-12 px-16`}>
           <section className={styles.left}>
             <section className={styles.image}>

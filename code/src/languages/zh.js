@@ -113,7 +113,7 @@ export default {
   clear: "清除",
   save: "保存",
   default_granter_address: "默认赠送者地址",
-  no_granter: "无赠送者（您自己支付手续费）",
+  no_granter: "没有提供者（使用您自己的DVPN代币）",
   legal: "法律",
   terms_of_service: "服务条款",
   privacy_policy: "隐私政策",

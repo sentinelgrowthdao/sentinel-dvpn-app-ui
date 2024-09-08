@@ -113,7 +113,7 @@ export default {
   clear: "Effacer",
   save: "Enregistrer",
   default_granter_address: "Adresse du granter par défaut",
-  no_granter: "Aucun granter (vous payez le gaz vous-même)",
+  no_granter: "Pas de Bailleur (Utilisez vos propres jetons DVPN)",
   legal: "Légal",
   terms_of_service: "Conditions de service",
   privacy_policy: "Politique de confidentialité",

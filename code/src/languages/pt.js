@@ -113,7 +113,7 @@ export default {
   clear: "Limpar",
   save: "Salvar",
   default_granter_address: "Endereço do Granter Padrão",
-  no_granter: "Sem Granter (Você paga o gás você mesmo)",
+  no_granter: "Sem Granter (Use seus próprios tokens DVPN)",
   legal: "Legal",
   terms_of_service: "Termos de Serviço",
   privacy_policy: "Política de Privacidade",

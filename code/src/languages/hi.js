@@ -113,7 +113,7 @@ export default {
   clear: "स्पष्ट करें",
   save: "सहेजें",
   default_granter_address: "डिफ़ॉल्ट ग्रांटर पता",
-  no_granter: "कोई ग्रांटर नहीं (आप गैस का भुगतान करते हैं)",
+  no_granter: "कोई ग्रांटर नहीं (अपनी DVPN टोकन का उपयोग करें)",
   legal: "कानूनी",
   terms_of_service: "सेवा की शर्तें",
   privacy_policy: "गोपनीयता नीति",

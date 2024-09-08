@@ -113,7 +113,7 @@ export default {
   clear: "مسح",
   save: "حفظ",
   default_granter_address: "عنوان المانح الافتراضي",
-  no_granter: "لا مانح (تدفع الغاز بنفسك)",
+  no_granter: "لا يوجد مانح (استخدم رموز DVPN الخاصة بك)",
   legal: "قانوني",
   terms_of_service: "شروط الخدمة",
   privacy_policy: "سياسة الخصوصية",

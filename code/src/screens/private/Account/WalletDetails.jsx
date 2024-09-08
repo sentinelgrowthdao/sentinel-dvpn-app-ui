@@ -6,6 +6,7 @@ import styles from "./wallet-details.module.scss";
 import BalanceCard from "@containers/Account/BalanceCard";
 import QRCodeCard from "@containers/Account/QRCodeCard";
 import { Button, Text } from "@components/index";
+import { getMobileOS } from "@helpers/getOSType";
 
 const WalletDetails = () => {
   const dispatch = useDispatch();
@@ -25,16 +26,12 @@ const WalletDetails = () => {
       <Button onClick={() => navigate("/user/private-key")}>
         <Text text="show_mnemonic" className="py-14" />
       </Button>
-      <section className={`${styles["how-to-deposit"]} mt-24`}>
-        <Text
-          text={"how_to_deposit_title"}
-          className="fs-20 fw-6 mb-16  ml-8"
-        />
-        <Text
-          text={"how_to_deposit_desc"}
-          className="fs-14 fw-4 text-9cabc9 ml-8 mb-16"
-        />
-      </section>
+      {getMobileOS() !== "ios" && (
+        <section className={`${styles["how-to-deposit"]} mt-24`}>
+          <Text text={"how_to_deposit_title"} className="fs-20 fw-6 mb-16  ml-8" />
+          <Text text={"how_to_deposit_desc"} className="fs-14 fw-4 text-9cabc9 ml-8 mb-16" />
+        </section>
+      )}
     </div>
   );
 };

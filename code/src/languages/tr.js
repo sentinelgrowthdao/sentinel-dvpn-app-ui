@@ -113,7 +113,7 @@ export default {
   clear: "Temizle",
   save: "Kaydet",
   default_granter_address: "Varsayılan Ücret Veren Adres",
-  no_granter: "Ücret Veren Yok (Gaz ücreti kendiniz ödersiniz)",
+  no_granter: "Kredilendirici Yok (Kendi DVPN jetonlarınızı kullanın)",
   legal: "Hukuki Bilgiler",
   terms_of_service: "Hizmet Şartları",
   privacy_policy: "Gizlilik Politikası",
