@@ -111,7 +111,7 @@ const AddBalance = () => {
         >
           <Text text={"buy_now"} className="py-8" />
         </Button>
-        <Text text={"get_some_dvpn_foot_note"} className={`text-9cabc9 fw-4 ${styles.footnote}`} data={{ amount: selected?.localizedPriceString, tokens: Number.parseInt(selected?.identifier?.split("_")[1])?.toLocaleString() }} />
+        <Text text={"get_some_dvpn_foot_note"} className={`text-9cabc9 fs-12 fw-4`} data={{ amount: selected?.localizedPriceString, tokens: Number.parseInt(selected?.identifier?.split("_")[1])?.toLocaleString() }} />
       </section>
     </div>
   );
