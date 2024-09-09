@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./wallet-details.module.scss";
 import BalanceCard from "@containers/Account/BalanceCard";
 import QRCodeCard from "@containers/Account/QRCodeCard";
-import { Button, Text } from "@components/index";
+import { BTN_VARIANTS, Button, Text } from "@components/index";
 import { getMobileOS } from "@helpers/getOSType";
 import useOpenWindow from "@hooks/use-open-window";
 import { links } from "@root/constants";
@@ -30,13 +30,13 @@ const WalletDetails = () => {
       <Button onClick={() => navigate("/user/private-key")}>
         <Text text="show_mnemonic" className="py-14" />
       </Button>
-      <Button onClick={() => navigate("/user/add-balance", { replace: true })}>
+      <Button variant={BTN_VARIANTS.SECONDARY} className="my-14" onClick={() => navigate("/user/add-balance", { replace: true })}>
         <Text text="add_balance" className="py-14" />
       </Button>
 
       {getMobileOS() !== "ios" && (
         <>
-          <Button onClick={() => openWindow({ url: links.SWAP_DVPN })}>
+          <Button variant={BTN_VARIANTS.SECONDARY} onClick={() => openWindow({ url: links.SWAP_DVPN })}>
             <Text text="swap_to_get_dvpn" className="py-14" />
           </Button>
           <section className={`${styles["how-to-deposit"]} mt-24`}>
