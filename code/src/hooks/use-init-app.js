@@ -44,7 +44,19 @@ const useInitApp = () => {
         });
       }
 
-      await Promise.all([dispatch(dispatchFetchConnectionStatus()), dispatch(dispatchPaymentLogin(walletAddress)), dispatch(dispatchFetchIPAddress()), dispatch(dispatchFetchAccountBalance(walletAddress)), dispatch(dispatchFetchTokenPrice()), dispatch(dispatchFetchCurrentRPC()), dispatch(dispatchFetchCurrentDNS()), dispatch(dispatchFetchAvailableDNS()), dispatch(dispatchFetchAvailablePlans()), dispatch(dispatchFetchAvailableSubscriptions(walletAddress)), dispatch(dispatchFetchCountriesList())]);
+      await Promise.all([
+        dispatch(dispatchFetchConnectionStatus()),
+        dispatch(dispatchPaymentLogin(walletAddress)),
+        dispatch(dispatchFetchIPAddress()),
+        dispatch(dispatchFetchAccountBalance(walletAddress)),
+        dispatch(dispatchFetchTokenPrice()),
+        dispatch(dispatchFetchCurrentRPC()),
+        dispatch(dispatchFetchCurrentDNS()),
+        dispatch(dispatchFetchAvailableDNS()),
+        dispatch(dispatchFetchAvailablePlans()),
+        dispatch(dispatchFetchAvailableSubscriptions(walletAddress)),
+        dispatch(dispatchFetchCountriesList()),
+      ]);
     } catch (err) {
       showAlert({
         type: ALERT_TYPES.error,
