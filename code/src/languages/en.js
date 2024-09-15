@@ -225,4 +225,7 @@ export default {
   delete_account: "Delete My Account",
   delete_desc: "Deleting your account will result in permanent loss of your credits and subscriptions. Your account will be deleted within next 30 days.",
   delete_check: "I confirm account deletion.",
+  deleting_account: "Deleting Account",
+  error_while_deleting_account: "Error while deleting account [CODE: {{code}}]",
+  error_deleting_account: "Error while deleting account",
 };

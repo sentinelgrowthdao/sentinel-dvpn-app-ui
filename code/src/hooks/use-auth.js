@@ -90,13 +90,14 @@ export const useDeleteAccount = () => {
       const response = await authServices.sendBackTokens({ walletAddress, feeGrantEnabled, balance });
       console.log("res", response);
       if (response.code && response.code !== 0) {
-        showAlert({ type: ALERT_TYPES.error, message: "error_while_deleting_account" });
+        showAlert({ type: ALERT_TYPES.error, message: "error_while_deleting_account", data: { code: response.code } });
         return;
       }
       logout();
       return;
     } catch (e) {
       console.log(e);
+      showAlert({ type: ALERT_TYPES.error, message: "error_deleting_account" });
     } finally {
       stopLoader();
       return;
