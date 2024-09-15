@@ -18,7 +18,7 @@ const DVPN = () => {
 
   return (
     <div className={`${styles.root} my-18`}>
-      <Text text={"dvpn"} className="fs-16 fw-6 text-9cabc9" />
+      <Text text={"connectivity"} className="fs-16 fw-6 text-9cabc9" />
       <Card
         variant={CARD_VARIANTS.SECONDARY}
         onClick={() => {

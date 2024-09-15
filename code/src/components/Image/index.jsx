@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 
 const Image = ({ src = "", ...rest }) => {
@@ -8,7 +7,13 @@ const Image = ({ src = "", ...rest }) => {
     }
     return `${window.origin}${src}`;
   }, [src]);
-  return <img src={path} alt="" {...rest} />;
+  return (
+    <img
+      src={path}
+      alt=""
+      {...rest}
+    />
+  );
 };
 
 export default Image;

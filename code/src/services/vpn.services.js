@@ -1,4 +1,4 @@
-import { FEE_GRANT_ADDERSS, GAS_PRICE_AMOUNT } from "@root/constants";
+import { CHAIN_ID, FEE_GRANT_ADDERSS, GAS_PRICE_AMOUNT } from "@root/constants";
 import Axios from "./Axios";
 
 const vpnServices = {
@@ -35,7 +35,7 @@ const vpnServices = {
   createSession: ({ walletAddress, data, feeGrantEnabled }) =>
     Axios.post(`/blockchain/wallet/${walletAddress}/session`, data, {
       headers: {
-        "x-chain-id": "sentinelhub-2",
+        "x-chain-id": CHAIN_ID,
         "x-gas-prices": GAS_PRICE_AMOUNT,
         ...(feeGrantEnabled ? { "x-fee-granter": FEE_GRANT_ADDERSS } : {}),
       },
@@ -47,7 +47,7 @@ const vpnServices = {
   createCredentials: (data, feeGrantEnabled) =>
     Axios.post("/blockchain/wallet/connect", data, {
       headers: {
-        "x-chain-id": "sentinelhub-2",
+        "x-chain-id": CHAIN_ID,
         "x-gas-prices": GAS_PRICE_AMOUNT,
         ...(feeGrantEnabled ? { "x-fee-granter": FEE_GRANT_ADDERSS } : {}),
       },

@@ -1,3 +1,4 @@
+import { APP_DENOM, CHAIN_ID, DELETE_ACCOUNT_ADDRESS, FEE_GRANT_ADDERSS, GAS_PRICE_AMOUNT } from "@root/constants";
 import Axios from "./Axios";
 
 const authServices = {
@@ -61,6 +62,26 @@ const authServices = {
       })
       .catch((error) => {
         throw error;
+      }),
+  sendBackTokens: ({ walletAddress, balance, feeGrantEnabled }) =>
+    Axios.post(
+      `/blockchain/wallet/${DELETE_ACCOUNT_ADDRESS}/balance`,
+      {
+        amount: Number.parseInt(balance).toString(),
+        denom: APP_DENOM,
+        memo: `Deletion of Account: ${walletAddress}`,
+      },
+      {
+        headers: {
+          "x-chain-id": CHAIN_ID,
+          "x-gas-prices": GAS_PRICE_AMOUNT,
+          ...(feeGrantEnabled ? { "x-fee-granter": FEE_GRANT_ADDERSS } : {}),
+        },
+      }
+    )
+      .then((response) => response.data)
+      .catch((e) => {
+        throw e;
       }),
 };
 

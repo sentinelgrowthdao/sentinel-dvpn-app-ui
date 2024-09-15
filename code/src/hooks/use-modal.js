@@ -5,6 +5,10 @@ import { useDispatch } from "react-redux";
 const { useNavigate, useSearchParams } = require("react-router-dom");
 
 const useModal = () => {
+  const MODAL_VARIANTS = {
+    primary: "primary",
+    secondary: "secondary",
+  };
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,11 +39,6 @@ const useModal = () => {
   const getModalDetails = React.useCallback(() => {
     return { show, name, cancellable, variant };
   }, [show, name, variant]);
-
-  const MODAL_VARIANTS = {
-    primary: "primary",
-    secondary: "secondary",
-  };
 
   return { showModal, hideModal, getModalDetails, MODAL_VARIANTS };
 };

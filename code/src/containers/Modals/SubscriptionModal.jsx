@@ -63,16 +63,46 @@ const SubscriptionModal = () => {
 
   return (
     <div className={`${styles.root} px-16 py-28`}>
-      <Text text={"modal_subscription_title"} className="fw-5 fs-22 mb-12" />
+      <Text
+        text={"modal_subscription_title"}
+        data={{ days: parsePlanDuration(plan.duration) || 0 }}
+        className="fw-5 fs-22 mb-12"
+      />
       <section className="mb-36">
-        <Text text={"modal_subscription_description"} className="fw-4 fs-14 text-8a94a3" data={{ days: parsePlanDuration(plan.duration) || 0 }} />
-        <Text text={"modal_no_subscriptions_link_text"} className="fw-5 fs-14 text-link ml-4" onClick={() => openWindow({ url: links.RENEW_FIND_MORE })} />
+        <Text
+          text={"modal_subscription_description_1"}
+          className="fw-4 fs-14 text-8a94a3"
+          data={{ days: parsePlanDuration(plan.duration) || 0 }}
+        />
+        <Text
+          text={"modal_no_subscriptions_link_text"}
+          className="fw-5 fs-14 text-link mx-4"
+          onClick={() => openWindow({ url: links.RENEW_FIND_MORE })}
+        />
+        <Text
+          text={"modal_subscription_description_2"}
+          className="fw-4 fs-14 text-8a94a3"
+          data={{ days: parsePlanDuration(plan.duration) || 0 }}
+        />
       </section>
-      <Button className=" mb-8" onClick={subscribe}>
-        <Text text={"renew_at_price"} data={{ price: formatAmount((plan.price || 0) / 1e6) || 0 }} className="fw-5 fs-14 py-8" />
+      <Button
+        className=" mb-8"
+        onClick={subscribe}
+      >
+        <Text
+          text={"renew_at_price"}
+          data={{ price: formatAmount((plan.price || 0) / 1e6) || 0 }}
+          className="fw-5 fs-14 py-8"
+        />
       </Button>
-      <Button variant={BTN_VARIANTS.SECONDARY} onClick={hideModal}>
-        <Text text={"cancel"} className="fw-5 fs-14 py-8" />
+      <Button
+        variant={BTN_VARIANTS.SECONDARY}
+        onClick={hideModal}
+      >
+        <Text
+          text={"cancel"}
+          className="fw-5 fs-14 py-8"
+        />
       </Button>
     </div>
   );

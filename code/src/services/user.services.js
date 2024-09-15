@@ -1,4 +1,4 @@
-import { FEE_GRANT_ADDERSS, GAS_PRICE_AMOUNT, PLAN_ID } from "@root/constants";
+import { CHAIN_ID, FEE_GRANT_ADDERSS, GAS_PRICE_AMOUNT, PLAN_ID } from "@root/constants";
 import Axios from "./Axios";
 
 const userServices = {
@@ -55,7 +55,7 @@ const userServices = {
   createNewSubscription: (data, feeGrantEnabled) =>
     Axios.post(`/blockchain/plans/${PLAN_ID}/subscription`, data, {
       headers: {
-        "x-chain-id": "sentinelhub-2",
+        "x-chain-id": CHAIN_ID,
         "x-gas-prices": GAS_PRICE_AMOUNT,
         ...(feeGrantEnabled ? { "x-fee-granter": FEE_GRANT_ADDERSS } : {}),
       },

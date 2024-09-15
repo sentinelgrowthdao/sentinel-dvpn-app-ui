@@ -31,7 +31,7 @@ const Settings = () => {
   }, []);
   return (
     <div className={styles.root} id="top">
-      <Card
+      {/* <Card
         variant={CARD_VARIANTS.SECONDARY}
         onClick={() => navigate("languages")}
         className={`${styles.card} my-12 px-16`}
@@ -46,7 +46,7 @@ const Settings = () => {
             className="fs-14 fw-5 ml-8 text-9cabc9"
           />
         </section>
-      </Card>
+      </Card> */}
       <DVPN />
       <Legal />
       <Support />

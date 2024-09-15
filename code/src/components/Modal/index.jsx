@@ -15,6 +15,7 @@ import NPR from "@containers/Modals/NoPlansRetry";
 import RetryRegister from "@containers/Modals/RetryRegister";
 import FeeGranterModal from "@containers/Modals/FeeGranterModal";
 import PurchasePending from "@containers/Modals/PurchasePending";
+import DeleteAccount from "@containers/Modals/DeleteAccount";
 
 const types = {
   filters: Filters,
@@ -28,6 +29,7 @@ const types = {
   "retry-register": RetryRegister,
   "fee-grant": FeeGranterModal,
   "purchase-pending": PurchasePending,
+  "delete-account": DeleteAccount,
 };
 
 const ModalComponent = ({ name }) => {

@@ -16,21 +16,37 @@ const BalanceCard = () => {
     <Card className={`${styles.root}`}>
       <section className={`${styles.top} px-12`}>
         <section className={styles.left}>
-          <Image src={BalanceIcon} className={styles.icon} />
+          <Image
+            src={BalanceIcon}
+            className={styles.icon}
+          />
           <section className={`${styles["details"]} ml-4 py-2`}>
-            <Text text={"your_tokens"} className={`fs-14 fw-6 text-9cabc9`} />
-            <Text text={`${formatAmount(balance / 1e6)} DVPN`} className={`fs-20 fw-6 ${styles.balance}`} />
+            <Text
+              text={"your_tokens"}
+              className={`fs-14 fw-6 text-9cabc9 mb-4`}
+            />
+            <Text
+              text={`${formatAmount(balance / 1e6)}`}
+              className={`fs-20 fw-6 ${styles.balance}`}
+            />
           </section>
         </section>
         <section className={styles.right}>
-          <Button variant={BTN_VARIANTS.TRANSPARENT} className={styles.icon} onClick={refetch}>
-            <Image src={ReloadIcon} className={styles.icon} />
+          <Button
+            variant={BTN_VARIANTS.TRANSPARENT}
+            className={styles.icon}
+            onClick={refetch}
+          >
+            <Image
+              src={ReloadIcon}
+              className={styles.icon}
+            />
           </Button>
         </section>
       </section>
-      <section className={`${styles.bottom} py-2`}>
+      {/* <section className={`${styles.bottom} py-2`}>
         <Image className={styles.icon} src={PoweredByCosmosIcon} />
-      </section>
+      </section> */}
     </Card>
   );
 };

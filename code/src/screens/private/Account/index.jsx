@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import styles from "./account.module.scss";
 import { Card, CARD_VARIANTS, Image, Text } from "@components/index";
 import { useNavigate } from "react-router-dom";
-import BuiltOnCosmos from "@svgs/built-on-cosmos.svg";
+// import BuiltOnCosmos from "@svgs/built-on-cosmos.svg";
 import SubscriptionsIcon from "@svgs/subscriptions-icon.svg";
 import WalletDetailsIcon from "@svgs/wallet-details-icon.svg";
 import AddDVPNIcon from "@svgs/payments.svg";
@@ -53,47 +53,87 @@ const Account = () => {
       <section className={styles.top}>
         {navs.map((n, i) => {
           return (
-            <Card variant={CARD_VARIANTS.PRIMARY} key={`acc-nav-${i}`} onClick={() => navigate(n.href)} className={`${styles.card} my-12 px-16`}>
+            <Card
+              variant={CARD_VARIANTS.PRIMARY}
+              key={`acc-nav-${i}`}
+              onClick={() => navigate(n.href)}
+              className={`${styles.card} my-12 px-16`}
+            >
               <section className={styles.left}>
                 <section className={styles.image}>
-                  <Image src={n.icon} height={"20px"} />
+                  <Image
+                    src={n.icon}
+                    height={"20px"}
+                  />
                 </section>
-                <Text text={n.title} className="fs-14 fw-5 ml-6" />
+                <Text
+                  text={n.title}
+                  className="fs-14 fw-5 ml-6"
+                />
               </section>
               <section className={styles.right}>
-                <Image src={RightArrowIcon} height={"14px"} />
+                <Image
+                  src={RightArrowIcon}
+                  height={"14px"}
+                />
               </section>
             </Card>
           );
         })}
         {getMobileOS() !== "ios" && (
-          <Card variant={CARD_VARIANTS.PRIMARY} onClick={() => openWindow({ url: links.SWAP_DVPN })} className={`${styles.card} my-12 px-16`}>
+          <Card
+            variant={CARD_VARIANTS.PRIMARY}
+            onClick={() => openWindow({ url: links.SWAP_DVPN })}
+            className={`${styles.card} my-12 px-16`}
+          >
             <section className={styles.left}>
               <section className={styles.image}>
-                <Image src={SwapIcon} height={"20px"} />
+                <Image
+                  src={SwapIcon}
+                  height={"20px"}
+                />
               </section>
-              <Text text={"swap_to_get_dvpn"} className="fs-14 fw-5 ml-6" />
+              <Text
+                text={"swap_to_get_dvpn"}
+                className="fs-14 fw-5 ml-6"
+              />
             </section>
             <section className={styles.right}>
-              <Image src={RightArrowIcon} height={"14px"} />
+              <Image
+                src={RightArrowIcon}
+                height={"14px"}
+              />
             </section>
           </Card>
         )}
-        <Card variant={CARD_VARIANTS.PRIMARY} onClick={() => showModal({ name: "logout" })} className={`${styles.card} my-12 px-16`}>
+        <Card
+          variant={CARD_VARIANTS.PRIMARY}
+          onClick={() => showModal({ name: "logout" })}
+          className={`${styles.card} my-12 px-16`}
+        >
           <section className={styles.left}>
             <section className={styles.image}>
-              <Image src={LogoutIcon} height={"20px"} />
+              <Image
+                src={LogoutIcon}
+                height={"20px"}
+              />
             </section>
-            <Text text={"logout"} className="fs-14 fw-5 ml-6" />
+            <Text
+              text={"logout"}
+              className="fs-14 fw-5 ml-6"
+            />
           </section>
           <section className={styles.right}>
-            <Image src={RightArrowIcon} height={"14px"} />
+            <Image
+              src={RightArrowIcon}
+              height={"14px"}
+            />
           </section>
         </Card>
       </section>
-      <section className={`${styles.bottom} py-36`}>
+      {/* <section className={`${styles.bottom} py-36`}>
         <Image src={BuiltOnCosmos} className={styles.image} />
-      </section>
+      </section> */}
     </div>
   );
 };

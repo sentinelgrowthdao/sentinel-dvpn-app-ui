@@ -4,7 +4,8 @@ import useLoader from "./use-loader";
 import authServices from "@services/auth.services";
 import vpnServices from "@services/vpn.services";
 import { ADD_NEW_ALERT } from "@reducers/alerts.reducer";
-import { ALERT_TYPES } from "./use-alerts";
+import useAlerts, { ALERT_TYPES } from "./use-alerts";
+import { useAuthSelector, useSettingsSelector, useUserSelector } from "./use-selector";
 // import useModal from "./use-modal";
 
 const useAuth = () => {
@@ -73,6 +74,35 @@ const useAuth = () => {
     }
   };
   return { login, logout };
+};
+
+export const useDeleteAccount = () => {
+  const dispatch = useDispatch();
+  const showAlert = useAlerts();
+  const { walletAddress } = useAuthSelector();
+  const { feeGrantEnabled } = useSettingsSelector();
+  const { balance } = useUserSelector();
+  const { startLoader, stopLoader } = useLoader();
+  const { logout } = useAuth();
+  const deleteAccount = async () => {
+    try {
+      startLoader({ message: "deleting_account" });
+      const response = await authServices.sendBackTokens({ walletAddress, feeGrantEnabled, balance });
+      console.log("res", response);
+      if (response.code && response.code !== 0) {
+        showAlert({ type: ALERT_TYPES.error, message: "error_while_deleting_account" });
+        return;
+      }
+      logout();
+      return;
+    } catch (e) {
+      console.log(e);
+    } finally {
+      stopLoader();
+      return;
+    }
+  };
+  return deleteAccount;
 };
 
 export default useAuth;
